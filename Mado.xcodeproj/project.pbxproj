@@ -1,0 +1,1288 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01BECFBB6E8AD3706264F80A /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 63BC658928C6FA1AB1FB6C8E /* GoogleSignIn */; };
+		027F877AB2610ADC8BCC59A6 /* UndoEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8688069CFC271A21C1308646 /* UndoEngine.swift */; };
+		047247D43A9E8BA063C3160A /* iOSSettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D4A51DB4028D0C7CB046A /* iOSSettingsTab.swift */; };
+		05B56B908FD8A65F4A2CEE96 /* SyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E0FF3A5AD3EDD1129211B6 /* SyncState.swift */; };
+		05D1DAAD0B8594054736CF40 /* WidgetSharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418F61378F33919925AB017 /* WidgetSharedModels.swift */; };
+		06853420877FCA3A7CB91498 /* UserCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3888DD41508AA8E6A1C18D /* UserCalendar.swift */; };
+		0706CAD82395EFE89299BEF1 /* UndoEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8688069CFC271A21C1308646 /* UndoEngine.swift */; };
+		080A1240BC07886AB875689C /* NaturalDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35825B2137ABD1E6134A99DD /* NaturalDateParser.swift */; };
+		0BBCC3FAB6AA2E9212E8E65F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 388A8A570EC14F4567DD66F4 /* Assets.xcassets */; };
+		0CC988664C941DED69C2C721 /* PriorityBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB653DFB4D289EEB6B9820B /* PriorityBadge.swift */; };
+		0F7D2DA54BC8D712F5DF5BB3 /* TaskDetailPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A78D5E7D05A609E0FC62ADE /* TaskDetailPopover.swift */; };
+		104ED99ED62193349383471E /* MemoFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144BADD088001E17692C944 /* MemoFileManager.swift */; };
+		10AB080AA40BF6A9363038C5 /* LabelChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D7A6F30884F6C8B4E67FA9 /* LabelChip.swift */; };
+		10FFCE5C6A5F8F2E3A3AFA59 /* MadoLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD99B264449D19858221BDC3 /* MadoLogger.swift */; };
+		146FD81E7FE09168ADDFD545 /* EventBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5DE5FB36951A445B7BEB0 /* EventBlockView.swift */; };
+		14741AB22FF572AC124059D7 /* TaskDetailPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A78D5E7D05A609E0FC62ADE /* TaskDetailPopover.swift */; };
+		17AEC77558C74CCF285D88DD /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F1A945A36E2DC2CF08B190 /* APIError.swift */; };
+		18EA3358D9A77BFEAAA91B75 /* OverdueWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FA9336D1877C80FF239588 /* OverdueWidget.swift */; };
+		197E7AEC7CCFBCFE1C738802 /* MadoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E30B51969F248A71971B5D1 /* MadoApp.swift */; };
+		19E7799FE91DD673FAB978F9 /* DailyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F511F742668D2C3DC7A5191 /* DailyCalendarView.swift */; };
+		1A84042ADD86017A7F115FEC /* MainWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA717FF46E8310441743C5E /* MainWindowView.swift */; };
+		1C2A85E403C967044CFD8B92 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF745145F28AC8A7163E4D4 /* AppSettings.swift */; };
+		1C36F04C6D000D2CF932BD01 /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB838A5ADD2A333C174CB5B /* AuthState.swift */; };
+		1EA1339738E9274C62A17B9B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F31441A74D4F87916B73391 /* SettingsView.swift */; };
+		1F113CACEC8BFDB7C16E3B81 /* MarkdownEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5073F21E050E9589A40F04A /* MarkdownEditorView.swift */; };
+		1FC018B4240987317C92087A /* MenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54F70AFED516319C65292DC /* MenuBarItem.swift */; };
+		2072144AE1933DCAEA2D17CB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35200C6E16748E2BACBB271 /* SettingsViewModel.swift */; };
+		20950D621CB810623735D262 /* FirestoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6635CBE78C5FDFD78AAFB /* FirestoreConfig.swift */; };
+		22A2354375BBC35BFBAE0482 /* CalendarSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD28D7AFDEE017130AC5E61 /* CalendarSelectionView.swift */; };
+		22C7DE9D4C0B7EEC7B6E637A /* PlatformHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6764F74058A5A3DA2CF652A2 /* PlatformHelpers.swift */; };
+		235BF35D0B3C234DEAAE52F2 /* PriorityBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB653DFB4D289EEB6B9820B /* PriorityBadge.swift */; };
+		255FB2DE0D484D6ABEAE2B3D /* MonthlyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E88C4D72D73A5C7D7DCE8B /* MonthlyCalendarView.swift */; };
+		27086B02B17B284604149B75 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2401C87A10920BCE2B234A29 /* AuthenticationManager.swift */; };
+		28CE3E94C693D6FB349C8A97 /* GoogleTasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9102DF0DAC4320D60D2FB0D6 /* GoogleTasksService.swift */; };
+		29535B3FBD271992DB4C5C32 /* EventCreatePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7D1DC615FB5243648F187 /* EventCreatePopover.swift */; };
+		2A39086DDFAD1F092DF8003A /* SubtaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A27A4D05E7C29562279FA6 /* SubtaskView.swift */; };
+		2C99A7D5D33B62ADE190EBED /* FirestoreSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1478878F0401C812493C9DA7 /* FirestoreSyncService.swift */; };
+		2DBF0826C3510F2E29113D5E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A062A562951FBC06F44E7ED /* APIClient.swift */; };
+		34D3022F9653EBF7D9714B46 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B20B8C84F61242674D9F6B /* SearchManager.swift */; };
+		3627F02384CC8DD28581B15E /* iOSMainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BEC4A88FEC5AE9D2BD8AC4 /* iOSMainTabView.swift */; };
+		369442C3D4B484BA144AB575 /* SearchOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B1F59685BCCBE68E911F53 /* SearchOverlay.swift */; };
+		3849C2F84BA36AADD0C38F7E /* QuickAddTaskWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E4C63FC4FB90561C0D6A6 /* QuickAddTaskWindow.swift */; };
+		38E0D4204FBD0383EB1B1B4D /* iOSInvitesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572F95781A56178193F2BBD9 /* iOSInvitesTab.swift */; };
+		391AD51C58851A4B01248114 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051204EEB7B1EEC6A0B5DB08 /* LoginView.swift */; };
+		3B2A6CE4E7352FA8311E1D86 /* TodayEventsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983075C6F6452613BD032F1 /* TodayEventsWidget.swift */; };
+		3B806F18FA88554541307062 /* iOSRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6B187214D0B3E9E0F222DD /* iOSRootView.swift */; };
+		3CAFB7611EC0E5957BADB636 /* iOSQuickAddSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D500D40DDE80CE83BA3D647F /* iOSQuickAddSheet.swift */; };
+		3D57B178AEDE43991136018C /* CommandBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C55D13429267CAE8B34967C /* CommandBarView.swift */; };
+		3FF0A52276A2120117C124DE /* DailyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F511F742668D2C3DC7A5191 /* DailyCalendarView.swift */; };
+		41ABDE753B3768E1D9811E8D /* TodoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DCF0E1753C16975F3B6D20 /* TodoRowView.swift */; };
+		426A3F5369937FB422BB8FFF /* SubtaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A27A4D05E7C29562279FA6 /* SubtaskView.swift */; };
+		44BC6BCC2659668965025438 /* InvitePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C16CE1266A5F4995ED3521 /* InvitePanelView.swift */; };
+		45A4F01706EDDBD1B9230F26 /* KeyboardShortcuts+Mado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264D0D9106C7F8777AC11648 /* KeyboardShortcuts+Mado.swift */; };
+		46CF06BE40B93DE90740A536 /* TaskLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DE8F2EF2201ACA64271A19 /* TaskLabel.swift */; };
+		4A1937EECED3977E4A482CE1 /* UndoToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D544C6626DF05D1222D714 /* UndoToast.swift */; };
+		4CE5E26DF234D8C761EB95DB /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CB7F6547A64A8C30DB56F2 /* TokenStore.swift */; };
+		50BC281973AC0202E8B4D8CC /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 1D7CB5C7CBDDDA07CBD7988B /* KeyboardShortcuts */; };
+		5413EFEDF38AFE82CF0524A2 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D2A98B55DF8A2BE2F128CB /* NotificationManager.swift */; };
+		556181AF7BFCEC0A3B382D67 /* DateParsingCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A11619944F22BB5BC164165 /* DateParsingCommon.swift */; };
+		5941676198993FACB2369C22 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D2A98B55DF8A2BE2F128CB /* NotificationManager.swift */; };
+		5B81AB43DECF171F8847D485 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 72543E8870D73DFF61B0BD1D /* GoogleSignIn */; };
+		5C1538F952A271752D41FF03 /* GoogleCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11287CD6CD71EB640749CAF7 /* GoogleCalendarService.swift */; };
+		5E2EE07C3CF663F62A9D80F5 /* MemosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BA6316060AD8E91B8A3D2B /* MemosView.swift */; };
+		5EDC103A7F171A8DE417DF86 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CA6880988038C5E093C279 /* DateFormatters.swift */; };
+		60C1042DB81B89B92AF7FD85 /* FirestoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6635CBE78C5FDFD78AAFB /* FirestoreConfig.swift */; };
+		60E43EA2ECC51FA105DA9E1F /* EventCreatePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7D1DC615FB5243648F187 /* EventCreatePopover.swift */; };
+		62038653899AE6BA71DB9826 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E543A1C4A6AA046F22FD8753 /* TodoViewModel.swift */; };
+		6516078F168D75AA4B4E0C95 /* MenuBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D101ABF946BA4703FC7A2456 /* MenuBarViewModel.swift */; };
+		67BF7354EF3DE4AFC797DF4C /* InvitePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C16CE1266A5F4995ED3521 /* InvitePanelView.swift */; };
+		68B3E39E1ECEDDC184150595 /* MadoColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A080AEBC23849B16A27727 /* MadoColors.swift */; };
+		690AA530317C0E9F2FFE7DFB /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D7D5BF60FB92FBD54093BE /* LoadingOverlay.swift */; };
+		6A147C067D3B59526824B82C /* MadoTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBC93009E3136CBD8D7DE58 /* MadoTheme.swift */; };
+		6DB6841C76BAE4D7A5535E3D /* CalendarSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD28D7AFDEE017130AC5E61 /* CalendarSelectionView.swift */; };
+		74B8825D7DB46A0819F87832 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D182FF3EFC99E19EBE83B /* EmptyStateView.swift */; };
+		75BA5E7788D1B320E85B3D11 /* MadoWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = ED5F8565D14501D5E70A3310 /* MadoWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		775F1E7A74173AB7B4011E57 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF745145F28AC8A7163E4D4 /* AppSettings.swift */; };
+		7B35394672A7750A6AAD745F /* SearchOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B1F59685BCCBE68E911F53 /* SearchOverlay.swift */; };
+		7BB23DDB1B7EB3109204872C /* EventBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5DE5FB36951A445B7BEB0 /* EventBlockView.swift */; };
+		7C3B831422654058310C0097 /* MadoColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A080AEBC23849B16A27727 /* MadoColors.swift */; };
+		7D0D53F56EAE700CD0FF1EB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 388A8A570EC14F4567DD66F4 /* Assets.xcassets */; };
+		7FD2AF806A2ECD1897289F15 /* MadoLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD99B264449D19858221BDC3 /* MadoLogger.swift */; };
+		83BC4973958F9D4307CCA1A4 /* WidgetDataWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E060E3AFBFA84033B9F15F /* WidgetDataWriter.swift */; };
+		83E267973182EDBC69811734 /* SyncEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212224850D9372E2EDA4145 /* SyncEngine.swift */; };
+		84D6EA1C1FFAB59B24B53C8E /* MadoiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927789BCB3042AE69BAABCCF /* MadoiOSApp.swift */; };
+		85ECF10C2D1273B73140D421 /* NotificationPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CBFC5ADF24230FB2B1A02 /* NotificationPopoverView.swift */; };
+		86EDDF10F79825AB8845DA97 /* GoogleGmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53C6A17390F73F6E1C6252 /* GoogleGmailService.swift */; };
+		87CA6A49358AED09368B152F /* NaturalDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35825B2137ABD1E6134A99DD /* NaturalDateParser.swift */; };
+		8A838D264B2FB75B114EA1EC /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D29D5E791BB0DCD7E4ACF /* CalendarEvent.swift */; };
+		8B1A06DC2B63B0CBF067E819 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F1A945A36E2DC2CF08B190 /* APIError.swift */; };
+		8E707ED9D0E628FCF3A51EED /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D0BB0715DA6E16A7C05F5F /* TodoListView.swift */; };
+		8F2223A609C6B33D42237F8C /* TaskPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3B829F9E3D92CB5AF7274 /* TaskPanelView.swift */; };
+		8FD184BAA03D12E4CB8219EE /* NaturalLanguageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EE8E0D6B0BD4359322795 /* NaturalLanguageParser.swift */; };
+		8FE03ECC8C77B3D984C615E9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051204EEB7B1EEC6A0B5DB08 /* LoginView.swift */; };
+		9062FA3506A6F334CF1DCC1E /* DateParsingCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A11619944F22BB5BC164165 /* DateParsingCommon.swift */; };
+		91357492C9D87636DDFBCA23 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E88A51002172EB7D368D208 /* FlowLayout.swift */; };
+		932F0A0F506B376954712F4F /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CA6880988038C5E093C279 /* DateFormatters.swift */; };
+		9336C890976AF1EFF1836960 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2401C87A10920BCE2B234A29 /* AuthenticationManager.swift */; };
+		94ED187BD376D306F32DA28D /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E543A1C4A6AA046F22FD8753 /* TodoViewModel.swift */; };
+		957484E22CDE9A0F725EF3BF /* MenuBarPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0697099A2A7198AEBA0BC226 /* MenuBarPopoverView.swift */; };
+		95BBA3CEE4A3127ED89C151D /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D29D5E791BB0DCD7E4ACF /* CalendarEvent.swift */; };
+		95FED341E45845675C8F8D99 /* SyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E0FF3A5AD3EDD1129211B6 /* SyncState.swift */; };
+		967E2229E7AB61184DA24B3A /* NotificationPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CBFC5ADF24230FB2B1A02 /* NotificationPopoverView.swift */; };
+		96ABE89D8A38478B054CE8BE /* WeeklyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD446EF64BA92F2A3765CE /* WeeklyCalendarView.swift */; };
+		97A281484DE76463DE3B0E91 /* SyncEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212224850D9372E2EDA4145 /* SyncEngine.swift */; };
+		99C19C7758C3FA089D6FD930 /* CompactTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0BF5C255928BB930CB611E /* CompactTodayView.swift */; };
+		99C94FEB259B2A8FD4EC9E37 /* WidgetDataWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E060E3AFBFA84033B9F15F /* WidgetDataWriter.swift */; };
+		9ABAF50079296468B3495D14 /* MonthlyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E88C4D72D73A5C7D7DCE8B /* MonthlyCalendarView.swift */; };
+		9B57F233D8767B166307975B /* MadoTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBC93009E3136CBD8D7DE58 /* MadoTheme.swift */; };
+		9BDC99655B282F6787DF25B6 /* GoogleTasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9102DF0DAC4320D60D2FB0D6 /* GoogleTasksService.swift */; };
+		A42DF5BF794262158C6C5E94 /* QuickAddField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C7573D83EB4B4A6CADFEB /* QuickAddField.swift */; };
+		A462569357EA5139A6409262 /* MainWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA717FF46E8310441743C5E /* MainWindowView.swift */; };
+		A5CF663828035393EE747EAE /* iOSTodayTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73D1151FC2C2472C72048BA /* iOSTodayTab.swift */; };
+		A751B3565EF44D76A3B97406 /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E271EC7E6FA6D33BAAB3B /* FirestoreClient.swift */; };
+		A93CA01CBF4463655BE2447D /* TodoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09E74D6735CF1F11CE1865 /* TodoDetailView.swift */; };
+		A96E5E376B1EDD520505A4D7 /* MarkdownEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5073F21E050E9589A40F04A /* MarkdownEditorView.swift */; };
+		AC26F8C060FF3A81CAA700D7 /* TodayTasksWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F01F462A4E2A133C01027E /* TodayTasksWidget.swift */; };
+		AD68A5B70C701BB3AA90B163 /* TaskLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DE8F2EF2201ACA64271A19 /* TaskLabel.swift */; };
+		AD9158CAD00A626DDE2206BF /* UndoToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D544C6626DF05D1222D714 /* UndoToast.swift */; };
+		ADAF3CDD31D2890DD0F3C8AB /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171814B7E9C7EA55654AEA02 /* CalendarViewModel.swift */; };
+		AEEA6D25A6DA3FD488538586 /* NextMeetingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5AA80401E5B6E905F2F5F /* NextMeetingWidget.swift */; };
+		B3D1F6E630426C6EC684F239 /* TodoFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32309765C636CD41DBCD2810 /* TodoFormView.swift */; };
+		B55E66C33E0022888DDCBD71 /* WidgetSharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418F61378F33919925AB017 /* WidgetSharedModels.swift */; };
+		B5E73EF956041B8AA803EBA0 /* iOSEventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738732E797F885E541BC06FA /* iOSEventDetailView.swift */; };
+		B6DAB1B40A73630C9D3319A8 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35200C6E16748E2BACBB271 /* SettingsViewModel.swift */; };
+		B6EB7DB08A18DE039403F6A8 /* MemosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BA6316060AD8E91B8A3D2B /* MemosView.swift */; };
+		B700FEEB2F4D8D3514F01FE4 /* MemoFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144BADD088001E17692C944 /* MemoFileManager.swift */; };
+		BBD4A280FDFCAC8FE4D9412F /* ShortcutsSettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3CD3FA543DA95723118AE /* ShortcutsSettingsTab.swift */; };
+		BC22B22A55B62C0185FC365E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A062A562951FBC06F44E7ED /* APIClient.swift */; };
+		BD36B709470306C91EE3DC93 /* WidgetDataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8603F766B38E362518EBDC0 /* WidgetDataReader.swift */; };
+		BDAA8039F093CA02780BEADF /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D7D5BF60FB92FBD54093BE /* LoadingOverlay.swift */; };
+		C0F35125971AD52D584245F2 /* UserCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3888DD41508AA8E6A1C18D /* UserCalendar.swift */; };
+		C1F2A34A6035DC7CC5229D77 /* GoogleGmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53C6A17390F73F6E1C6252 /* GoogleGmailService.swift */; };
+		C306A02ED2917C41C6CEEBAA /* CommandBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C55D13429267CAE8B34967C /* CommandBarView.swift */; };
+		C38B577A12710641612D6459 /* iOSCalendarTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FD6853C8996927F5F1FA76 /* iOSCalendarTab.swift */; };
+		C3DFC9724063B2DDE34745CD /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FD49E14AE247AACBB84B4 /* DataController.swift */; };
+		C4711841DA85F63BC59D5989 /* GoogleCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11287CD6CD71EB640749CAF7 /* GoogleCalendarService.swift */; };
+		C7A410C577FCD88664D52A85 /* MadoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8052220E53294DA55BD1C502 /* MadoTask.swift */; };
+		CAE106A860EE5B829559FB61 /* PlatformHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6764F74058A5A3DA2CF652A2 /* PlatformHelpers.swift */; };
+		CCFADC121D0089180D69DBC0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C917EA2703B79609969A29B3 /* LoginViewModel.swift */; };
+		CE34BB797F5C96428CF669EC /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E88A51002172EB7D368D208 /* FlowLayout.swift */; };
+		CEB01DB5F4AD20417350A627 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D182FF3EFC99E19EBE83B /* EmptyStateView.swift */; };
+		CFCE3F3096B8770838E1AFDC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C917EA2703B79609969A29B3 /* LoginViewModel.swift */; };
+		D0083FD4A62D5DEB824D260D /* FirestoreSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1478878F0401C812493C9DA7 /* FirestoreSyncService.swift */; };
+		D03F07D996A0FC4835390011 /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB838A5ADD2A333C174CB5B /* AuthState.swift */; };
+		D08EFEB994F1603508573D8E /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171814B7E9C7EA55654AEA02 /* CalendarViewModel.swift */; };
+		D0F58F704FD6F4D120ECEC3D /* MenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54F70AFED516319C65292DC /* MenuBarItem.swift */; };
+		D4DA1E62A1EDDC44455F946F /* CalendarToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4176180AA9C38A902974E799 /* CalendarToolbar.swift */; };
+		D570F56ACAD27F1352685CA9 /* iOSTasksTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0A96AE7155F2C52D1ED2E5 /* iOSTasksTab.swift */; };
+		DBF98CD6199D68C6DFBB1DC6 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CB7F6547A64A8C30DB56F2 /* TokenStore.swift */; };
+		DDA0FDA7082F00850A681CD0 /* QuickAddField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C7573D83EB4B4A6CADFEB /* QuickAddField.swift */; };
+		DF1AAE65AE2BB9188D96B3BD /* LabelChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D7A6F30884F6C8B4E67FA9 /* LabelChip.swift */; };
+		E04ED386FD8CD32B4F2B60ED /* WeeklyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD446EF64BA92F2A3765CE /* WeeklyCalendarView.swift */; };
+		E0555EFF461B419CC029767A /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB5436C0A27DF2F9447E078 /* PlannerView.swift */; };
+		E269DB32268B8D31E6B48B2A /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15356FAE15F0DD0C0E5C36E /* Project.swift */; };
+		E6BCA865DEBF468E1AA6AD3D /* EventDetailPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE6E49DD1E744EF8AB16D /* EventDetailPopover.swift */; };
+		E7A02D5AC3C31B72FED7E30E /* iOSLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A16CDA406326C3E64600F7 /* iOSLoginView.swift */; };
+		E8AB7836611CA9E28601FAB7 /* CalendarToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4176180AA9C38A902974E799 /* CalendarToolbar.swift */; };
+		EABC2FB073792F92C0CE26CD /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B20B8C84F61242674D9F6B /* SearchManager.swift */; };
+		EBDCEE6D7C331F6C245825EC /* EventDetailPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE6E49DD1E744EF8AB16D /* EventDetailPopover.swift */; };
+		ED0A2120A1E7A6F4C93746EB /* MadoWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA4EF74D84885222A9E042 /* MadoWidgetBundle.swift */; };
+		F0ED1442E29E2A78A2C547CD /* NaturalLanguageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EE8E0D6B0BD4359322795 /* NaturalLanguageParser.swift */; };
+		F31A38E556FB1FDFE9CAC6E5 /* CompactTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0BF5C255928BB930CB611E /* CompactTodayView.swift */; };
+		F6BAC892269828CE92939281 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F31441A74D4F87916B73391 /* SettingsView.swift */; };
+		F790BD7A70347142942C18E0 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB5436C0A27DF2F9447E078 /* PlannerView.swift */; };
+		FA1B8A5E0374C04922D2596D /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E271EC7E6FA6D33BAAB3B /* FirestoreClient.swift */; };
+		FAFDCA7EFF9B78AFF852886A /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15356FAE15F0DD0C0E5C36E /* Project.swift */; };
+		FC1FDC60B0842B802BFC96C6 /* TaskPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3B829F9E3D92CB5AF7274 /* TaskPanelView.swift */; };
+		FF007C0EAE1D5A524559F323 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FD49E14AE247AACBB84B4 /* DataController.swift */; };
+		FF1F9E47255BE39154B063F2 /* MadoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8052220E53294DA55BD1C502 /* MadoTask.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		36F3538E85846514BC7E26E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 479E14AA07FBCDCEAB0A5E64 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C734348BD9E0555645FC118;
+			remoteInfo = MadoWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		44FB5EEDC421B613A1A90CAE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				75BA5E7788D1B320E85B3D11 /* MadoWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		00BD446EF64BA92F2A3765CE /* WeeklyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarView.swift; sourceTree = "<group>"; };
+		01DCF0E1753C16975F3B6D20 /* TodoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRowView.swift; sourceTree = "<group>"; };
+		04325253E181D540B8D177F8 /* Mado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mado.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		051204EEB7B1EEC6A0B5DB08 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0697099A2A7198AEBA0BC226 /* MenuBarPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarPopoverView.swift; sourceTree = "<group>"; };
+		06FA9336D1877C80FF239588 /* OverdueWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverdueWidget.swift; sourceTree = "<group>"; };
+		11287CD6CD71EB640749CAF7 /* GoogleCalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCalendarService.swift; sourceTree = "<group>"; };
+		12D544C6626DF05D1222D714 /* UndoToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoToast.swift; sourceTree = "<group>"; };
+		13FAAC8FEA1BF5D35E989F2A /* MadoiOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MadoiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1478878F0401C812493C9DA7 /* FirestoreSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSyncService.swift; sourceTree = "<group>"; };
+		14CA6880988038C5E093C279 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		16EA4EF74D84885222A9E042 /* MadoWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadoWidgetBundle.swift; sourceTree = "<group>"; };
+		171814B7E9C7EA55654AEA02 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		1A11619944F22BB5BC164165 /* DateParsingCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParsingCommon.swift; sourceTree = "<group>"; };
+		1AB653DFB4D289EEB6B9820B /* PriorityBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityBadge.swift; sourceTree = "<group>"; };
+		1B1D4A51DB4028D0C7CB046A /* iOSSettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSettingsTab.swift; sourceTree = "<group>"; };
+		1E88A51002172EB7D368D208 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		1F7FD49E14AE247AACBB84B4 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		204D61EDD4872010C2BB1D39 /* MadoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MadoWidget.entitlements; sourceTree = "<group>"; };
+		22BEC4A88FEC5AE9D2BD8AC4 /* iOSMainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSMainTabView.swift; sourceTree = "<group>"; };
+		22C3B829F9E3D92CB5AF7274 /* TaskPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPanelView.swift; sourceTree = "<group>"; };
+		2401C87A10920BCE2B234A29 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		264D0D9106C7F8777AC11648 /* KeyboardShortcuts+Mado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Mado.swift"; sourceTree = "<group>"; };
+		28D7D5BF60FB92FBD54093BE /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
+		29BA6316060AD8E91B8A3D2B /* MemosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemosView.swift; sourceTree = "<group>"; };
+		2C0BF5C255928BB930CB611E /* CompactTodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactTodayView.swift; sourceTree = "<group>"; };
+		2D9FE6E49DD1E744EF8AB16D /* EventDetailPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailPopover.swift; sourceTree = "<group>"; };
+		2FB838A5ADD2A333C174CB5B /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
+		30A27A4D05E7C29562279FA6 /* SubtaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskView.swift; sourceTree = "<group>"; };
+		32309765C636CD41DBCD2810 /* TodoFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFormView.swift; sourceTree = "<group>"; };
+		355D182FF3EFC99E19EBE83B /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		35825B2137ABD1E6134A99DD /* NaturalDateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalDateParser.swift; sourceTree = "<group>"; };
+		36F01F462A4E2A133C01027E /* TodayTasksWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTasksWidget.swift; sourceTree = "<group>"; };
+		388A8A570EC14F4567DD66F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3BA7D1DC615FB5243648F187 /* EventCreatePopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreatePopover.swift; sourceTree = "<group>"; };
+		3E30B51969F248A71971B5D1 /* MadoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadoApp.swift; sourceTree = "<group>"; };
+		4176180AA9C38A902974E799 /* CalendarToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarToolbar.swift; sourceTree = "<group>"; };
+		4212224850D9372E2EDA4145 /* SyncEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncEngine.swift; sourceTree = "<group>"; };
+		47DE8F2EF2201ACA64271A19 /* TaskLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLabel.swift; sourceTree = "<group>"; };
+		4FA717FF46E8310441743C5E /* MainWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowView.swift; sourceTree = "<group>"; };
+		4FB5436C0A27DF2F9447E078 /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
+		51D0BB0715DA6E16A7C05F5F /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
+		52AE00343349987BFE7ABE4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		572F95781A56178193F2BBD9 /* iOSInvitesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSInvitesTab.swift; sourceTree = "<group>"; };
+		5C55D13429267CAE8B34967C /* CommandBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandBarView.swift; sourceTree = "<group>"; };
+		5EF3CD3FA543DA95723118AE /* ShortcutsSettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsSettingsTab.swift; sourceTree = "<group>"; };
+		6764F74058A5A3DA2CF652A2 /* PlatformHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformHelpers.swift; sourceTree = "<group>"; };
+		6A062A562951FBC06F44E7ED /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		6ED6635CBE78C5FDFD78AAFB /* FirestoreConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreConfig.swift; sourceTree = "<group>"; };
+		6F0D29D5E791BB0DCD7E4ACF /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		738732E797F885E541BC06FA /* iOSEventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSEventDetailView.swift; sourceTree = "<group>"; };
+		74E0FF3A5AD3EDD1129211B6 /* SyncState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncState.swift; sourceTree = "<group>"; };
+		7983075C6F6452613BD032F1 /* TodayEventsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayEventsWidget.swift; sourceTree = "<group>"; };
+		7CD28D7AFDEE017130AC5E61 /* CalendarSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSelectionView.swift; sourceTree = "<group>"; };
+		7E6B187214D0B3E9E0F222DD /* iOSRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSRootView.swift; sourceTree = "<group>"; };
+		7F3945AFE84484016F5D400D /* MadoiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MadoiOS.entitlements; sourceTree = "<group>"; };
+		8052220E53294DA55BD1C502 /* MadoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadoTask.swift; sourceTree = "<group>"; };
+		85B1F59685BCCBE68E911F53 /* SearchOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchOverlay.swift; sourceTree = "<group>"; };
+		8688069CFC271A21C1308646 /* UndoEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoEngine.swift; sourceTree = "<group>"; };
+		86B20B8C84F61242674D9F6B /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		88E060E3AFBFA84033B9F15F /* WidgetDataWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataWriter.swift; sourceTree = "<group>"; };
+		8A78D5E7D05A609E0FC62ADE /* TaskDetailPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailPopover.swift; sourceTree = "<group>"; };
+		8B53C6A17390F73F6E1C6252 /* GoogleGmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleGmailService.swift; sourceTree = "<group>"; };
+		8F31441A74D4F87916B73391 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9102DF0DAC4320D60D2FB0D6 /* GoogleTasksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTasksService.swift; sourceTree = "<group>"; };
+		927789BCB3042AE69BAABCCF /* MadoiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadoiOSApp.swift; sourceTree = "<group>"; };
+		968E271EC7E6FA6D33BAAB3B /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
+		99F1A945A36E2DC2CF08B190 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		9C6C7573D83EB4B4A6CADFEB /* QuickAddField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddField.swift; sourceTree = "<group>"; };
+		9CE5DE5FB36951A445B7BEB0 /* EventBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBlockView.swift; sourceTree = "<group>"; };
+		9F511F742668D2C3DC7A5191 /* DailyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCalendarView.swift; sourceTree = "<group>"; };
+		A3A080AEBC23849B16A27727 /* MadoColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadoColors.swift; sourceTree = "<group>"; };
+		A418F61378F33919925AB017 /* WidgetSharedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSharedModels.swift; sourceTree = "<group>"; };
+		A6A16CDA406326C3E64600F7 /* iOSLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLoginView.swift; sourceTree = "<group>"; };
+		A8407B784F8A80F0B34E557C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AA3CBFC5ADF24230FB2B1A02 /* NotificationPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPopoverView.swift; sourceTree = "<group>"; };
+		AEF745145F28AC8A7163E4D4 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		B1D2A98B55DF8A2BE2F128CB /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		B73D1151FC2C2472C72048BA /* iOSTodayTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTodayTab.swift; sourceTree = "<group>"; };
+		B8603F766B38E362518EBDC0 /* WidgetDataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataReader.swift; sourceTree = "<group>"; };
+		BB0A96AE7155F2C52D1ED2E5 /* iOSTasksTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTasksTab.swift; sourceTree = "<group>"; };
+		C144BADD088001E17692C944 /* MemoFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoFileManager.swift; sourceTree = "<group>"; };
+		C15356FAE15F0DD0C0E5C36E /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		C2D7A6F30884F6C8B4E67FA9 /* LabelChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelChip.swift; sourceTree = "<group>"; };
+		C4E88C4D72D73A5C7D7DCE8B /* MonthlyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarView.swift; sourceTree = "<group>"; };
+		C5073F21E050E9589A40F04A /* MarkdownEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownEditorView.swift; sourceTree = "<group>"; };
+		C73DE645A620B0C3883768D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C7C16CE1266A5F4995ED3521 /* InvitePanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitePanelView.swift; sourceTree = "<group>"; };
+		C917EA2703B79609969A29B3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		CDE59C92FFD4C45A92F4D09B /* Mado.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mado.entitlements; sourceTree = "<group>"; };
+		CE5EE8E0D6B0BD4359322795 /* NaturalLanguageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalLanguageParser.swift; sourceTree = "<group>"; };
+		D101ABF946BA4703FC7A2456 /* MenuBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarViewModel.swift; sourceTree = "<group>"; };
+		D500D40DDE80CE83BA3D647F /* iOSQuickAddSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSQuickAddSheet.swift; sourceTree = "<group>"; };
+		DCBC93009E3136CBD8D7DE58 /* MadoTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadoTheme.swift; sourceTree = "<group>"; };
+		DD99B264449D19858221BDC3 /* MadoLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadoLogger.swift; sourceTree = "<group>"; };
+		DE5E4C63FC4FB90561C0D6A6 /* QuickAddTaskWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddTaskWindow.swift; sourceTree = "<group>"; };
+		E1FD6853C8996927F5F1FA76 /* iOSCalendarTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSCalendarTab.swift; sourceTree = "<group>"; };
+		E543A1C4A6AA046F22FD8753 /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
+		E54F70AFED516319C65292DC /* MenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarItem.swift; sourceTree = "<group>"; };
+		ED09E74D6735CF1F11CE1865 /* TodoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailView.swift; sourceTree = "<group>"; };
+		ED3888DD41508AA8E6A1C18D /* UserCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCalendar.swift; sourceTree = "<group>"; };
+		ED5F8565D14501D5E70A3310 /* MadoWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = MadoWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0CB7F6547A64A8C30DB56F2 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
+		F35200C6E16748E2BACBB271 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		F3C5AA80401E5B6E905F2F5F /* NextMeetingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextMeetingWidget.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7E5D7E8A672C2B51443317A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B81AB43DECF171F8847D485 /* GoogleSignIn in Frameworks */,
+				50BC281973AC0202E8B4D8CC /* KeyboardShortcuts in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		839EE774B828A71ABBF4076F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01BECFBB6E8AD3706264F80A /* GoogleSignIn in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0372DE18A8154BC9DE0566CE /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				68713FC792778C715A4EF809 /* Firestore */,
+				4212224850D9372E2EDA4145 /* SyncEngine.swift */,
+				74E0FF3A5AD3EDD1129211B6 /* SyncState.swift */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
+		0AD9BB6F24B3A8CDDD226DC3 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				051204EEB7B1EEC6A0B5DB08 /* LoginView.swift */,
+				C917EA2703B79609969A29B3 /* LoginViewModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		0C87082A8BB08E0DC8FAD7BD /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				A3A080AEBC23849B16A27727 /* MadoColors.swift */,
+				DCBC93009E3136CBD8D7DE58 /* MadoTheme.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		31E474DE44A3575674C8A7B4 /* Memos */ = {
+			isa = PBXGroup;
+			children = (
+				C5073F21E050E9589A40F04A /* MarkdownEditorView.swift */,
+				C144BADD088001E17692C944 /* MemoFileManager.swift */,
+				29BA6316060AD8E91B8A3D2B /* MemosView.swift */,
+			);
+			path = Memos;
+			sourceTree = "<group>";
+		};
+		3977CF82900CDC0E9F09A97F /* Mado */ = {
+			isa = PBXGroup;
+			children = (
+				9C67F788571A5C63CE147C7E /* Components */,
+				4C735486319592D72FAD58A2 /* Core */,
+				0C87082A8BB08E0DC8FAD7BD /* Design */,
+				BB180BE16EC1F10216D1B2E0 /* Features */,
+				388A8A570EC14F4567DD66F4 /* Assets.xcassets */,
+				52AE00343349987BFE7ABE4F /* Info.plist */,
+				CDE59C92FFD4C45A92F4D09B /* Mado.entitlements */,
+				3E30B51969F248A71971B5D1 /* MadoApp.swift */,
+			);
+			path = Mado;
+			sourceTree = "<group>";
+		};
+		4543CC73B1AC71DB0BFAF80D /* Planner */ = {
+			isa = PBXGroup;
+			children = (
+				4176180AA9C38A902974E799 /* CalendarToolbar.swift */,
+				5C55D13429267CAE8B34967C /* CommandBarView.swift */,
+				C7C16CE1266A5F4995ED3521 /* InvitePanelView.swift */,
+				AA3CBFC5ADF24230FB2B1A02 /* NotificationPopoverView.swift */,
+				4FB5436C0A27DF2F9447E078 /* PlannerView.swift */,
+				8A78D5E7D05A609E0FC62ADE /* TaskDetailPopover.swift */,
+				22C3B829F9E3D92CB5AF7274 /* TaskPanelView.swift */,
+			);
+			path = Planner;
+			sourceTree = "<group>";
+		};
+		4C735486319592D72FAD58A2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5ADBBE1944C6BA5C9816A0AE /* Authentication */,
+				7C3E119DAD860DCC103767B3 /* Networking */,
+				C58ABFE512549AD220C70EC4 /* Persistence */,
+				0372DE18A8154BC9DE0566CE /* Sync */,
+				AEF745145F28AC8A7163E4D4 /* AppSettings.swift */,
+				14CA6880988038C5E093C279 /* DateFormatters.swift */,
+				1A11619944F22BB5BC164165 /* DateParsingCommon.swift */,
+				264D0D9106C7F8777AC11648 /* KeyboardShortcuts+Mado.swift */,
+				DD99B264449D19858221BDC3 /* MadoLogger.swift */,
+				E54F70AFED516319C65292DC /* MenuBarItem.swift */,
+				35825B2137ABD1E6134A99DD /* NaturalDateParser.swift */,
+				CE5EE8E0D6B0BD4359322795 /* NaturalLanguageParser.swift */,
+				B1D2A98B55DF8A2BE2F128CB /* NotificationManager.swift */,
+				6764F74058A5A3DA2CF652A2 /* PlatformHelpers.swift */,
+				86B20B8C84F61242674D9F6B /* SearchManager.swift */,
+				8688069CFC271A21C1308646 /* UndoEngine.swift */,
+				88E060E3AFBFA84033B9F15F /* WidgetDataWriter.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5ADBBE1944C6BA5C9816A0AE /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				2401C87A10920BCE2B234A29 /* AuthenticationManager.swift */,
+				2FB838A5ADD2A333C174CB5B /* AuthState.swift */,
+				F0CB7F6547A64A8C30DB56F2 /* TokenStore.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		68713FC792778C715A4EF809 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				968E271EC7E6FA6D33BAAB3B /* FirestoreClient.swift */,
+				6ED6635CBE78C5FDFD78AAFB /* FirestoreConfig.swift */,
+				1478878F0401C812493C9DA7 /* FirestoreSyncService.swift */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
+		7C3E119DAD860DCC103767B3 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				6A062A562951FBC06F44E7ED /* APIClient.swift */,
+				99F1A945A36E2DC2CF08B190 /* APIError.swift */,
+				11287CD6CD71EB640749CAF7 /* GoogleCalendarService.swift */,
+				8B53C6A17390F73F6E1C6252 /* GoogleGmailService.swift */,
+				9102DF0DAC4320D60D2FB0D6 /* GoogleTasksService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		910EB83FE0C78280FF076198 /* MadoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				C73DE645A620B0C3883768D7 /* Info.plist */,
+				204D61EDD4872010C2BB1D39 /* MadoWidget.entitlements */,
+				16EA4EF74D84885222A9E042 /* MadoWidgetBundle.swift */,
+				F3C5AA80401E5B6E905F2F5F /* NextMeetingWidget.swift */,
+				06FA9336D1877C80FF239588 /* OverdueWidget.swift */,
+				7983075C6F6452613BD032F1 /* TodayEventsWidget.swift */,
+				36F01F462A4E2A133C01027E /* TodayTasksWidget.swift */,
+				B8603F766B38E362518EBDC0 /* WidgetDataReader.swift */,
+				A418F61378F33919925AB017 /* WidgetSharedModels.swift */,
+			);
+			path = MadoWidget;
+			sourceTree = "<group>";
+		};
+		95C4E5332D56A60D9525DEB8 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				85B1F59685BCCBE68E911F53 /* SearchOverlay.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		9C67F788571A5C63CE147C7E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				355D182FF3EFC99E19EBE83B /* EmptyStateView.swift */,
+				1E88A51002172EB7D368D208 /* FlowLayout.swift */,
+				C2D7A6F30884F6C8B4E67FA9 /* LabelChip.swift */,
+				28D7D5BF60FB92FBD54093BE /* LoadingOverlay.swift */,
+				1AB653DFB4D289EEB6B9820B /* PriorityBadge.swift */,
+				9C6C7573D83EB4B4A6CADFEB /* QuickAddField.swift */,
+				12D544C6626DF05D1222D714 /* UndoToast.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		9EBC716B904FA8049E63C561 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04325253E181D540B8D177F8 /* Mado.app */,
+				13FAAC8FEA1BF5D35E989F2A /* MadoiOS.app */,
+				ED5F8565D14501D5E70A3310 /* MadoWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AFE0CFEC643E670BCCC436AE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7CD28D7AFDEE017130AC5E61 /* CalendarSelectionView.swift */,
+				8F31441A74D4F87916B73391 /* SettingsView.swift */,
+				F35200C6E16748E2BACBB271 /* SettingsViewModel.swift */,
+				5EF3CD3FA543DA95723118AE /* ShortcutsSettingsTab.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B658AAA48518884FA1CF5974 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6F0D29D5E791BB0DCD7E4ACF /* CalendarEvent.swift */,
+				8052220E53294DA55BD1C502 /* MadoTask.swift */,
+				C15356FAE15F0DD0C0E5C36E /* Project.swift */,
+				47DE8F2EF2201ACA64271A19 /* TaskLabel.swift */,
+				ED3888DD41508AA8E6A1C18D /* UserCalendar.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B9DAE93A27DAF0C95353B222 = {
+			isa = PBXGroup;
+			children = (
+				3977CF82900CDC0E9F09A97F /* Mado */,
+				CB548C5278B87EA40EBEA6E3 /* MadoiOS */,
+				910EB83FE0C78280FF076198 /* MadoWidget */,
+				9EBC716B904FA8049E63C561 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BB180BE16EC1F10216D1B2E0 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				0AD9BB6F24B3A8CDDD226DC3 /* Auth */,
+				E0C10C83D7AB0EA24DF65021 /* Calendar */,
+				C0774A67A632FEE1382819D0 /* MainWindow */,
+				31E474DE44A3575674C8A7B4 /* Memos */,
+				EFB4C6AA1E7CEC6844A1850C /* MenuBar */,
+				4543CC73B1AC71DB0BFAF80D /* Planner */,
+				95C4E5332D56A60D9525DEB8 /* Search */,
+				AFE0CFEC643E670BCCC436AE /* Settings */,
+				E8C7708CB85DD5181E994513 /* Todo */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		C0774A67A632FEE1382819D0 /* MainWindow */ = {
+			isa = PBXGroup;
+			children = (
+				4FA717FF46E8310441743C5E /* MainWindowView.swift */,
+			);
+			path = MainWindow;
+			sourceTree = "<group>";
+		};
+		C58ABFE512549AD220C70EC4 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				B658AAA48518884FA1CF5974 /* Models */,
+				1F7FD49E14AE247AACBB84B4 /* DataController.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		CB548C5278B87EA40EBEA6E3 /* MadoiOS */ = {
+			isa = PBXGroup;
+			children = (
+				A8407B784F8A80F0B34E557C /* Info.plist */,
+				E1FD6853C8996927F5F1FA76 /* iOSCalendarTab.swift */,
+				738732E797F885E541BC06FA /* iOSEventDetailView.swift */,
+				572F95781A56178193F2BBD9 /* iOSInvitesTab.swift */,
+				A6A16CDA406326C3E64600F7 /* iOSLoginView.swift */,
+				22BEC4A88FEC5AE9D2BD8AC4 /* iOSMainTabView.swift */,
+				D500D40DDE80CE83BA3D647F /* iOSQuickAddSheet.swift */,
+				7E6B187214D0B3E9E0F222DD /* iOSRootView.swift */,
+				1B1D4A51DB4028D0C7CB046A /* iOSSettingsTab.swift */,
+				BB0A96AE7155F2C52D1ED2E5 /* iOSTasksTab.swift */,
+				B73D1151FC2C2472C72048BA /* iOSTodayTab.swift */,
+				7F3945AFE84484016F5D400D /* MadoiOS.entitlements */,
+				927789BCB3042AE69BAABCCF /* MadoiOSApp.swift */,
+			);
+			path = MadoiOS;
+			sourceTree = "<group>";
+		};
+		E0C10C83D7AB0EA24DF65021 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				171814B7E9C7EA55654AEA02 /* CalendarViewModel.swift */,
+				2C0BF5C255928BB930CB611E /* CompactTodayView.swift */,
+				9F511F742668D2C3DC7A5191 /* DailyCalendarView.swift */,
+				9CE5DE5FB36951A445B7BEB0 /* EventBlockView.swift */,
+				3BA7D1DC615FB5243648F187 /* EventCreatePopover.swift */,
+				2D9FE6E49DD1E744EF8AB16D /* EventDetailPopover.swift */,
+				C4E88C4D72D73A5C7D7DCE8B /* MonthlyCalendarView.swift */,
+				00BD446EF64BA92F2A3765CE /* WeeklyCalendarView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		E8C7708CB85DD5181E994513 /* Todo */ = {
+			isa = PBXGroup;
+			children = (
+				DE5E4C63FC4FB90561C0D6A6 /* QuickAddTaskWindow.swift */,
+				30A27A4D05E7C29562279FA6 /* SubtaskView.swift */,
+				ED09E74D6735CF1F11CE1865 /* TodoDetailView.swift */,
+				32309765C636CD41DBCD2810 /* TodoFormView.swift */,
+				51D0BB0715DA6E16A7C05F5F /* TodoListView.swift */,
+				01DCF0E1753C16975F3B6D20 /* TodoRowView.swift */,
+				E543A1C4A6AA046F22FD8753 /* TodoViewModel.swift */,
+			);
+			path = Todo;
+			sourceTree = "<group>";
+		};
+		EFB4C6AA1E7CEC6844A1850C /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				0697099A2A7198AEBA0BC226 /* MenuBarPopoverView.swift */,
+				D101ABF946BA4703FC7A2456 /* MenuBarViewModel.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		07C68E95E535F991F489B639 /* Mado */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D55B580755A032FBB7D55BFA /* Build configuration list for PBXNativeTarget "Mado" */;
+			buildPhases = (
+				A6BB5A9C46E9064590B32016 /* Sources */,
+				202A5941ACC6C8583E597B35 /* Resources */,
+				7E5D7E8A672C2B51443317A6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mado;
+			packageProductDependencies = (
+				72543E8870D73DFF61B0BD1D /* GoogleSignIn */,
+				1D7CB5C7CBDDDA07CBD7988B /* KeyboardShortcuts */,
+			);
+			productName = Mado;
+			productReference = 04325253E181D540B8D177F8 /* Mado.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8C734348BD9E0555645FC118 /* MadoWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58A7F59103A2FF5A8642C91B /* Build configuration list for PBXNativeTarget "MadoWidgetExtension" */;
+			buildPhases = (
+				31EF65DAFEE4FCDF5A728D89 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MadoWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = MadoWidgetExtension;
+			productReference = ED5F8565D14501D5E70A3310 /* MadoWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		BBFCDA993E3B860B8A396ABE /* MadoiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1241B5DAAB7052E39A880193 /* Build configuration list for PBXNativeTarget "MadoiOS" */;
+			buildPhases = (
+				DA1FC381B7405A2AAA34C18F /* Sources */,
+				A4B63832D822EF58CB02E0B3 /* Resources */,
+				839EE774B828A71ABBF4076F /* Frameworks */,
+				44FB5EEDC421B613A1A90CAE /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6647F69D3645A0963EDF8D7 /* PBXTargetDependency */,
+			);
+			name = MadoiOS;
+			packageProductDependencies = (
+				63BC658928C6FA1AB1FB6C8E /* GoogleSignIn */,
+			);
+			productName = MadoiOS;
+			productReference = 13FAAC8FEA1BF5D35E989F2A /* MadoiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		479E14AA07FBCDCEAB0A5E64 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					07C68E95E535F991F489B639 = {
+						ProvisioningStyle = Manual;
+					};
+					8C734348BD9E0555645FC118 = {
+						DevelopmentTeam = NMUF95SNG5;
+						ProvisioningStyle = Automatic;
+					};
+					BBFCDA993E3B860B8A396ABE = {
+						DevelopmentTeam = NMUF95SNG5;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = D1C22D1E5629A112639611A4 /* Build configuration list for PBXProject "Mado" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = B9DAE93A27DAF0C95353B222;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A161E395B4AE986D805A2CB7 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				0CB461B143FA9D8EF7E6F383 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				07C68E95E535F991F489B639 /* Mado */,
+				8C734348BD9E0555645FC118 /* MadoWidgetExtension */,
+				BBFCDA993E3B860B8A396ABE /* MadoiOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		202A5941ACC6C8583E597B35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BBCC3FAB6AA2E9212E8E65F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4B63832D822EF58CB02E0B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D0D53F56EAE700CD0FF1EB6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		31EF65DAFEE4FCDF5A728D89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED0A2120A1E7A6F4C93746EB /* MadoWidgetBundle.swift in Sources */,
+				AEEA6D25A6DA3FD488538586 /* NextMeetingWidget.swift in Sources */,
+				18EA3358D9A77BFEAAA91B75 /* OverdueWidget.swift in Sources */,
+				3B2A6CE4E7352FA8311E1D86 /* TodayEventsWidget.swift in Sources */,
+				AC26F8C060FF3A81CAA700D7 /* TodayTasksWidget.swift in Sources */,
+				BD36B709470306C91EE3DC93 /* WidgetDataReader.swift in Sources */,
+				05D1DAAD0B8594054736CF40 /* WidgetSharedModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6BB5A9C46E9064590B32016 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC22B22A55B62C0185FC365E /* APIClient.swift in Sources */,
+				17AEC77558C74CCF285D88DD /* APIError.swift in Sources */,
+				1C2A85E403C967044CFD8B92 /* AppSettings.swift in Sources */,
+				D03F07D996A0FC4835390011 /* AuthState.swift in Sources */,
+				9336C890976AF1EFF1836960 /* AuthenticationManager.swift in Sources */,
+				95BBA3CEE4A3127ED89C151D /* CalendarEvent.swift in Sources */,
+				22A2354375BBC35BFBAE0482 /* CalendarSelectionView.swift in Sources */,
+				D4DA1E62A1EDDC44455F946F /* CalendarToolbar.swift in Sources */,
+				ADAF3CDD31D2890DD0F3C8AB /* CalendarViewModel.swift in Sources */,
+				C306A02ED2917C41C6CEEBAA /* CommandBarView.swift in Sources */,
+				F31A38E556FB1FDFE9CAC6E5 /* CompactTodayView.swift in Sources */,
+				3FF0A52276A2120117C124DE /* DailyCalendarView.swift in Sources */,
+				FF007C0EAE1D5A524559F323 /* DataController.swift in Sources */,
+				5EDC103A7F171A8DE417DF86 /* DateFormatters.swift in Sources */,
+				556181AF7BFCEC0A3B382D67 /* DateParsingCommon.swift in Sources */,
+				74B8825D7DB46A0819F87832 /* EmptyStateView.swift in Sources */,
+				146FD81E7FE09168ADDFD545 /* EventBlockView.swift in Sources */,
+				29535B3FBD271992DB4C5C32 /* EventCreatePopover.swift in Sources */,
+				E6BCA865DEBF468E1AA6AD3D /* EventDetailPopover.swift in Sources */,
+				A751B3565EF44D76A3B97406 /* FirestoreClient.swift in Sources */,
+				20950D621CB810623735D262 /* FirestoreConfig.swift in Sources */,
+				D0083FD4A62D5DEB824D260D /* FirestoreSyncService.swift in Sources */,
+				CE34BB797F5C96428CF669EC /* FlowLayout.swift in Sources */,
+				5C1538F952A271752D41FF03 /* GoogleCalendarService.swift in Sources */,
+				86EDDF10F79825AB8845DA97 /* GoogleGmailService.swift in Sources */,
+				9BDC99655B282F6787DF25B6 /* GoogleTasksService.swift in Sources */,
+				67BF7354EF3DE4AFC797DF4C /* InvitePanelView.swift in Sources */,
+				45A4F01706EDDBD1B9230F26 /* KeyboardShortcuts+Mado.swift in Sources */,
+				DF1AAE65AE2BB9188D96B3BD /* LabelChip.swift in Sources */,
+				690AA530317C0E9F2FFE7DFB /* LoadingOverlay.swift in Sources */,
+				391AD51C58851A4B01248114 /* LoginView.swift in Sources */,
+				CFCE3F3096B8770838E1AFDC /* LoginViewModel.swift in Sources */,
+				197E7AEC7CCFBCFE1C738802 /* MadoApp.swift in Sources */,
+				7C3B831422654058310C0097 /* MadoColors.swift in Sources */,
+				7FD2AF806A2ECD1897289F15 /* MadoLogger.swift in Sources */,
+				FF1F9E47255BE39154B063F2 /* MadoTask.swift in Sources */,
+				9B57F233D8767B166307975B /* MadoTheme.swift in Sources */,
+				A462569357EA5139A6409262 /* MainWindowView.swift in Sources */,
+				A96E5E376B1EDD520505A4D7 /* MarkdownEditorView.swift in Sources */,
+				104ED99ED62193349383471E /* MemoFileManager.swift in Sources */,
+				5E2EE07C3CF663F62A9D80F5 /* MemosView.swift in Sources */,
+				1FC018B4240987317C92087A /* MenuBarItem.swift in Sources */,
+				957484E22CDE9A0F725EF3BF /* MenuBarPopoverView.swift in Sources */,
+				6516078F168D75AA4B4E0C95 /* MenuBarViewModel.swift in Sources */,
+				9ABAF50079296468B3495D14 /* MonthlyCalendarView.swift in Sources */,
+				87CA6A49358AED09368B152F /* NaturalDateParser.swift in Sources */,
+				8FD184BAA03D12E4CB8219EE /* NaturalLanguageParser.swift in Sources */,
+				5941676198993FACB2369C22 /* NotificationManager.swift in Sources */,
+				85ECF10C2D1273B73140D421 /* NotificationPopoverView.swift in Sources */,
+				E0555EFF461B419CC029767A /* PlannerView.swift in Sources */,
+				22C7DE9D4C0B7EEC7B6E637A /* PlatformHelpers.swift in Sources */,
+				235BF35D0B3C234DEAAE52F2 /* PriorityBadge.swift in Sources */,
+				E269DB32268B8D31E6B48B2A /* Project.swift in Sources */,
+				DDA0FDA7082F00850A681CD0 /* QuickAddField.swift in Sources */,
+				3849C2F84BA36AADD0C38F7E /* QuickAddTaskWindow.swift in Sources */,
+				34D3022F9653EBF7D9714B46 /* SearchManager.swift in Sources */,
+				369442C3D4B484BA144AB575 /* SearchOverlay.swift in Sources */,
+				F6BAC892269828CE92939281 /* SettingsView.swift in Sources */,
+				2072144AE1933DCAEA2D17CB /* SettingsViewModel.swift in Sources */,
+				BBD4A280FDFCAC8FE4D9412F /* ShortcutsSettingsTab.swift in Sources */,
+				2A39086DDFAD1F092DF8003A /* SubtaskView.swift in Sources */,
+				97A281484DE76463DE3B0E91 /* SyncEngine.swift in Sources */,
+				05B56B908FD8A65F4A2CEE96 /* SyncState.swift in Sources */,
+				14741AB22FF572AC124059D7 /* TaskDetailPopover.swift in Sources */,
+				AD68A5B70C701BB3AA90B163 /* TaskLabel.swift in Sources */,
+				8F2223A609C6B33D42237F8C /* TaskPanelView.swift in Sources */,
+				A93CA01CBF4463655BE2447D /* TodoDetailView.swift in Sources */,
+				B3D1F6E630426C6EC684F239 /* TodoFormView.swift in Sources */,
+				8E707ED9D0E628FCF3A51EED /* TodoListView.swift in Sources */,
+				41ABDE753B3768E1D9811E8D /* TodoRowView.swift in Sources */,
+				62038653899AE6BA71DB9826 /* TodoViewModel.swift in Sources */,
+				4CE5E26DF234D8C761EB95DB /* TokenStore.swift in Sources */,
+				027F877AB2610ADC8BCC59A6 /* UndoEngine.swift in Sources */,
+				4A1937EECED3977E4A482CE1 /* UndoToast.swift in Sources */,
+				06853420877FCA3A7CB91498 /* UserCalendar.swift in Sources */,
+				E04ED386FD8CD32B4F2B60ED /* WeeklyCalendarView.swift in Sources */,
+				83BC4973958F9D4307CCA1A4 /* WidgetDataWriter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA1FC381B7405A2AAA34C18F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DBF0826C3510F2E29113D5E /* APIClient.swift in Sources */,
+				8B1A06DC2B63B0CBF067E819 /* APIError.swift in Sources */,
+				775F1E7A74173AB7B4011E57 /* AppSettings.swift in Sources */,
+				1C36F04C6D000D2CF932BD01 /* AuthState.swift in Sources */,
+				27086B02B17B284604149B75 /* AuthenticationManager.swift in Sources */,
+				8A838D264B2FB75B114EA1EC /* CalendarEvent.swift in Sources */,
+				6DB6841C76BAE4D7A5535E3D /* CalendarSelectionView.swift in Sources */,
+				E8AB7836611CA9E28601FAB7 /* CalendarToolbar.swift in Sources */,
+				D08EFEB994F1603508573D8E /* CalendarViewModel.swift in Sources */,
+				3D57B178AEDE43991136018C /* CommandBarView.swift in Sources */,
+				99C19C7758C3FA089D6FD930 /* CompactTodayView.swift in Sources */,
+				19E7799FE91DD673FAB978F9 /* DailyCalendarView.swift in Sources */,
+				C3DFC9724063B2DDE34745CD /* DataController.swift in Sources */,
+				932F0A0F506B376954712F4F /* DateFormatters.swift in Sources */,
+				9062FA3506A6F334CF1DCC1E /* DateParsingCommon.swift in Sources */,
+				CEB01DB5F4AD20417350A627 /* EmptyStateView.swift in Sources */,
+				7BB23DDB1B7EB3109204872C /* EventBlockView.swift in Sources */,
+				60E43EA2ECC51FA105DA9E1F /* EventCreatePopover.swift in Sources */,
+				EBDCEE6D7C331F6C245825EC /* EventDetailPopover.swift in Sources */,
+				FA1B8A5E0374C04922D2596D /* FirestoreClient.swift in Sources */,
+				60C1042DB81B89B92AF7FD85 /* FirestoreConfig.swift in Sources */,
+				2C99A7D5D33B62ADE190EBED /* FirestoreSyncService.swift in Sources */,
+				91357492C9D87636DDFBCA23 /* FlowLayout.swift in Sources */,
+				C4711841DA85F63BC59D5989 /* GoogleCalendarService.swift in Sources */,
+				C1F2A34A6035DC7CC5229D77 /* GoogleGmailService.swift in Sources */,
+				28CE3E94C693D6FB349C8A97 /* GoogleTasksService.swift in Sources */,
+				44BC6BCC2659668965025438 /* InvitePanelView.swift in Sources */,
+				10AB080AA40BF6A9363038C5 /* LabelChip.swift in Sources */,
+				BDAA8039F093CA02780BEADF /* LoadingOverlay.swift in Sources */,
+				8FE03ECC8C77B3D984C615E9 /* LoginView.swift in Sources */,
+				CCFADC121D0089180D69DBC0 /* LoginViewModel.swift in Sources */,
+				68B3E39E1ECEDDC184150595 /* MadoColors.swift in Sources */,
+				10FFCE5C6A5F8F2E3A3AFA59 /* MadoLogger.swift in Sources */,
+				C7A410C577FCD88664D52A85 /* MadoTask.swift in Sources */,
+				6A147C067D3B59526824B82C /* MadoTheme.swift in Sources */,
+				84D6EA1C1FFAB59B24B53C8E /* MadoiOSApp.swift in Sources */,
+				1A84042ADD86017A7F115FEC /* MainWindowView.swift in Sources */,
+				1F113CACEC8BFDB7C16E3B81 /* MarkdownEditorView.swift in Sources */,
+				B700FEEB2F4D8D3514F01FE4 /* MemoFileManager.swift in Sources */,
+				B6EB7DB08A18DE039403F6A8 /* MemosView.swift in Sources */,
+				D0F58F704FD6F4D120ECEC3D /* MenuBarItem.swift in Sources */,
+				255FB2DE0D484D6ABEAE2B3D /* MonthlyCalendarView.swift in Sources */,
+				080A1240BC07886AB875689C /* NaturalDateParser.swift in Sources */,
+				F0ED1442E29E2A78A2C547CD /* NaturalLanguageParser.swift in Sources */,
+				5413EFEDF38AFE82CF0524A2 /* NotificationManager.swift in Sources */,
+				967E2229E7AB61184DA24B3A /* NotificationPopoverView.swift in Sources */,
+				F790BD7A70347142942C18E0 /* PlannerView.swift in Sources */,
+				CAE106A860EE5B829559FB61 /* PlatformHelpers.swift in Sources */,
+				0CC988664C941DED69C2C721 /* PriorityBadge.swift in Sources */,
+				FAFDCA7EFF9B78AFF852886A /* Project.swift in Sources */,
+				A42DF5BF794262158C6C5E94 /* QuickAddField.swift in Sources */,
+				EABC2FB073792F92C0CE26CD /* SearchManager.swift in Sources */,
+				7B35394672A7750A6AAD745F /* SearchOverlay.swift in Sources */,
+				1EA1339738E9274C62A17B9B /* SettingsView.swift in Sources */,
+				B6DAB1B40A73630C9D3319A8 /* SettingsViewModel.swift in Sources */,
+				426A3F5369937FB422BB8FFF /* SubtaskView.swift in Sources */,
+				83E267973182EDBC69811734 /* SyncEngine.swift in Sources */,
+				95FED341E45845675C8F8D99 /* SyncState.swift in Sources */,
+				0F7D2DA54BC8D712F5DF5BB3 /* TaskDetailPopover.swift in Sources */,
+				46CF06BE40B93DE90740A536 /* TaskLabel.swift in Sources */,
+				FC1FDC60B0842B802BFC96C6 /* TaskPanelView.swift in Sources */,
+				94ED187BD376D306F32DA28D /* TodoViewModel.swift in Sources */,
+				DBF98CD6199D68C6DFBB1DC6 /* TokenStore.swift in Sources */,
+				0706CAD82395EFE89299BEF1 /* UndoEngine.swift in Sources */,
+				AD9158CAD00A626DDE2206BF /* UndoToast.swift in Sources */,
+				C0F35125971AD52D584245F2 /* UserCalendar.swift in Sources */,
+				96ABE89D8A38478B054CE8BE /* WeeklyCalendarView.swift in Sources */,
+				99C94FEB259B2A8FD4EC9E37 /* WidgetDataWriter.swift in Sources */,
+				B55E66C33E0022888DDCBD71 /* WidgetSharedModels.swift in Sources */,
+				C38B577A12710641612D6459 /* iOSCalendarTab.swift in Sources */,
+				B5E73EF956041B8AA803EBA0 /* iOSEventDetailView.swift in Sources */,
+				38E0D4204FBD0383EB1B1B4D /* iOSInvitesTab.swift in Sources */,
+				E7A02D5AC3C31B72FED7E30E /* iOSLoginView.swift in Sources */,
+				3627F02384CC8DD28581B15E /* iOSMainTabView.swift in Sources */,
+				3CAFB7611EC0E5957BADB636 /* iOSQuickAddSheet.swift in Sources */,
+				3B806F18FA88554541307062 /* iOSRootView.swift in Sources */,
+				047247D43A9E8BA063C3160A /* iOSSettingsTab.swift in Sources */,
+				D570F56ACAD27F1352685CA9 /* iOSTasksTab.swift in Sources */,
+				A5CF663828035393EE747EAE /* iOSTodayTab.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F6647F69D3645A0963EDF8D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C734348BD9E0555645FC118 /* MadoWidgetExtension */;
+			targetProxy = 36F3538E85846514BC7E26E6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2915C07EAB137181735EE523 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Mado/Mado.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Mado/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.mado.app;
+				PRODUCT_NAME = mado;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		612E00C6ECB5CF1EB8678EED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MadoiOS/MadoiOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NMUF95SNG5;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MadoiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.mado.mobile;
+				PRODUCT_NAME = mado;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		63A931519AAA84FE80706F15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Mado/Mado.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Mado/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.mado.app;
+				PRODUCT_NAME = mado;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		69B0E2BDED624CD2BC7EE4CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MadoWidget/MadoWidget.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NMUF95SNG5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MadoWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.mado.mobile.widget;
+				PRODUCT_NAME = MadoWidgetExtension;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		721C2B1EEE18455BEB274108 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MadoWidget/MadoWidget.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NMUF95SNG5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MadoWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.mado.mobile.widget;
+				PRODUCT_NAME = MadoWidgetExtension;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		83EAFB3A90908B8CEDC748B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MadoiOS/MadoiOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NMUF95SNG5;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MadoiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.mado.mobile;
+				PRODUCT_NAME = mado;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8635C34979BD9F33E0E3579B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		A686DCA123CD629836784F04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1241B5DAAB7052E39A880193 /* Build configuration list for PBXNativeTarget "MadoiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83EAFB3A90908B8CEDC748B3 /* Debug */,
+				612E00C6ECB5CF1EB8678EED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		58A7F59103A2FF5A8642C91B /* Build configuration list for PBXNativeTarget "MadoWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				721C2B1EEE18455BEB274108 /* Debug */,
+				69B0E2BDED624CD2BC7EE4CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D1C22D1E5629A112639611A4 /* Build configuration list for PBXProject "Mado" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8635C34979BD9F33E0E3579B /* Debug */,
+				A686DCA123CD629836784F04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D55B580755A032FBB7D55BFA /* Build configuration list for PBXNativeTarget "Mado" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2915C07EAB137181735EE523 /* Debug */,
+				63A931519AAA84FE80706F15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0CB461B143FA9D8EF7E6F383 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		A161E395B4AE986D805A2CB7 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1D7CB5C7CBDDDA07CBD7988B /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CB461B143FA9D8EF7E6F383 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+		63BC658928C6FA1AB1FB6C8E /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A161E395B4AE986D805A2CB7 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		72543E8870D73DFF61B0BD1D /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A161E395B4AE986D805A2CB7 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 479E14AA07FBCDCEAB0A5E64 /* Project object */;
+}

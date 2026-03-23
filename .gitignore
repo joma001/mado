@@ -1,0 +1,28 @@
+# Xcode
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/
+xcuserdata/
+
+# SPM
+.build/
+.swiftpm/
+
+# macOS
+.DS_Store
+*.swp
+*~
+
+# Secrets — do NOT commit
+client_secret_*.json
+client_*.plist
+
+# OMC
+.omc/
+
+# Misc
+*.ipa
+*.dSYM.zip
+*.dSYM
