@@ -5,14 +5,18 @@ struct SyncErrorBanner: View {
 
     var body: some View {
         if case .error(let kind) = sync.status {
-            SyncErrorBannerContent(kind: kind)
-                .transition(.move(edge: .top).combined(with: .opacity))
+            SyncErrorBannerContent(
+                kind: kind,
+                pendingCount: sync.pendingChangesCount
+            )
+            .transition(.move(edge: .top).combined(with: .opacity))
         }
     }
 }
 
 private struct SyncErrorBannerContent: View {
     let kind: SyncErrorKind
+    let pendingCount: Int
     @State private var visible = true
     @State private var dismissTask: Task<Void, Never>?
 
@@ -69,7 +73,10 @@ private struct SyncErrorBannerContent: View {
                 .background(bannerColor)
                 .transition(.move(edge: .top).combined(with: .opacity))
                 .onAppear { scheduleAutoDismiss() }
-                .onChange(of: kind) { _, _ in scheduleAutoDismiss() }
+                .onChange(of: kind) { _, _ in
+                    visible = true
+                    scheduleAutoDismiss()
+                }
             }
         }
         .animation(MadoTheme.Animation.standard, value: visible)
@@ -86,10 +93,17 @@ private struct SyncErrorBannerContent: View {
 
     private var labelText: String {
         switch kind {
-        case .networkUnavailable:         return "오프라인 상태입니다"
-        case .authExpired:                return "로그인이 만료되었습니다"
-        case .apiError(let service, _):   return "동기화 오류: \(service)"
-        case .storeError:                 return "데이터 저장소 오류"
+        case .networkUnavailable:
+            if pendingCount > 0 {
+                return "오프라인 — \(pendingCount)건 동기화 대기중"
+            }
+            return "오프라인 상태입니다"
+        case .authExpired:
+            return "로그인이 만료되었습니다"
+        case .apiError(let service, _):
+            return "동기화 오류: \(service)"
+        case .storeError:
+            return "데이터 저장소 오류"
         }
     }
 
@@ -103,7 +117,12 @@ private struct SyncErrorBannerContent: View {
     }
 
     private func scheduleAutoDismiss() {
-        guard case .authExpired = kind else {
+        // Network-unavailable and auth errors stay visible until resolved
+        switch kind {
+        case .networkUnavailable, .authExpired:
+            dismissTask?.cancel()
+            dismissTask = nil
+        default:
             dismissTask?.cancel()
             dismissTask = Task {
                 try? await Task.sleep(nanoseconds: 8_000_000_000)
@@ -112,10 +131,6 @@ private struct SyncErrorBannerContent: View {
                     withAnimation(MadoTheme.Animation.dismiss) { visible = false }
                 }
             }
-            return
         }
-        // auth errors are persistent — cancel any pending dismiss
-        dismissTask?.cancel()
-        dismissTask = nil
     }
 }

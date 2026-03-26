@@ -29,11 +29,39 @@ final class SyncEngine {
 
     var onSyncCompleted: (() -> Void)?
 
+    /// Number of local tasks + events waiting to be pushed upstream.
+    var pendingChangesCount: Int {
+        let tasks = (try? data.fetchTasksNeedingSync().count) ?? 0
+        let events = (try? data.fetchEventsNeedingSync().count) ?? 0
+        return tasks + events
+    }
 
     /// Per-event sendUpdates preference (consumed on push, then cleared)
     var sendUpdatesOverrides: [String: String] = [:]
     var pendingListMoves: [String: String] = [:]
-    private init() {}
+    private let network = NetworkMonitor.shared
+    private var reconnectTask: Task<Void, Never>?
+
+    private init() {
+        setupNetworkObserver()
+    }
+
+    // MARK: - Network Observation
+
+    private func setupNetworkObserver() {
+        network.onReconnect = { [weak self] in
+            guard let self else { return }
+            Task { @MainActor in
+                self.reconnectTask?.cancel()
+                self.reconnectTask = Task { @MainActor in
+                    try? await Task.sleep(nanoseconds: 3_000_000_000)
+                    guard !Task.isCancelled else { return }
+                    MadoLogger.sync.info("Auto-syncing after network restoration")
+                    await self.syncAll()
+                }
+            }
+        }
+    }
 
     // MARK: - Periodic Sync
 
@@ -55,6 +83,10 @@ final class SyncEngine {
     // MARK: - Full Sync
 
     func syncAll() async {
+        guard network.isConnected else {
+            status = .error(.networkUnavailable)
+            return
+        }
         guard !status.isSyncing else { return }
         status = .syncing
 
@@ -126,6 +158,10 @@ final class SyncEngine {
     }
 
     func pushLocalChanges() async {
+        guard network.isConnected else {
+            status = .error(.networkUnavailable)
+            return
+        }
         guard !status.isSyncing else {
             // Sync in progress — reschedule so pending changes aren't lost
             schedulePush()
