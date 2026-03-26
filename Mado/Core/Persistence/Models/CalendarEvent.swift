@@ -28,6 +28,7 @@ final class CalendarEvent {
     var localUpdatedAt: Date = Date()
     var isDeleted: Bool = false
     var needsSync: Bool = false
+    var isArchived: Bool = false
 
     // Created from a task drag-and-drop?
     var sourceTaskId: String?

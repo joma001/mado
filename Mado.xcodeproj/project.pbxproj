@@ -21,6 +21,7 @@
 		104ED99ED62193349383471E /* MemoFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144BADD088001E17692C944 /* MemoFileManager.swift */; };
 		10AB080AA40BF6A9363038C5 /* LabelChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D7A6F30884F6C8B4E67FA9 /* LabelChip.swift */; };
 		10FFCE5C6A5F8F2E3A3AFA59 /* MadoLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD99B264449D19858221BDC3 /* MadoLogger.swift */; };
+		1145CB4E56E4F8BA79E7A7CA /* DataStoreWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4238F839C27ACEE922684EB4 /* DataStoreWarningBanner.swift */; };
 		146FD81E7FE09168ADDFD545 /* EventBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5DE5FB36951A445B7BEB0 /* EventBlockView.swift */; };
 		14741AB22FF572AC124059D7 /* TaskDetailPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A78D5E7D05A609E0FC62ADE /* TaskDetailPopover.swift */; };
 		17AEC77558C74CCF285D88DD /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F1A945A36E2DC2CF08B190 /* APIError.swift */; };
@@ -51,6 +52,7 @@
 		3849C2F84BA36AADD0C38F7E /* QuickAddTaskWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E4C63FC4FB90561C0D6A6 /* QuickAddTaskWindow.swift */; };
 		38E0D4204FBD0383EB1B1B4D /* iOSInvitesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572F95781A56178193F2BBD9 /* iOSInvitesTab.swift */; };
 		391AD51C58851A4B01248114 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051204EEB7B1EEC6A0B5DB08 /* LoginView.swift */; };
+		394679D5438290F2DD3121E6 /* SyncErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDCEAF7DF25FFC3F3184E11 /* SyncErrorBanner.swift */; };
 		3B2A6CE4E7352FA8311E1D86 /* TodayEventsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983075C6F6452613BD032F1 /* TodayEventsWidget.swift */; };
 		3B806F18FA88554541307062 /* iOSRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6B187214D0B3E9E0F222DD /* iOSRootView.swift */; };
 		3CAFB7611EC0E5957BADB636 /* iOSQuickAddSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D500D40DDE80CE83BA3D647F /* iOSQuickAddSheet.swift */; };
@@ -71,6 +73,7 @@
 		5C1538F952A271752D41FF03 /* GoogleCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11287CD6CD71EB640749CAF7 /* GoogleCalendarService.swift */; };
 		5E2EE07C3CF663F62A9D80F5 /* MemosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BA6316060AD8E91B8A3D2B /* MemosView.swift */; };
 		5EDC103A7F171A8DE417DF86 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CA6880988038C5E093C279 /* DateFormatters.swift */; };
+		5F9799852ACBCF456320C159 /* DataStoreWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4238F839C27ACEE922684EB4 /* DataStoreWarningBanner.swift */; };
 		60C1042DB81B89B92AF7FD85 /* FirestoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6635CBE78C5FDFD78AAFB /* FirestoreConfig.swift */; };
 		60E43EA2ECC51FA105DA9E1F /* EventCreatePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7D1DC615FB5243648F187 /* EventCreatePopover.swift */; };
 		62038653899AE6BA71DB9826 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E543A1C4A6AA046F22FD8753 /* TodoViewModel.swift */; };
@@ -110,6 +113,7 @@
 		95FED341E45845675C8F8D99 /* SyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E0FF3A5AD3EDD1129211B6 /* SyncState.swift */; };
 		967E2229E7AB61184DA24B3A /* NotificationPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CBFC5ADF24230FB2B1A02 /* NotificationPopoverView.swift */; };
 		96ABE89D8A38478B054CE8BE /* WeeklyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD446EF64BA92F2A3765CE /* WeeklyCalendarView.swift */; };
+		96FA08DB02A9DA27CB24B45B /* MadoTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49041459F696E6F85D3ABD91 /* MadoTaskTests.swift */; };
 		97A281484DE76463DE3B0E91 /* SyncEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212224850D9372E2EDA4145 /* SyncEngine.swift */; };
 		99C19C7758C3FA089D6FD930 /* CompactTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0BF5C255928BB930CB611E /* CompactTodayView.swift */; };
 		99C94FEB259B2A8FD4EC9E37 /* WidgetDataWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E060E3AFBFA84033B9F15F /* WidgetDataWriter.swift */; };
@@ -130,6 +134,7 @@
 		B3D1F6E630426C6EC684F239 /* TodoFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32309765C636CD41DBCD2810 /* TodoFormView.swift */; };
 		B55E66C33E0022888DDCBD71 /* WidgetSharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418F61378F33919925AB017 /* WidgetSharedModels.swift */; };
 		B5E73EF956041B8AA803EBA0 /* iOSEventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738732E797F885E541BC06FA /* iOSEventDetailView.swift */; };
+		B623D65370D828DAD3DB8218 /* NaturalDateParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161F68E953649DE3B045E083 /* NaturalDateParserTests.swift */; };
 		B6DAB1B40A73630C9D3319A8 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35200C6E16748E2BACBB271 /* SettingsViewModel.swift */; };
 		B6EB7DB08A18DE039403F6A8 /* MemosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BA6316060AD8E91B8A3D2B /* MemosView.swift */; };
 		B700FEEB2F4D8D3514F01FE4 /* MemoFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144BADD088001E17692C944 /* MemoFileManager.swift */; };
@@ -161,6 +166,7 @@
 		E04ED386FD8CD32B4F2B60ED /* WeeklyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD446EF64BA92F2A3765CE /* WeeklyCalendarView.swift */; };
 		E0555EFF461B419CC029767A /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB5436C0A27DF2F9447E078 /* PlannerView.swift */; };
 		E269DB32268B8D31E6B48B2A /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15356FAE15F0DD0C0E5C36E /* Project.swift */; };
+		E4A93F81882DF5090239CDE1 /* MadoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236082E7B5A4D65FE90E01B4 /* MadoTests.swift */; };
 		E6BCA865DEBF468E1AA6AD3D /* EventDetailPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE6E49DD1E744EF8AB16D /* EventDetailPopover.swift */; };
 		E7A02D5AC3C31B72FED7E30E /* iOSLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A16CDA406326C3E64600F7 /* iOSLoginView.swift */; };
 		E8AB7836611CA9E28601FAB7 /* CalendarToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4176180AA9C38A902974E799 /* CalendarToolbar.swift */; };
@@ -168,6 +174,7 @@
 		EBDCEE6D7C331F6C245825EC /* EventDetailPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE6E49DD1E744EF8AB16D /* EventDetailPopover.swift */; };
 		ED0A2120A1E7A6F4C93746EB /* MadoWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA4EF74D84885222A9E042 /* MadoWidgetBundle.swift */; };
 		F0ED1442E29E2A78A2C547CD /* NaturalLanguageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EE8E0D6B0BD4359322795 /* NaturalLanguageParser.swift */; };
+		F17DBCF3B271EB1C388E901B /* SyncErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDCEAF7DF25FFC3F3184E11 /* SyncErrorBanner.swift */; };
 		F31A38E556FB1FDFE9CAC6E5 /* CompactTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0BF5C255928BB930CB611E /* CompactTodayView.swift */; };
 		F6BAC892269828CE92939281 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F31441A74D4F87916B73391 /* SettingsView.swift */; };
 		F790BD7A70347142942C18E0 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB5436C0A27DF2F9447E078 /* PlannerView.swift */; };
@@ -185,6 +192,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8C734348BD9E0555645FC118;
 			remoteInfo = MadoWidgetExtension;
+		};
+		BE641BF27D48507D84D380A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 479E14AA07FBCDCEAB0A5E64 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07C68E95E535F991F489B639;
+			remoteInfo = Mado;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -214,6 +228,7 @@
 		13FAAC8FEA1BF5D35E989F2A /* MadoiOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MadoiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1478878F0401C812493C9DA7 /* FirestoreSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSyncService.swift; sourceTree = "<group>"; };
 		14CA6880988038C5E093C279 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		161F68E953649DE3B045E083 /* NaturalDateParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalDateParserTests.swift; sourceTree = "<group>"; };
 		16EA4EF74D84885222A9E042 /* MadoWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadoWidgetBundle.swift; sourceTree = "<group>"; };
 		171814B7E9C7EA55654AEA02 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		1A11619944F22BB5BC164165 /* DateParsingCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParsingCommon.swift; sourceTree = "<group>"; };
@@ -224,7 +239,9 @@
 		204D61EDD4872010C2BB1D39 /* MadoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MadoWidget.entitlements; sourceTree = "<group>"; };
 		22BEC4A88FEC5AE9D2BD8AC4 /* iOSMainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSMainTabView.swift; sourceTree = "<group>"; };
 		22C3B829F9E3D92CB5AF7274 /* TaskPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPanelView.swift; sourceTree = "<group>"; };
+		236082E7B5A4D65FE90E01B4 /* MadoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadoTests.swift; sourceTree = "<group>"; };
 		2401C87A10920BCE2B234A29 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		256459A16CE3704B4A2E1A8A /* MadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		264D0D9106C7F8777AC11648 /* KeyboardShortcuts+Mado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Mado.swift"; sourceTree = "<group>"; };
 		28D7D5BF60FB92FBD54093BE /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		29BA6316060AD8E91B8A3D2B /* MemosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemosView.swift; sourceTree = "<group>"; };
@@ -241,7 +258,9 @@
 		3E30B51969F248A71971B5D1 /* MadoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadoApp.swift; sourceTree = "<group>"; };
 		4176180AA9C38A902974E799 /* CalendarToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarToolbar.swift; sourceTree = "<group>"; };
 		4212224850D9372E2EDA4145 /* SyncEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncEngine.swift; sourceTree = "<group>"; };
+		4238F839C27ACEE922684EB4 /* DataStoreWarningBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreWarningBanner.swift; sourceTree = "<group>"; };
 		47DE8F2EF2201ACA64271A19 /* TaskLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLabel.swift; sourceTree = "<group>"; };
+		49041459F696E6F85D3ABD91 /* MadoTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadoTaskTests.swift; sourceTree = "<group>"; };
 		4FA717FF46E8310441743C5E /* MainWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowView.swift; sourceTree = "<group>"; };
 		4FB5436C0A27DF2F9447E078 /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
 		51D0BB0715DA6E16A7C05F5F /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
@@ -308,6 +327,7 @@
 		F0CB7F6547A64A8C30DB56F2 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
 		F35200C6E16748E2BACBB271 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F3C5AA80401E5B6E905F2F5F /* NextMeetingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextMeetingWidget.swift; sourceTree = "<group>"; };
+		FBDCEAF7DF25FFC3F3184E11 /* SyncErrorBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncErrorBanner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -470,6 +490,16 @@
 			path = MadoWidget;
 			sourceTree = "<group>";
 		};
+		91A567E3A8E919CE52347235 /* MadoTests */ = {
+			isa = PBXGroup;
+			children = (
+				49041459F696E6F85D3ABD91 /* MadoTaskTests.swift */,
+				236082E7B5A4D65FE90E01B4 /* MadoTests.swift */,
+				161F68E953649DE3B045E083 /* NaturalDateParserTests.swift */,
+			);
+			path = MadoTests;
+			sourceTree = "<group>";
+		};
 		95C4E5332D56A60D9525DEB8 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,12 +511,14 @@
 		9C67F788571A5C63CE147C7E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4238F839C27ACEE922684EB4 /* DataStoreWarningBanner.swift */,
 				355D182FF3EFC99E19EBE83B /* EmptyStateView.swift */,
 				1E88A51002172EB7D368D208 /* FlowLayout.swift */,
 				C2D7A6F30884F6C8B4E67FA9 /* LabelChip.swift */,
 				28D7D5BF60FB92FBD54093BE /* LoadingOverlay.swift */,
 				1AB653DFB4D289EEB6B9820B /* PriorityBadge.swift */,
 				9C6C7573D83EB4B4A6CADFEB /* QuickAddField.swift */,
+				FBDCEAF7DF25FFC3F3184E11 /* SyncErrorBanner.swift */,
 				12D544C6626DF05D1222D714 /* UndoToast.swift */,
 			);
 			path = Components;
@@ -497,6 +529,7 @@
 			children = (
 				04325253E181D540B8D177F8 /* Mado.app */,
 				13FAAC8FEA1BF5D35E989F2A /* MadoiOS.app */,
+				256459A16CE3704B4A2E1A8A /* MadoTests.xctest */,
 				ED5F8565D14501D5E70A3310 /* MadoWidgetExtension.appex */,
 			);
 			name = Products;
@@ -530,6 +563,7 @@
 			children = (
 				3977CF82900CDC0E9F09A97F /* Mado */,
 				CB548C5278B87EA40EBEA6E3 /* MadoiOS */,
+				91A567E3A8E919CE52347235 /* MadoTests */,
 				910EB83FE0C78280FF076198 /* MadoWidget */,
 				9EBC716B904FA8049E63C561 /* Products */,
 			);
@@ -650,6 +684,24 @@
 			productReference = 04325253E181D540B8D177F8 /* Mado.app */;
 			productType = "com.apple.product-type.application";
 		};
+		42BC7487B60388A25569BB27 /* MadoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFA22D714267AAC0EE8C30B0 /* Build configuration list for PBXNativeTarget "MadoTests" */;
+			buildPhases = (
+				2DBEB0279CE3E86B0F51B3D1 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B35C42B1B10E0A5F8B2C95DB /* PBXTargetDependency */,
+			);
+			name = MadoTests;
+			packageProductDependencies = (
+			);
+			productName = MadoTests;
+			productReference = 256459A16CE3704B4A2E1A8A /* MadoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8C734348BD9E0555645FC118 /* MadoWidgetExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58A7F59103A2FF5A8642C91B /* Build configuration list for PBXNativeTarget "MadoWidgetExtension" */;
@@ -701,6 +753,9 @@
 					07C68E95E535F991F489B639 = {
 						ProvisioningStyle = Manual;
 					};
+					42BC7487B60388A25569BB27 = {
+						ProvisioningStyle = Manual;
+					};
 					8C734348BD9E0555645FC118 = {
 						DevelopmentTeam = NMUF95SNG5;
 						ProvisioningStyle = Automatic;
@@ -730,6 +785,7 @@
 			projectRoot = "";
 			targets = (
 				07C68E95E535F991F489B639 /* Mado */,
+				42BC7487B60388A25569BB27 /* MadoTests */,
 				8C734348BD9E0555645FC118 /* MadoWidgetExtension */,
 				BBFCDA993E3B860B8A396ABE /* MadoiOS */,
 			);
@@ -756,6 +812,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2DBEB0279CE3E86B0F51B3D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96FA08DB02A9DA27CB24B45B /* MadoTaskTests.swift in Sources */,
+				E4A93F81882DF5090239CDE1 /* MadoTests.swift in Sources */,
+				B623D65370D828DAD3DB8218 /* NaturalDateParserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		31EF65DAFEE4FCDF5A728D89 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -787,6 +853,7 @@
 				F31A38E556FB1FDFE9CAC6E5 /* CompactTodayView.swift in Sources */,
 				3FF0A52276A2120117C124DE /* DailyCalendarView.swift in Sources */,
 				FF007C0EAE1D5A524559F323 /* DataController.swift in Sources */,
+				1145CB4E56E4F8BA79E7A7CA /* DataStoreWarningBanner.swift in Sources */,
 				5EDC103A7F171A8DE417DF86 /* DateFormatters.swift in Sources */,
 				556181AF7BFCEC0A3B382D67 /* DateParsingCommon.swift in Sources */,
 				74B8825D7DB46A0819F87832 /* EmptyStateView.swift in Sources */,
@@ -836,6 +903,7 @@
 				BBD4A280FDFCAC8FE4D9412F /* ShortcutsSettingsTab.swift in Sources */,
 				2A39086DDFAD1F092DF8003A /* SubtaskView.swift in Sources */,
 				97A281484DE76463DE3B0E91 /* SyncEngine.swift in Sources */,
+				394679D5438290F2DD3121E6 /* SyncErrorBanner.swift in Sources */,
 				05B56B908FD8A65F4A2CEE96 /* SyncState.swift in Sources */,
 				14741AB22FF572AC124059D7 /* TaskDetailPopover.swift in Sources */,
 				AD68A5B70C701BB3AA90B163 /* TaskLabel.swift in Sources */,
@@ -871,6 +939,7 @@
 				99C19C7758C3FA089D6FD930 /* CompactTodayView.swift in Sources */,
 				19E7799FE91DD673FAB978F9 /* DailyCalendarView.swift in Sources */,
 				C3DFC9724063B2DDE34745CD /* DataController.swift in Sources */,
+				5F9799852ACBCF456320C159 /* DataStoreWarningBanner.swift in Sources */,
 				932F0A0F506B376954712F4F /* DateFormatters.swift in Sources */,
 				9062FA3506A6F334CF1DCC1E /* DateParsingCommon.swift in Sources */,
 				CEB01DB5F4AD20417350A627 /* EmptyStateView.swift in Sources */,
@@ -915,6 +984,7 @@
 				B6DAB1B40A73630C9D3319A8 /* SettingsViewModel.swift in Sources */,
 				426A3F5369937FB422BB8FFF /* SubtaskView.swift in Sources */,
 				83E267973182EDBC69811734 /* SyncEngine.swift in Sources */,
+				F17DBCF3B271EB1C388E901B /* SyncErrorBanner.swift in Sources */,
 				95FED341E45845675C8F8D99 /* SyncState.swift in Sources */,
 				0F7D2DA54BC8D712F5DF5BB3 /* TaskDetailPopover.swift in Sources */,
 				46CF06BE40B93DE90740A536 /* TaskLabel.swift in Sources */,
@@ -943,6 +1013,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B35C42B1B10E0A5F8B2C95DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 07C68E95E535F991F489B639 /* Mado */;
+			targetProxy = BE641BF27D48507D84D380A9 /* PBXContainerItemProxy */;
+		};
 		F6647F69D3645A0963EDF8D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8C734348BD9E0555645FC118 /* MadoWidgetExtension */;
@@ -1206,6 +1281,46 @@
 			};
 			name = Release;
 		};
+		B624FBB64C13EA8C7789BEE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.mado.tests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_HOST = "";
+			};
+			name = Release;
+		};
+		BFC9E5D7894C683DA245D23A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.mado.tests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_HOST = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1223,6 +1338,15 @@
 			buildConfigurations = (
 				721C2B1EEE18455BEB274108 /* Debug */,
 				69B0E2BDED624CD2BC7EE4CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AFA22D714267AAC0EE8C30B0 /* Build configuration list for PBXNativeTarget "MadoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFC9E5D7894C683DA245D23A /* Debug */,
+				B624FBB64C13EA8C7789BEE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

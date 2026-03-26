@@ -13,13 +13,13 @@ enum SyncErrorKind: Equatable {
     var displayMessage: String {
         switch self {
         case .networkUnavailable:
-            return "No internet connection"
+            return "인터넷 연결 없음"
         case .authExpired:
-            return "Session expired — please sign in again"
+            return "세션 만료 — 다시 로그인하세요"
         case .apiError(let service, let message):
             return "\(service): \(message)"
         case .storeError(let message):
-            return "Storage error: \(message)"
+            return "저장소 오류: \(message)"
         }
     }
 }
@@ -42,13 +42,14 @@ enum SyncStatus: Equatable {
 
     var displayText: String {
         switch self {
-        case .idle: return "Not synced"
-        case .syncing: return "Syncing..."
+        case .idle: return "동기화 안 됨"
+        case .syncing: return "동기화 중..."
         case .success(let date):
             let formatter = RelativeDateTimeFormatter()
+            formatter.locale = Locale(identifier: "ko_KR")
             formatter.unitsStyle = .abbreviated
-            return "Synced \(formatter.localizedString(for: date, relativeTo: Date()))"
-        case .error(let kind): return "Sync error: \(kind.displayMessage)"
+            return "\(formatter.localizedString(for: date, relativeTo: Date()))에 동기화됨"
+        case .error(let kind): return "동기화 오류: \(kind.displayMessage)"
         }
     }
 }

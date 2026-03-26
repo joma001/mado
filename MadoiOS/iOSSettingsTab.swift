@@ -71,6 +71,18 @@ struct iOSSettingsTab: View {
                     }
                 }
 
+                // Appearance
+                Section("Appearance") {
+                    Picker("Theme", selection: Binding(
+                        get: { settings.appearanceMode },
+                        set: { settings.appearanceMode = $0 }
+                    )) {
+                        ForEach(AppearanceMode.allCases, id: \.self) { mode in
+                            Text(mode.rawValue).tag(mode)
+                        }
+                    }
+                }
+
                 // Sync
                 Section("Sync") {
                     HStack {
@@ -81,7 +93,7 @@ struct iOSSettingsTab: View {
                             .foregroundColor(MadoColors.textSecondary)
                     }
 
-                    Button("Sync Now") {
+                    Button("수동 동기화") {
                         Task { await syncEngine.syncAll() }
                     }
 

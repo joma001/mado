@@ -7,6 +7,8 @@ final class DataController {
     static let shared = DataController()
 
     let modelContainer: ModelContainer
+    private(set) var isUsingFallbackStore: Bool = false
+    private(set) var storeError: String? = nil
 
     private init() {
         let schema = Schema([
@@ -23,8 +25,21 @@ final class DataController {
         )
         do {
             modelContainer = try ModelContainer(for: schema, configurations: [config])
+            isUsingFallbackStore = false
         } catch {
-            fatalError("Failed to create ModelContainer: \(error)")
+            // Fallback to in-memory store so the app doesn't crash
+            let fallbackConfig = ModelConfiguration(isStoredInMemoryOnly: true)
+            do {
+                modelContainer = try ModelContainer(for: schema, configurations: [fallbackConfig])
+                isUsingFallbackStore = true
+                storeError = error.localizedDescription
+            } catch {
+                // Even in-memory failed — this is extremely rare
+                // Create a minimal container as last resort
+                modelContainer = try! ModelContainer(for: schema)
+                isUsingFallbackStore = true
+                storeError = "Critical: \(error.localizedDescription)"
+            }
         }
     }
 
@@ -130,6 +145,7 @@ final class DataController {
         let descriptor = FetchDescriptor<CalendarEvent>(
             predicate: #Predicate { event in
                 event.isDeleted == false &&
+                event.isArchived == false &&
                 event.startDate >= startDate &&
                 event.startDate <= endDate
             },
@@ -150,6 +166,16 @@ final class DataController {
         } catch {
             print("[DataController] createEvent failed: \(error)")
         }
+    }
+
+    func archiveEvent(_ event: CalendarEvent) {
+        event.isArchived = true
+        save()
+    }
+
+    func unarchiveEvent(_ event: CalendarEvent) {
+        event.isArchived = false
+        save()
     }
 
     // MARK: - Calendar CRUD
