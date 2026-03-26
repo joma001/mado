@@ -300,6 +300,7 @@ final class SyncEngine {
                             localTask.isCompleted = remoteTask.isDone
                         }
                         localTask.googleUpdatedAt = remoteTask.updated
+                        localTask.googleEtag = remoteTask.etag
                         localTask.localUpdatedAt = Date()
                         localTask.needsSync = false
                         localTask.projectId = project.id
@@ -311,6 +312,7 @@ final class SyncEngine {
                         existing.googleTaskId = remoteId
                         existing.googleTaskListId = list.id
                         existing.googleUpdatedAt = remoteTask.updated
+                        existing.googleEtag = remoteTask.etag
                         existing.needsSync = false
                         continue
                     }
@@ -324,6 +326,7 @@ final class SyncEngine {
                         projectId: project.id
                     )
                     newTask.googleUpdatedAt = remoteTask.updated
+                    newTask.googleEtag = remoteTask.etag
                     newTask.needsSync = false
                     data.createTask(newTask)
                 }
@@ -372,8 +375,25 @@ final class SyncEngine {
                     if task.isDeleted {
                         try await tasksService.deleteTask(listId: listId, taskId: googleId)
                     } else {
-                        let updated = try await tasksService.updateTask(listId: listId, taskId: googleId, task: dto)
-                        task.googleUpdatedAt = updated.updated
+                        do {
+                            let updated = try await tasksService.updateTask(listId: listId, taskId: googleId, task: dto, etag: task.googleEtag)
+                            task.googleUpdatedAt = updated.updated
+                            task.googleEtag = updated.etag
+                        } catch let conflictError as APIError where conflictError.isConflict {
+                            MadoLogger.sync.warning("etag conflict for task '\(task.title, privacy: .public)' — re-fetching and retrying")
+                            do {
+                                let fresh = try await tasksService.getTask(listId: listId, taskId: googleId)
+                                var mergedDto = GoogleTaskDTO.from(task: task)
+                                mergedDto.id = fresh.id
+                                let retried = try await tasksService.updateTask(listId: listId, taskId: googleId, task: mergedDto, etag: fresh.etag)
+                                task.googleUpdatedAt = retried.updated
+                                task.googleEtag = retried.etag
+                            } catch {
+                                MadoLogger.sync.error("conflict retry failed for '\(task.title, privacy: .public)': \(error.localizedDescription, privacy: .public)")
+                                task.needsSync = true
+                                continue
+                            }
+                        }
                     }
                 } else if !task.isDeleted {
                     let created = try await tasksService.createTask(listId: listId, task: dto)
@@ -407,12 +427,46 @@ final class SyncEngine {
             let calendarId = calendar.googleCalendarId
             let calAccountEmail = calendar.accountEmail.isEmpty ? nil : calendar.accountEmail
             do {
-                let remoteEvents = try await calendarService.listAllEvents(
-                    calendarId: calendarId,
-                    timeMin: thirtyDaysAgo,
-                    timeMax: sixtyDaysAhead,
-                    accountEmail: calAccountEmail
-                )
+                let syncToken = calendar.lastSyncToken
+                let isIncremental = syncToken != nil
+
+                let result: GoogleCalendarService.AllEventsResult
+                if let syncToken {
+                    do {
+                        result = try await calendarService.listAllEvents(
+                            calendarId: calendarId,
+                            timeMin: thirtyDaysAgo,
+                            timeMax: sixtyDaysAhead,
+                            syncToken: syncToken,
+                            accountEmail: calAccountEmail
+                        )
+                    } catch let error as APIError where error == .gone {
+                        // 410 Gone: syncToken invalidated — clear and retry with full sync
+                        MadoLogger.sync.warning("syncToken expired for '\(calendar.name, privacy: .public)' — falling back to full sync")
+                        calendar.lastSyncToken = nil
+                        result = try await calendarService.listAllEvents(
+                            calendarId: calendarId,
+                            timeMin: thirtyDaysAgo,
+                            timeMax: sixtyDaysAhead,
+                            accountEmail: calAccountEmail
+                        )
+                    }
+                } else {
+                    result = try await calendarService.listAllEvents(
+                        calendarId: calendarId,
+                        timeMin: thirtyDaysAgo,
+                        timeMax: sixtyDaysAhead,
+                        accountEmail: calAccountEmail
+                    )
+                }
+
+                let remoteEvents = result.events
+
+                // Persist nextSyncToken for incremental sync on next cycle
+                if let nextToken = result.nextSyncToken {
+                    calendar.lastSyncToken = nextToken
+                }
+
                 var newCount = 0
                 var updatedCount = 0
                 var cancelledCount = 0
@@ -469,6 +523,7 @@ final class SyncEngine {
                             local.conferenceURL = remoteEvent.hangoutLink ?? remoteEvent.conferenceData?.entryPoints?.first(where: { $0.entryPointType == "video" })?.uri
                             local.conferenceName = remoteEvent.conferenceData?.conferenceSolution?.name
                             local.htmlLink = remoteEvent.htmlLink
+                            updatedCount += 1
                         }
 
                         if local.attendeesJSON == nil, let remoteAttendees = remoteEvent.attendees, !remoteAttendees.isEmpty {
@@ -516,24 +571,27 @@ final class SyncEngine {
                     }
                 }
                 if remoteEvents.count > 0 || newCount > 0 {
-                    MadoLogger.sync.info("pull '\(calendar.name, privacy: .public)': \(remoteEvents.count) remote, \(newCount) new, \(cancelledCount) cancelled")
+                    MadoLogger.sync.info("pull '\(calendar.name, privacy: .public)': \(remoteEvents.count) remote (\(isIncremental ? "delta" : "full")), \(newCount) new, \(updatedCount) updated, \(cancelledCount) cancelled")
                 }
 
-                // Reconciliation: soft-delete local events that no longer exist in Google
-                let remoteIds = Set(remoteEvents.compactMap(\.id))
-                let localEvents = try data.fetchEvents(
-                    from: thirtyDaysAgo,
-                    to: sixtyDaysAhead,
-                    calendarIds: [calendarId]
-                )
-                for local in localEvents {
-                    guard !local.isDeleted,
-                          !local.needsSync,
-                          !local.googleEventId.isEmpty,
-                          !remoteIds.contains(local.googleEventId) else { continue }
-                    local.isDeleted = true
-                    local.needsSync = false
-                    MadoLogger.sync.info("reconcile: removed stale event '\(local.title, privacy: .public)' (googleId: \(local.googleEventId, privacy: .public))")
+                // Reconciliation: only run on full sync — incremental sync returns only
+                // changed events, so absence from the response does NOT mean deletion.
+                if !isIncremental {
+                    let remoteIds = Set(remoteEvents.compactMap(\.id))
+                    let localEvents = try data.fetchEvents(
+                        from: thirtyDaysAgo,
+                        to: sixtyDaysAhead,
+                        calendarIds: [calendarId]
+                    )
+                    for local in localEvents {
+                        guard !local.isDeleted,
+                              !local.needsSync,
+                              !local.googleEventId.isEmpty,
+                              !remoteIds.contains(local.googleEventId) else { continue }
+                        local.isDeleted = true
+                        local.needsSync = false
+                        MadoLogger.sync.info("reconcile: removed stale event '\(local.title, privacy: .public)' (googleId: \(local.googleEventId, privacy: .public))")
+                    }
                 }
             } catch {
                 MadoLogger.sync.error("pullCalendarEvents failed for '\(calendarId, privacy: .public)' (\(calendar.accountEmail, privacy: .public)): \(error.localizedDescription, privacy: .public)")

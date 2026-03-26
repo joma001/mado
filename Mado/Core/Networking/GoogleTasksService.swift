@@ -46,8 +46,12 @@ struct GoogleTasksService {
         try await client.post(url: "\(baseURL)/lists/\(listId)/tasks", body: task)
     }
 
-    func updateTask(listId: String, taskId: String, task: GoogleTaskDTO) async throws -> GoogleTaskDTO {
-        try await client.put(url: "\(baseURL)/lists/\(listId)/tasks/\(taskId)", body: task)
+    func updateTask(listId: String, taskId: String, task: GoogleTaskDTO, etag: String? = nil) async throws -> GoogleTaskDTO {
+        try await client.put(url: "\(baseURL)/lists/\(listId)/tasks/\(taskId)", body: task, etag: etag)
+    }
+
+    func getTask(listId: String, taskId: String) async throws -> GoogleTaskDTO {
+        try await client.get(url: "\(baseURL)/lists/\(listId)/tasks/\(taskId)")
     }
 
     func deleteTask(listId: String, taskId: String) async throws {
@@ -82,6 +86,7 @@ struct GoogleTaskDTO: Codable, Identifiable {
     var parent: String?
     var position: String?
     var deleted: Bool?
+    var etag: String?
 
     var isDone: Bool {
         status == "completed"

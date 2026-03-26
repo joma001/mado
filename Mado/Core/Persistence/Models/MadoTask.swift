@@ -84,11 +84,12 @@ final class MadoTask {
 
     // Sync metadata
     var googleUpdatedAt: Date?
+    var googleEtag: String? = nil
     var localUpdatedAt: Date = Date()
     var createdAt: Date = Date()
     var isDeleted: Bool = false
     var needsSync: Bool = true
-
+    var needsFirestoreSync: Bool = true
 
     // Gmail integration
     var gmailMessageId: String?
@@ -144,6 +145,7 @@ final class MadoTask {
         self.createdAt = Date()
         self.isDeleted = false
         self.needsSync = true
+        self.needsFirestoreSync = true
     }
 
     func markCompleted() {
@@ -151,6 +153,7 @@ final class MadoTask {
         completedAt = Date()
         localUpdatedAt = Date()
         needsSync = true
+        needsFirestoreSync = true
     }
 
     func markIncomplete() {
@@ -158,11 +161,13 @@ final class MadoTask {
         completedAt = nil
         localUpdatedAt = Date()
         needsSync = true
+        needsFirestoreSync = true
     }
 
     func markUpdated() {
         localUpdatedAt = Date()
         needsSync = true
+        needsFirestoreSync = true
     }
 }
 
