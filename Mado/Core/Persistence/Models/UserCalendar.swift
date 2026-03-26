@@ -14,6 +14,7 @@ final class UserCalendar {
     var accountEmail: String = ""
     var notificationsEnabled: Bool = false
     var showInMenuBar: Bool = true
+    var lastSyncToken: String? = nil
     var displayColor: Color {
         Color(hex: colorHex)
     }

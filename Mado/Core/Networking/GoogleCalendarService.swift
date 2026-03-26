@@ -39,26 +39,37 @@ struct GoogleCalendarService {
         )
     }
 
+    struct AllEventsResult {
+        let events: [GoogleEventDTO]
+        let nextSyncToken: String?
+    }
+
     func listAllEvents(
         calendarId: String,
         timeMin: Date,
         timeMax: Date,
+        syncToken: String? = nil,
         accountEmail: String? = nil
-    ) async throws -> [GoogleEventDTO] {
+    ) async throws -> AllEventsResult {
         var all: [GoogleEventDTO] = []
         var pageToken: String?
+        var lastSyncToken: String?
         repeat {
             let response = try await listEvents(
                 calendarId: calendarId,
                 timeMin: timeMin,
                 timeMax: timeMax,
+                syncToken: syncToken,
                 pageToken: pageToken,
                 accountEmail: accountEmail
             )
             all.append(contentsOf: response.items ?? [])
             pageToken = response.nextPageToken
+            if let token = response.nextSyncToken {
+                lastSyncToken = token
+            }
         } while pageToken != nil
-        return all
+        return AllEventsResult(events: all, nextSyncToken: lastSyncToken)
     }
 
     func createEvent(calendarId: String, event: GoogleEventDTO, accountEmail: String? = nil) async throws -> GoogleEventDTO {
