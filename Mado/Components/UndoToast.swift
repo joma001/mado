@@ -24,11 +24,11 @@ private struct UndoToastView: View {
         HStack(spacing: 12) {
             Image(systemName: iconName)
                 .font(.system(size: 13, weight: .medium))
-                .foregroundColor(.white.opacity(0.8))
+                .foregroundColor(MadoColors.onAccent.opacity(0.8))
 
             Text(data.message)
                 .font(.system(size: 13, weight: .medium))
-                .foregroundColor(.white)
+                .foregroundColor(MadoColors.onAccent)
                 .lineLimit(1)
 
             Spacer(minLength: 4)
@@ -47,7 +47,7 @@ private struct UndoToastView: View {
             } label: {
                 Image(systemName: "xmark")
                     .font(.system(size: 10, weight: .bold))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(MadoColors.onAccent.opacity(0.5))
             }
             .buttonStyle(.plain)
         }

@@ -81,6 +81,11 @@ final class MenuBarViewModel {
         refreshData()
     }
 
+    func archiveEvent(_ event: CalendarEvent) {
+        data.archiveEvent(event)
+        refreshData()
+    }
+
     // MARK: - Computed Helpers
 
     func timeRemainingText(for event: CalendarEvent) -> String {

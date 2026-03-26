@@ -58,7 +58,7 @@ struct EventDetailPopover: View {
 
                 Button("Save") { saveChanges() }
                     .font(MadoTheme.Font.captionMedium)
-                    .foregroundColor(.white)
+                    .foregroundColor(MadoColors.onAccent)
                     .padding(.horizontal, MadoTheme.Spacing.sm)
                     .padding(.vertical, MadoTheme.Spacing.xxs)
                     .background(MadoColors.accent)
@@ -295,7 +295,7 @@ struct EventDetailPopover: View {
             HStack(spacing: MadoTheme.Spacing.sm) {
                 Image(systemName: "video.fill")
                     .font(.system(size: 12))
-                    .foregroundColor(.white)
+                    .foregroundColor(MadoColors.onAccent)
                     .frame(width: 24, height: 24)
                     .background(Color(hex: "00897B"))
                     .clipShape(RoundedRectangle(cornerRadius: MadoTheme.Radius.sm))
@@ -416,7 +416,7 @@ struct EventDetailPopover: View {
             let initial = String((attendee.displayName ?? attendee.email).prefix(1)).uppercased()
             Text(initial)
                 .font(.system(size: 9, weight: .semibold))
-                .foregroundColor(.white)
+                .foregroundColor(MadoColors.onAccent)
                 .frame(width: 20, height: 20)
                 .background(avatarColor(for: attendee.email))
                 .clipShape(Circle())

@@ -76,7 +76,7 @@ struct InvitePanelView: View {
 
             Text("\(pendingInvites.count)")
                 .font(MadoTheme.Font.caption)
-                .foregroundColor(.white)
+                .foregroundColor(MadoColors.onAccent)
                 .padding(.horizontal, 6)
                 .padding(.vertical, 1)
                 .background(

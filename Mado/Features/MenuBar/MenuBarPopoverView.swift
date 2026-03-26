@@ -40,6 +40,13 @@ struct MenuBarPopoverView: View {
                         ForEach(viewModel.pastEvents, id: \.id) { event in
                             UpcomingEventRow(event: event, viewModel: viewModel)
                                 .opacity(0.5)
+                                .contextMenu {
+                                    Button {
+                                        viewModel.archiveEvent(event)
+                                    } label: {
+                                        Label("Archive", systemImage: "archivebox")
+                                    }
+                                }
                         }
                     }
 
@@ -186,7 +193,7 @@ private struct OngoingEventRow: View {
         HStack(spacing: MadoTheme.Spacing.sm) {
             Text(event.title)
                 .font(MadoTheme.Font.bodyMedium)
-                .foregroundColor(.white)
+                .foregroundColor(MadoColors.onAccent)
                 .lineLimit(1)
 
             Spacer(minLength: 4)
@@ -213,7 +220,7 @@ private struct OngoingEventRow: View {
 
     @ViewBuilder
     private func eventIcons(light: Bool) -> some View {
-        let iconColor: Color = light ? .white.opacity(0.85) : eventColor
+        let iconColor: Color = light ? MadoColors.onAccent.opacity(0.85) : eventColor
         let iconSize: CGFloat = 11
 
         if viewModel.hasAttendees(for: event) {
@@ -466,7 +473,7 @@ private struct TimeBadge: View {
     private var foregroundColor: Color {
         switch style {
         case .ongoingLight:
-            return .white
+            return MadoColors.onAccent
         case .tinted(let color):
             return color
         case .neutral:
@@ -477,7 +484,7 @@ private struct TimeBadge: View {
     private var backgroundColor: Color {
         switch style {
         case .ongoingLight:
-            return Color.white.opacity(0.2)
+            return MadoColors.onAccent.opacity(0.2)
         case .tinted(let color):
             return color.opacity(0.1)
         case .neutral:

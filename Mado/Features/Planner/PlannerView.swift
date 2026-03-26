@@ -54,6 +54,13 @@ struct PlannerView: View {
             }
             .clipped()
 
+            // Sync / data-store error banners (top overlay)
+            VStack(spacing: 0) {
+                SyncErrorBanner()
+                DataStoreWarningBanner()
+                Spacer()
+            }
+
             if showCommandBar {
                 CommandBarView(
                     isPresented: $showCommandBar,
@@ -296,7 +303,7 @@ struct PlannerView: View {
                 if !showInvitePanel && pendingInviteCount > 0 {
                     Text("\(pendingInviteCount)")
                         .font(.system(size: 9, weight: .bold))
-                        .foregroundColor(.white)
+                        .foregroundColor(MadoColors.onAccent)
                         .padding(.horizontal, 4)
                         .padding(.vertical, 1)
                         .background(Capsule().fill(MadoColors.accent))

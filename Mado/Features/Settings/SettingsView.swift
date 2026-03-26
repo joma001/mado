@@ -173,6 +173,15 @@ private struct GeneralSettingsTab: View {
                 }
             }
 
+            Section("Appearance") {
+                Picker("Theme", selection: $settings.appearanceMode) {
+                    ForEach(AppearanceMode.allCases, id: \.self) { mode in
+                        Text(mode.rawValue).tag(mode)
+                    }
+                }
+                .font(MadoTheme.Font.body)
+            }
+
             Section("Display") {
                 Picker("Default view", selection: $settings.defaultViewMode) {
                     Text("Month").tag("monthly")
@@ -226,7 +235,7 @@ private struct GeneralSettingsTab: View {
                         .foregroundColor(MadoColors.textSecondary)
                 }
 
-                Button("Sync Now") {
+                Button("수동 동기화") {
                     Task { await sync.syncAll() }
                 }
                 .buttonStyle(MadoButtonStyle(variant: .secondary))

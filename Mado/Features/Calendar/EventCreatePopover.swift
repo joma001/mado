@@ -293,7 +293,7 @@ struct EventCreatePopover: View {
 
             Button("Save") { save() }
                 .font(MadoTheme.Font.captionMedium)
-                .foregroundColor(.white)
+                .foregroundColor(MadoColors.onAccent)
                 .padding(.horizontal, MadoTheme.Spacing.md)
                 .padding(.vertical, MadoTheme.Spacing.xxs + 1)
                 .background(MadoColors.accent)
@@ -316,7 +316,7 @@ struct EventCreatePopover: View {
 
             Button("Add Task") { saveAsTask() }
                 .font(MadoTheme.Font.captionMedium)
-                .foregroundColor(.white)
+                .foregroundColor(MadoColors.onAccent)
                 .padding(.horizontal, MadoTheme.Spacing.md)
                 .padding(.vertical, MadoTheme.Spacing.xxs + 1)
                 .background(MadoColors.accent)

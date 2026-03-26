@@ -256,10 +256,10 @@ struct DailyCalendarView: View {
                         VStack(spacing: 1) {
                             Text(viewModel.hoverTimeText)
                                 .font(.system(size: 11, weight: .semibold))
-                                .foregroundColor(.white)
+                                .foregroundColor(MadoColors.onAccent)
                             Text(viewModel.hoverTimeDetailText)
                                 .font(.system(size: 9))
-                                .foregroundColor(.white.opacity(0.7))
+                                .foregroundColor(MadoColors.onAccent.opacity(0.7))
                         }
                         .padding(.horizontal, 10)
                         .padding(.vertical, 5)

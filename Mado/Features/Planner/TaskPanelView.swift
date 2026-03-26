@@ -337,7 +337,7 @@ struct TaskPanelView: View {
             HStack(spacing: MadoTheme.Spacing.xs) {
                 Text(String(project.name.prefix(1)).uppercased())
                     .font(.system(size: 10, weight: .bold))
-                    .foregroundColor(.white)
+                    .foregroundColor(MadoColors.onAccent)
                     .frame(width: 18, height: 18)
                     .background(RoundedRectangle(cornerRadius: 4).fill(project.displayColor))
                 Text(project.name)
@@ -392,7 +392,7 @@ struct TaskPanelView: View {
             RoundedRectangle(cornerRadius: 4)
                 .fill(MadoColors.accent)
                 .frame(width: 18, height: 18)
-                .overlay(Image(systemName: "folder.fill").font(.system(size: 8)).foregroundColor(.white))
+                .overlay(Image(systemName: "folder.fill").font(.system(size: 8)).foregroundColor(MadoColors.onAccent))
             TextField("Name", text: $newProjectName)
                 .textFieldStyle(.plain)
                 .font(MadoTheme.Font.caption)

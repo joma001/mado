@@ -103,7 +103,7 @@ struct EventBlockView: View {
         .overlay(
             (!isTaskBlock && !event.isPendingInvite && !event.isDeclined)
                 ? RoundedRectangle(cornerRadius: MadoTheme.Radius.sm)
-                    .stroke(Color.white, lineWidth: 1)
+                    .stroke(MadoColors.surface, lineWidth: 1)
                 : nil
         )
         .overlay(alignment: .leading) {

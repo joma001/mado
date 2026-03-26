@@ -1,7 +1,22 @@
 import Foundation
+import SwiftUI
 #if os(macOS)
 import ServiceManagement
 #endif
+
+enum AppearanceMode: String, CaseIterable {
+    case system = "System"
+    case light = "Light"
+    case dark = "Dark"
+
+    var colorScheme: ColorScheme? {
+        switch self {
+        case .system: return nil
+        case .light: return .light
+        case .dark: return .dark
+        }
+    }
+}
 
 @MainActor
 @Observable
@@ -22,6 +37,10 @@ final class AppSettings {
             #endif
         }
     }
+
+    // MARK: - Appearance
+
+    var appearanceMode: AppearanceMode { didSet { defaults.set(appearanceMode.rawValue, forKey: "appearanceMode") } }
 
     // MARK: - Display
 
@@ -77,6 +96,8 @@ final class AppSettings {
         #else
         launchAtLogin = false
         #endif
+        appearanceMode = defaults.string(forKey: "appearanceMode")
+            .flatMap { AppearanceMode(rawValue: $0) } ?? .system
         defaultViewMode = defaults.string(forKey: "defaultViewMode") ?? "weekly"
         startOfWeek = defaults.object(forKey: "startOfWeek") as? Int ?? 2
         use24HourTime = defaults.bool(forKey: "use24HourTime")

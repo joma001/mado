@@ -43,7 +43,7 @@ struct iOSLoginView: View {
                     Text("Sign in with Google")
                         .font(MadoTheme.Font.bodyMedium)
                 }
-                .foregroundColor(.white)
+                .foregroundColor(MadoColors.onAccent)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
                 .background(MadoColors.accent)

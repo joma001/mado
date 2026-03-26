@@ -70,7 +70,7 @@ private struct MonthDayCellView: View {
                 ForEach(0..<displayCount, id: \.self) { i in
                     Text(dayEvents[i].title)
                         .font(.system(size: 9))
-                        .foregroundColor(.white)
+                        .foregroundColor(MadoColors.onAccent)
                         .lineLimit(1)
                         .padding(.horizontal, 3)
                         .padding(.vertical, 1)

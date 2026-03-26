@@ -44,7 +44,7 @@ struct iOSMainTabView: View {
             } label: {
                 Image(systemName: "plus")
                     .font(.system(size: 22, weight: .semibold))
-                    .foregroundColor(.white)
+                    .foregroundColor(MadoColors.onAccent)
                     .frame(width: 56, height: 56)
                     .background(MadoColors.accent)
                     .clipShape(Circle())
@@ -55,6 +55,12 @@ struct iOSMainTabView: View {
         }
         .overlay {
             UndoToastOverlay()
+        }
+        .overlay(alignment: .top) {
+            VStack(spacing: 0) {
+                SyncErrorBanner()
+                DataStoreWarningBanner()
+            }
         }
         .sheet(isPresented: $showQuickAdd) {
             iOSQuickAddSheet()

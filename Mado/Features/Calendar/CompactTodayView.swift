@@ -42,7 +42,7 @@ struct CompactTodayView: View {
             Spacer()
             Text("Today")
                 .font(.system(size: 10, weight: .medium))
-                .foregroundColor(.white)
+                .foregroundColor(MadoColors.onAccent)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 3)
                 .background(Capsule().fill(MadoColors.accent))
@@ -167,7 +167,7 @@ struct CompactTodayView: View {
         .overlay(
             (!event.isPendingInvite && !event.isDeclined)
                 ? RoundedRectangle(cornerRadius: 4)
-                    .stroke(Color.white, lineWidth: 1)
+                    .stroke(MadoColors.surface, lineWidth: 1)
                 : nil
         )
         .overlay(

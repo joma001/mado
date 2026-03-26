@@ -7,11 +7,12 @@ struct MadoiOSApp: App {
     private let dataController = DataController.shared
     private let authManager = AuthenticationManager.shared
     private let syncEngine = SyncEngine.shared
+    private let settings = AppSettings.shared
 
     var body: some Scene {
         WindowGroup {
             iOSRootView()
-                .preferredColorScheme(.light)
+                .preferredColorScheme(settings.appearanceMode.colorScheme)
                 .modelContainer(dataController.modelContainer)
                 .onOpenURL { url in
                     _ = authManager.handle(url: url)

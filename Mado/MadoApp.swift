@@ -141,10 +141,12 @@ struct MadoApp: App {
     private let dataController = DataController.shared
     private let authManager = AuthenticationManager.shared
     private let syncEngine = SyncEngine.shared
+    private let settings = AppSettings.shared
 
     var body: some Scene {
         WindowGroup("mado") {
             RootView()
+                .preferredColorScheme(settings.appearanceMode.colorScheme)
                 .modelContainer(dataController.modelContainer)
                 .onOpenURL { url in
                     _ = authManager.handle(url: url)
@@ -172,12 +174,14 @@ struct MadoApp: App {
 
         MenuBarExtra("mado", systemImage: "checkmark.circle.fill") {
             MenuBarPopoverView()
+                .preferredColorScheme(settings.appearanceMode.colorScheme)
                 .modelContainer(dataController.modelContainer)
         }
         .menuBarExtraStyle(.window)
 
         Settings {
             SettingsView()
+                .preferredColorScheme(settings.appearanceMode.colorScheme)
                 .modelContainer(dataController.modelContainer)
         }
     }

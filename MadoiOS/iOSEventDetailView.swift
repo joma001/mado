@@ -50,7 +50,7 @@ struct iOSEventDetailView: View {
                                 Text(event.conferenceName ?? "Join Meeting")
                             }
                             .font(MadoTheme.Font.bodyMedium)
-                            .foregroundColor(.white)
+                            .foregroundColor(MadoColors.onAccent)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 10)
                             .background(MadoColors.accent)
@@ -159,7 +159,7 @@ struct iOSEventDetailView: View {
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
-            .foregroundColor(isActive ? .white : MadoColors.textSecondary)
+            .foregroundColor(isActive ? MadoColors.onAccent : MadoColors.textSecondary)
             .background(isActive ? MadoColors.accent : MadoColors.surfaceSecondary)
             .clipShape(RoundedRectangle(cornerRadius: 8))
         }
