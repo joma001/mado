@@ -1,5 +1,6 @@
 import WidgetKit
 import SwiftUI
+import AppIntents
 
 // MARK: - Timeline Provider
 
@@ -96,14 +97,18 @@ private struct SmallTasksView: View {
                 Spacer()
             } else {
                 ForEach(tasks.prefix(3)) { task in
-                    HStack(spacing: 6) {
-                        Image(systemName: "circle")
-                            .font(.system(size: 10))
-                            .foregroundStyle(.secondary)
-                        Text(task.title)
-                            .font(.system(size: 12))
-                            .lineLimit(1)
+                    Button(intent: ToggleTaskIntent(taskId: task.id)) {
+                        HStack(spacing: 6) {
+                            Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                                .font(.system(size: 10))
+                                .foregroundStyle(task.isCompleted ? .green : .secondary)
+                            Text(task.title)
+                                .font(.system(size: 12))
+                                .lineLimit(1)
+                                .strikethrough(task.isCompleted)
+                        }
                     }
+                    .buttonStyle(.plain)
                 }
                 Spacer(minLength: 0)
             }
@@ -153,23 +158,27 @@ private struct MediumTasksView: View {
                 Spacer()
             } else {
                 ForEach(tasks.prefix(4)) { task in
-                    HStack(spacing: 8) {
-                        Image(systemName: "circle")
-                            .font(.system(size: 11))
-                            .foregroundStyle(.orange.opacity(0.7))
-                        
-                        Text(task.title)
-                            .font(.system(size: 13))
-                            .lineLimit(1)
-                        
-                        Spacer()
-                        
-                        if let due = task.dueDate {
-                            Text(shortTime(due))
+                    Button(intent: ToggleTaskIntent(taskId: task.id)) {
+                        HStack(spacing: 8) {
+                            Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
                                 .font(.system(size: 11))
-                                .foregroundStyle(.secondary)
+                                .foregroundStyle(task.isCompleted ? .green : .orange.opacity(0.7))
+
+                            Text(task.title)
+                                .font(.system(size: 13))
+                                .lineLimit(1)
+                                .strikethrough(task.isCompleted)
+
+                            Spacer()
+
+                            if let due = task.dueDate {
+                                Text(shortTime(due))
+                                    .font(.system(size: 11))
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     }
+                    .buttonStyle(.plain)
                 }
                 
                 if tasks.count > 4 {

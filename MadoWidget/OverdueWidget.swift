@@ -1,5 +1,6 @@
 import WidgetKit
 import SwiftUI
+import AppIntents
 
 // MARK: - Timeline Provider
 
@@ -168,23 +169,27 @@ private struct MediumOverdueView: View {
                 Spacer()
             } else {
                 ForEach(tasks.prefix(4)) { task in
-                    HStack(spacing: 8) {
-                        Circle()
-                            .fill(.red.opacity(0.15))
-                            .frame(width: 6, height: 6)
+                    Button(intent: ToggleTaskIntent(taskId: task.id)) {
+                        HStack(spacing: 8) {
+                            Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                                .font(.system(size: 12))
+                                .foregroundStyle(task.isCompleted ? .green : .red.opacity(0.6))
 
-                        Text(task.title)
-                            .font(.system(size: 13, weight: .medium))
-                            .lineLimit(1)
+                            Text(task.title)
+                                .font(.system(size: 13, weight: .medium))
+                                .lineLimit(1)
+                                .strikethrough(task.isCompleted)
 
-                        Spacer()
+                            Spacer()
 
-                        if let due = task.dueDate {
-                            Text(daysAgoText(due))
-                                .font(.system(size: 11))
-                                .foregroundStyle(.red.opacity(0.8))
+                            if let due = task.dueDate {
+                                Text(daysAgoText(due))
+                                    .font(.system(size: 11))
+                                    .foregroundStyle(.red.opacity(0.8))
+                            }
                         }
                     }
+                    .buttonStyle(.plain)
                 }
 
                 if tasks.count > 4 {
