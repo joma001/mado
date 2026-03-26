@@ -57,18 +57,53 @@ final class SyncEngine {
     func syncAll() async {
         guard !status.isSyncing else { return }
         status = .syncing
+
+        var collectedErrors: [SyncErrorKind] = []
+
+        // Each step is isolated: one failure does NOT block the rest.
         do {
             try await ensureCalendarsExist()
+        } catch {
+            let kind = Self.mapError(error, service: "Calendar")
+            collectedErrors.append(kind)
+            MadoLogger.sync.error("ensureCalendarsExist failed: \(error.localizedDescription, privacy: .public)")
+        }
+
+        do {
             try await pullTasks()
             try await pushTasks()
+        } catch {
+            let kind = Self.mapError(error, service: "Tasks")
+            collectedErrors.append(kind)
+            MadoLogger.sync.error("Tasks sync failed: \(error.localizedDescription, privacy: .public)")
+        }
+
+        do {
             try await pullCalendarEvents()
             try await pushCalendarEvents()
-            if AppSettings.shared.gmailSyncEnabled {
+        } catch {
+            let kind = Self.mapError(error, service: "Calendar")
+            collectedErrors.append(kind)
+            MadoLogger.sync.error("Calendar sync failed: \(error.localizedDescription, privacy: .public)")
+        }
+
+        if AppSettings.shared.gmailSyncEnabled {
+            do {
                 try await pullGmailStarred()
                 try await pushGmailStars()
+            } catch {
+                let kind = Self.mapError(error, service: "Gmail")
+                collectedErrors.append(kind)
+                MadoLogger.sync.error("Gmail sync failed: \(error.localizedDescription, privacy: .public)")
             }
-            // Firestore cross-device sync (labels, task metadata, notes, settings)
-            await firestoreSync.syncAll()
+        }
+
+        // Firestore cross-device sync (labels, task metadata, notes, settings)
+        await firestoreSync.syncAll()
+
+        if let firstError = collectedErrors.first {
+            status = .error(firstError)
+        } else {
             lastFullSync = Date()
             status = .success(Date())
             // Update widget data after sync
@@ -76,9 +111,6 @@ final class SyncEngine {
             WidgetDataWriter.shared.writeWidgetData()
             #endif
             onSyncCompleted?()
-        } catch {
-            status = .error(error.localizedDescription)
-            MadoLogger.sync.error("syncAll failed: \(error.localizedDescription, privacy: .public)")
         }
     }
 
@@ -101,22 +133,46 @@ final class SyncEngine {
         }
         let previousStatus = status
         status = .syncing
+
+        var collectedErrors: [SyncErrorKind] = []
+
         do {
             try await pushTasks()
+        } catch {
+            let kind = Self.mapError(error, service: "Tasks")
+            collectedErrors.append(kind)
+            MadoLogger.sync.error("pushTasks failed: \(error.localizedDescription, privacy: .public)")
+        }
+
+        do {
             try await pushCalendarEvents()
-            if AppSettings.shared.gmailSyncEnabled {
+        } catch {
+            let kind = Self.mapError(error, service: "Calendar")
+            collectedErrors.append(kind)
+            MadoLogger.sync.error("pushCalendarEvents failed: \(error.localizedDescription, privacy: .public)")
+        }
+
+        if AppSettings.shared.gmailSyncEnabled {
+            do {
                 try await pushGmailStars()
+            } catch {
+                let kind = Self.mapError(error, service: "Gmail")
+                collectedErrors.append(kind)
+                MadoLogger.sync.error("pushGmailStars failed: \(error.localizedDescription, privacy: .public)")
             }
-            // Firestore cross-device push
-            await firestoreSync.pushAll()
+        }
+
+        // Firestore cross-device push
+        await firestoreSync.pushAll()
+
+        if let firstError = collectedErrors.first {
+            status = .error(firstError)
+        } else {
             status = previousStatus.isSyncing ? .success(Date()) : previousStatus
             if case .idle = status {
                 status = .success(Date())
             }
             onSyncCompleted?()
-        } catch {
-            status = .error(error.localizedDescription)
-            MadoLogger.sync.error("pushLocalChanges failed: \(error.localizedDescription, privacy: .public)")
         }
     }
 
@@ -676,6 +732,23 @@ final class SyncEngine {
     }
 
     // MARK: - Helpers
+
+    /// Maps a thrown error to the appropriate SyncErrorKind for status reporting.
+    private static func mapError(_ error: Error, service: String) -> SyncErrorKind {
+        if let apiError = error as? APIError {
+            switch apiError {
+            case .notAuthenticated:
+                return .authExpired
+            case .networkError:
+                return .networkUnavailable
+            case .httpError(let code, let message) where code == 401:
+                return .authExpired
+            default:
+                return .apiError(service: service, message: apiError.localizedDescription)
+            }
+        }
+        return .apiError(service: service, message: error.localizedDescription)
+    }
 
     private static func encodeAttendees(_ dtos: [GoogleAttendeeDTO]?) -> Data? {
         guard let dtos, !dtos.isEmpty else { return nil }
