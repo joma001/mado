@@ -41,15 +41,18 @@ struct iOSCalendarTab: View {
                         Text("Today")
                             .font(MadoTheme.Font.caption)
                     }
+                    .accessibilityLabel("오늘로 이동")
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack(spacing: 12) {
                         Button { viewModel.navigateBack() } label: {
                             Image(systemName: "chevron.left")
                         }
+                        .accessibilityLabel("이전")
                         Button { viewModel.navigateForward() } label: {
                             Image(systemName: "chevron.right")
                         }
+                        .accessibilityLabel("다음")
                     }
                 }
             }
@@ -306,6 +309,9 @@ private struct iOSEventListRow: View {
         .padding(.horizontal, 20)
         .padding(.vertical, 2)
         .opacity(event.isDeclined ? 0.55 : 1.0)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(event.title), \(timeRange)\(event.hasConference ? ", 화상 회의" : "")")
+        .accessibilityHint("탭하여 상세 보기")
     }
 
     private var timeRange: String {

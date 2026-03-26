@@ -26,6 +26,7 @@ struct TodoListView: View {
                         }
                         .buttonStyle(MadoButtonStyle(variant: .ghost))
                         .help("New Task")
+                        .accessibilityLabel("새 할 일 추가")
                     }
 
 
@@ -74,6 +75,7 @@ struct TodoListView: View {
                             .foregroundColor(MadoColors.textSecondary)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityLabel(viewModel.showCompleted ? "완료된 할 일 숨기기" : "완료된 할 일 보기")
                     }
                 }
                 .padding(.horizontal, MadoTheme.Spacing.xl)
@@ -161,5 +163,8 @@ struct TodoListView: View {
                 .clipShape(Capsule())
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("\(title) 우선순위 필터")
+        .accessibilityValue(isActive ? "선택됨" : "선택 안 됨")
+        .accessibilityAddTraits(isActive ? .isSelected : [])
     }
 }

@@ -41,6 +41,7 @@ private struct UndoToastView: View {
                     .foregroundColor(MadoColors.accent)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("실행 취소")
 
             Button {
                 engine.hideToast()
@@ -50,6 +51,7 @@ private struct UndoToastView: View {
                     .foregroundColor(MadoColors.onAccent.opacity(0.5))
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("알림 닫기")
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)

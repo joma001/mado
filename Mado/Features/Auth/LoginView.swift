@@ -46,6 +46,8 @@ struct LoginView: View {
                 .buttonStyle(MadoButtonStyle(variant: .primary))
                 .disabled(viewModel.isSigningIn)
                 .onHover { isHoveredButton = $0 }
+                .accessibilityLabel("Google로 로그인")
+                .accessibilityHint("Google 계정으로 로그인합니다")
 
                 if viewModel.isSigningIn {
                     ProgressView()

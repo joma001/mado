@@ -56,6 +56,8 @@ struct QuickAddField: View {
             }
         }
         .animation(MadoTheme.Animation.quick, value: isEditing)
+        .accessibilityLabel("빠른 할 일 추가")
+        .accessibilityHint("탭하여 새 할 일을 입력하세요")
     }
 
     private func submitTask() {

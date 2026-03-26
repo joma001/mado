@@ -68,6 +68,8 @@ struct SubtaskView: View {
             }
         }
         .frame(height: 4)
+        .accessibilityLabel("하위 할 일 진행률 \(Int(completed))개 완료, 총 \(Int(total))개")
+        .accessibilityValue("\(Int(progress * 100))%")
     }
 
     private func submitSubtask() {
@@ -93,6 +95,8 @@ private struct SubtaskRowView: View {
                     )
             }
             .buttonStyle(.plain)
+            .accessibilityLabel(subtask.isCompleted ? "완료 해제" : "완료로 표시")
+            .accessibilityAddTraits(.isButton)
 
             Text(subtask.title)
                 .font(MadoTheme.Font.callout)
@@ -111,5 +115,8 @@ private struct SubtaskRowView: View {
                 .fill(isHovered ? MadoColors.hoverBackground : Color.clear)
         )
         .onHover { isHovered = $0 }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(subtask.title), \(subtask.isCompleted ? "완료됨" : "미완료")")
+        .accessibilityHint(subtask.isCompleted ? "탭하여 완료 해제" : "탭하여 완료")
     }
 }

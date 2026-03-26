@@ -228,10 +228,20 @@ private struct iOSInviteCard: View {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(MadoColors.border, lineWidth: 1)
         )
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("초대: \(event.title), \(timeText)")
     }
     
     @ViewBuilder
     private func rsvpButton(label: String, icon: String, response: String, color: Color) -> some View {
+        let koreanLabel: String = {
+            switch response {
+            case "accepted": return "수락"
+            case "tentative": return "미정"
+            case "declined": return "거절"
+            default: return label
+            }
+        }()
         Button {
             onRespond(response)
         } label: {
@@ -249,6 +259,7 @@ private struct iOSInviteCard: View {
                     .fill(color.opacity(0.1))
             )
         }
+        .accessibilityLabel("초대 \(koreanLabel)")
     }
     
     private var timeText: String {

@@ -72,6 +72,8 @@ private struct SyncErrorBannerContent: View {
                 .padding(.vertical, MadoTheme.Spacing.sm)
                 .background(bannerColor)
                 .transition(.move(edge: .top).combined(with: .opacity))
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("동기화 오류: \(labelText)")
                 .onAppear { scheduleAutoDismiss() }
                 .onChange(of: kind) { _, _ in
                     visible = true

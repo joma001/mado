@@ -170,6 +170,8 @@ private struct iOSOngoingEventCard: View {
         )
         .padding(.horizontal, 16)
         .padding(.vertical, 3)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("진행 중: \(event.title), \(viewModel.timeRemainingText(for: event))\(event.location.map { ", \($0)" } ?? "")")
     }
 
     @Environment(\.openURL) private var openURL
@@ -225,6 +227,8 @@ private struct iOSUpcomingEventRow: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 8)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("예정: \(event.title), \(viewModel.upcomingTimeText(for: event))\(event.location.map { ", \($0)" } ?? "")")
     }
 }
 
@@ -283,6 +287,8 @@ private struct iOSTaskRow: View {
                     .font(.system(size: 20))
                     .foregroundColor(task.isCompleted ? MadoColors.checkboxChecked : MadoColors.checkboxUnchecked)
             }
+            .accessibilityLabel(task.isCompleted ? "완료 해제" : "완료로 표시")
+            .accessibilityAddTraits(.isButton)
 
             Text(task.title)
                 .font(MadoTheme.Font.body)
@@ -297,6 +303,9 @@ private struct iOSTaskRow: View {
         .padding(.horizontal, 20)
         .padding(.vertical, 8)
         .sensoryFeedback(.success, trigger: task.isCompleted) { _, newValue in newValue }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(task.title)\(task.isCompleted ? ", 완료됨" : "")")
+        .accessibilityHint(task.isCompleted ? "탭하여 완료 해제" : "탭하여 완료")
     }
 }
 
@@ -343,6 +352,9 @@ private struct iOSOverdueTaskRow: View {
         .padding(.vertical, 8)
         .background(MadoColors.error.opacity(0.04))
         .sensoryFeedback(.success, trigger: task.isCompleted) { _, newValue in newValue }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("기한 초과: \(task.title)\(viewModel.overdueDateText(for: task).map { ", \($0)" } ?? "")")
+        .accessibilityHint("탭하여 완료")
     }
 }
 

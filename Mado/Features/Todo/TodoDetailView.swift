@@ -48,6 +48,7 @@ struct TodoDetailView: View {
                     .foregroundColor(MadoColors.textSecondary)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("닫기")
 
             Spacer()
 
@@ -58,6 +59,7 @@ struct TodoDetailView: View {
                     .font(MadoTheme.Font.caption)
             }
             .buttonStyle(MadoButtonStyle(variant: .secondary))
+            .accessibilityLabel(task.isCompleted ? "미완료로 변경" : "완료로 변경")
 
             Button(action: {
                 viewModel.deleteTask(task)
@@ -68,6 +70,7 @@ struct TodoDetailView: View {
                     .foregroundColor(MadoColors.error)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("할 일 삭제")
         }
         .padding(.horizontal, MadoTheme.Spacing.lg)
         .padding(.vertical, MadoTheme.Spacing.md)
@@ -132,6 +135,7 @@ struct TodoDetailView: View {
                                 .foregroundColor(MadoColors.textTertiary)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityLabel("마감일 삭제")
                     }
                 }
             }
@@ -203,6 +207,7 @@ struct TodoDetailView: View {
             }
             .menuStyle(.borderlessButton)
             .fixedSize()
+            .accessibilityLabel("라벨 추가")
         }
     }
 

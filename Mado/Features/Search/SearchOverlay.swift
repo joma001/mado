@@ -42,6 +42,7 @@ struct SearchOverlay: View {
                                 .foregroundColor(MadoColors.textTertiary)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityLabel("검색어 지우기")
                     }
                 }
                 .padding(.horizontal, MadoTheme.Spacing.lg)
@@ -153,6 +154,9 @@ struct SearchOverlay: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("할 일: \(task.title)\(task.isCompleted ? ", 완료됨" : "")")
+        .accessibilityHint("탭하여 상세 보기")
     }
 
     // MARK: - Event Row
@@ -200,6 +204,9 @@ struct SearchOverlay: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("일정: \(event.title)")
+        .accessibilityHint("탭하여 캘린더에서 보기")
     }
 
     private func dismiss() {

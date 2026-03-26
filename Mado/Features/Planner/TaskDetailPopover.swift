@@ -56,6 +56,7 @@ struct TaskDetailPopover: View {
                 }
             }
             .buttonStyle(MadoButtonStyle(variant: .secondary))
+            .accessibilityLabel(task.isCompleted ? "미완료로 변경" : "완료로 변경")
 
             Button {
                 viewModel.deleteTask(task)
@@ -66,6 +67,7 @@ struct TaskDetailPopover: View {
                     .foregroundColor(MadoColors.error)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("할 일 삭제")
 
             Button(action: onClose) {
                 Image(systemName: "xmark")
@@ -73,6 +75,7 @@ struct TaskDetailPopover: View {
                     .foregroundColor(MadoColors.textSecondary)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("닫기")
         }
         .padding(.horizontal, MadoTheme.Spacing.md)
         .padding(.vertical, MadoTheme.Spacing.sm)
@@ -128,6 +131,7 @@ struct TaskDetailPopover: View {
                                 .foregroundColor(MadoColors.textTertiary)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityLabel("마감일 삭제")
                     }
                 }
             }

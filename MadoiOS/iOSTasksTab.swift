@@ -539,6 +539,9 @@ private struct iOSTaskListRow: View {
         }
         .padding(.vertical, 2)
         .sensoryFeedback(.success, trigger: task.isCompleted) { _, newValue in newValue }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(task.title)\(task.isCompleted ? ", 완료됨" : "")\(task.dueDate.map { ", \(dueDateText($0))" } ?? "")")
+        .accessibilityHint(task.isCompleted ? "탭하여 완료 해제" : "탭하여 상세 보기")
     }
 
     private func dueDateText(_ date: Date) -> String {

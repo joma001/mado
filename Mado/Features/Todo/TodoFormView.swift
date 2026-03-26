@@ -29,6 +29,7 @@ struct TodoFormView: View {
                         .foregroundColor(MadoColors.textSecondary)
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel("닫기")
             }
             .padding(MadoTheme.Spacing.xl)
 
@@ -93,12 +94,15 @@ struct TodoFormView: View {
                     isPresented = false
                 }
                 .buttonStyle(MadoButtonStyle(variant: .secondary))
+                .accessibilityLabel("취소")
 
                 Button("Create") {
                     createTask()
                 }
                 .buttonStyle(MadoButtonStyle(variant: .primary))
                 .disabled(title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                .accessibilityLabel("할 일 생성")
+                .accessibilityHint(title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "제목을 입력하세요" : "")
             }
             .padding(MadoTheme.Spacing.lg)
         }

@@ -53,6 +53,7 @@ struct NotificationPopoverView: View {
             }
             .buttonStyle(.plain)
             .help(settings.notificationsEnabled ? "Mute notifications" : "Unmute notifications")
+            .accessibilityLabel(settings.notificationsEnabled ? "알림 끄기" : "알림 켜기")
 
             Spacer()
 
@@ -134,6 +135,10 @@ struct NotificationPopoverView: View {
         .onTapGesture {
             if !upcoming { manager.markRead(entry.id) }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(entry.title), \(entry.body)")
+        .accessibilityValue(!upcoming && !entry.isRead ? "읽지 않음" : "")
+        .accessibilityHint(!upcoming && !entry.isRead ? "탭하여 읽음 처리" : "")
     }
 
     private var mutedBanner: some View {

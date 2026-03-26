@@ -61,6 +61,7 @@ struct CalendarToolbar: View {
             }
             .buttonStyle(.plain)
             .onHover { isTodayHovered = $0 }
+            .accessibilityLabel("오늘로 이동")
 
             // Sync
             Button {
@@ -78,6 +79,7 @@ struct CalendarToolbar: View {
             .buttonStyle(.plain)
             .onHover { isSyncHovered = $0 }
             .help("Sync (⌘R)")
+            .accessibilityLabel("동기화")
 
             Spacer()
 
@@ -107,6 +109,7 @@ struct CalendarToolbar: View {
         }
         .buttonStyle(.plain)
         .onHover { hoveredNavButton = $0 ? icon : nil }
+        .accessibilityLabel(icon == "chevron.left" ? "이전" : "다음")
     }
 
     // MARK: - View Mode Picker
@@ -130,6 +133,9 @@ struct CalendarToolbar: View {
                         )
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel("\(mode.fullLabel) 보기")
+                .accessibilityValue(viewModel.viewMode == mode ? "선택됨" : "")
+                .accessibilityAddTraits(viewModel.viewMode == mode ? .isSelected : [])
             }
         }
         .padding(3)

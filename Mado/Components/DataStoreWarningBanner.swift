@@ -32,6 +32,8 @@ struct DataStoreWarningBanner: View {
             .padding(.horizontal, MadoTheme.Spacing.lg)
             .padding(.vertical, MadoTheme.Spacing.sm)
             .background(MadoColors.warning.opacity(0.18))
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("경고: 데이터가 임시 저장소에 저장되고 있습니다")
             .alert("저장소 오류", isPresented: $showErrorAlert) {
                 Button("확인", role: .cancel) {}
             } message: {

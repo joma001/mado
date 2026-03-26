@@ -115,6 +115,8 @@ private struct CalendarRow: View {
             }
             .buttonStyle(.plain)
             .help(calendar.notificationsEnabled ? "Notifications on" : "Notifications off")
+            .accessibilityLabel(calendar.notificationsEnabled ? "알림 켜짐" : "알림 꺼짐")
+            .accessibilityHint("탭하여 알림 전환")
 
             Text(calendar.accessRole)
                 .font(MadoTheme.Font.tiny)

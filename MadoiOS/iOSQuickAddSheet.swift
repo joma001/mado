@@ -60,11 +60,13 @@ struct iOSQuickAddSheet: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") { dismiss() }
+                        .accessibilityLabel("취소")
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Add") { addItem() }
                         .fontWeight(.semibold)
                         .disabled(title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                        .accessibilityLabel("추가")
                 }
             }
             .onAppear { isFocused = true }

@@ -19,6 +19,8 @@ struct LoadingOverlay: View {
                         .foregroundColor(MadoColors.textSecondary)
                 }
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel(message ?? "로딩 중")
         }
     }
 }

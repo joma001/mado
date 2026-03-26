@@ -51,6 +51,8 @@ struct iOSLoginView: View {
             }
             .padding(.horizontal, 32)
             .padding(.bottom, 48)
+            .accessibilityLabel("Google로 로그인")
+            .accessibilityHint("Google 계정으로 로그인합니다")
         }
         .background(MadoColors.surface)
     }

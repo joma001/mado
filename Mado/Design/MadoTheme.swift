@@ -8,19 +8,19 @@ enum MadoTheme {
     // `relativeTo:` anchors each custom size to the nearest semantic text style so it
     // grows/shrinks proportionally when the user changes their system font size.
     enum Font {
-        static let largeTitle = SwiftUI.Font.system(size: 28, weight: .bold, design: .default, relativeTo: .largeTitle)
-        static let title = SwiftUI.Font.system(size: 20, weight: .semibold, design: .default, relativeTo: .title2)
-        static let title2 = SwiftUI.Font.system(size: 17, weight: .semibold, design: .default, relativeTo: .headline)
-        static let headline = SwiftUI.Font.system(size: 15, weight: .semibold, design: .default, relativeTo: .subheadline)
-        static let body = SwiftUI.Font.system(size: 14, weight: .regular, design: .default, relativeTo: .body)
-        static let bodyMedium = SwiftUI.Font.system(size: 14, weight: .medium, design: .default, relativeTo: .body)
-        static let callout = SwiftUI.Font.system(size: 13, weight: .regular, design: .default, relativeTo: .callout)
-        static let caption = SwiftUI.Font.system(size: 12, weight: .regular, design: .default, relativeTo: .caption)
-        static let captionMedium = SwiftUI.Font.system(size: 12, weight: .medium, design: .default, relativeTo: .caption)
-        static let tiny = SwiftUI.Font.system(size: 11, weight: .regular, design: .default, relativeTo: .caption2)
+        static let largeTitle: SwiftUI.Font = .system(size: 28, weight: .bold)
+        static let title: SwiftUI.Font = .system(size: 20, weight: .semibold)
+        static let title2: SwiftUI.Font = .system(size: 17, weight: .semibold)
+        static let headline: SwiftUI.Font = .system(size: 15, weight: .semibold)
+        static let body: SwiftUI.Font = .system(size: 14)
+        static let bodyMedium: SwiftUI.Font = .system(size: 14, weight: .medium)
+        static let callout: SwiftUI.Font = .system(size: 13)
+        static let caption: SwiftUI.Font = .system(size: 12)
+        static let captionMedium: SwiftUI.Font = .system(size: 12, weight: .medium)
+        static let tiny: SwiftUI.Font = .system(size: 11)
 
         // Monospaced for timestamps
-        static let timestamp = SwiftUI.Font.system(size: 11, weight: .medium, design: .monospaced, relativeTo: .caption2)
+        static let timestamp: SwiftUI.Font = .system(size: 11, weight: .medium, design: .monospaced)
     }
 
     // MARK: - Spacing

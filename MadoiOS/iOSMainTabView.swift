@@ -12,30 +12,35 @@ struct iOSMainTabView: View {
                         Label("Today", systemImage: "sun.max.fill")
                     }
                     .tag(0)
+                    .accessibilityLabel("오늘")
 
                 iOSCalendarTab()
                     .tabItem {
                         Label("Calendar", systemImage: "calendar")
                     }
                     .tag(1)
+                    .accessibilityLabel("캘린더")
 
                 iOSTasksTab()
                     .tabItem {
                         Label("Tasks", systemImage: "checkmark.circle")
                     }
                     .tag(2)
+                    .accessibilityLabel("할 일")
 
                 iOSInvitesTab()
                     .tabItem {
                         Label("Invites", systemImage: "envelope")
                     }
                     .tag(3)
+                    .accessibilityLabel("초대")
 
                 iOSSettingsTab()
                     .tabItem {
                         Label("Settings", systemImage: "gearshape")
                     }
                     .tag(4)
+                    .accessibilityLabel("설정")
             }
 
             // Floating quick-add button
@@ -52,6 +57,8 @@ struct iOSMainTabView: View {
             }
             .padding(.trailing, 20)
             .padding(.bottom, 80)
+            .accessibilityLabel("빠른 추가")
+            .accessibilityHint("할 일 또는 일정을 빠르게 추가합니다")
         }
         .overlay {
             UndoToastOverlay()

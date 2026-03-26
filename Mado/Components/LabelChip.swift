@@ -27,5 +27,8 @@ struct LabelChip: View {
         .background(label.color.background)
         .clipShape(Capsule())
         .onHover { isHovered = $0 }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("라벨: \(label.name)")
+        .accessibilityHint(onRemove != nil ? "탭하여 라벨 제거" : "")
     }
 }
