@@ -263,7 +263,14 @@ struct TaskDetailPopover: View {
             SubtaskView(
                 subtasks: subs,
                 onToggle: { viewModel.toggleTask($0) },
-                onAdd: { viewModel.addSubtask(to: task, title: $0) }
+                onAdd: { viewModel.addSubtask(to: task, title: $0) },
+                onDelete: { viewModel.deleteTask($0) },
+                onRename: { subtask, newTitle in
+                    subtask.title = newTitle
+                    subtask.markUpdated()
+                    DataController.shared.save()
+                    SyncEngine.shared.schedulePush()
+                }
             )
         }
     }

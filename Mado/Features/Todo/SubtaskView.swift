@@ -4,6 +4,8 @@ struct SubtaskView: View {
     let subtasks: [MadoTask]
     var onToggle: (MadoTask) -> Void
     var onAdd: (String) -> Void
+    var onDelete: (MadoTask) -> Void
+    var onRename: (MadoTask, String) -> Void
 
     @State private var newSubtaskText = ""
     @FocusState private var isAddingFocused: Bool
@@ -29,7 +31,12 @@ struct SubtaskView: View {
             }
 
             ForEach(subtasks, id: \.id) { subtask in
-                SubtaskRowView(subtask: subtask, onToggle: onToggle)
+                SubtaskRowView(
+                    subtask: subtask,
+                    onToggle: onToggle,
+                    onDelete: onDelete,
+                    onRename: onRename
+                )
             }
 
             HStack(spacing: MadoTheme.Spacing.sm) {
@@ -37,7 +44,7 @@ struct SubtaskView: View {
                     .font(.system(size: 11))
                     .foregroundColor(MadoColors.textTertiary)
 
-                TextField("Add subtask...", text: $newSubtaskText)
+                TextField("하위 작업 추가...", text: $newSubtaskText)
                     .textFieldStyle(.plain)
                     .font(MadoTheme.Font.callout)
                     .focused($isAddingFocused)
@@ -83,7 +90,13 @@ struct SubtaskView: View {
 private struct SubtaskRowView: View {
     let subtask: MadoTask
     var onToggle: (MadoTask) -> Void
+    var onDelete: (MadoTask) -> Void
+    var onRename: (MadoTask, String) -> Void
+
     @State private var isHovered = false
+    @State private var isEditing = false
+    @State private var editingTitle = ""
+    @FocusState private var isTitleFocused: Bool
 
     var body: some View {
         HStack(spacing: MadoTheme.Spacing.sm) {
@@ -98,15 +111,39 @@ private struct SubtaskRowView: View {
             .accessibilityLabel(subtask.isCompleted ? "완료 해제" : "완료로 표시")
             .accessibilityAddTraits(.isButton)
 
-            Text(subtask.title)
-                .font(MadoTheme.Font.callout)
-                .foregroundColor(
-                    subtask.isCompleted ? MadoColors.textTertiary : MadoColors.textPrimary
-                )
-                .strikethrough(subtask.isCompleted, color: MadoColors.textTertiary)
-                .lineLimit(1)
+            if isEditing {
+                TextField("", text: $editingTitle)
+                    .textFieldStyle(.plain)
+                    .font(MadoTheme.Font.callout)
+                    .foregroundColor(MadoColors.textPrimary)
+                    .focused($isTitleFocused)
+                    .onSubmit { commitEdit() }
+                    .onExitCommand { cancelEdit() }
+            } else {
+                Text(subtask.title)
+                    .font(MadoTheme.Font.callout)
+                    .foregroundColor(
+                        subtask.isCompleted ? MadoColors.textTertiary : MadoColors.textPrimary
+                    )
+                    .strikethrough(subtask.isCompleted, color: MadoColors.textTertiary)
+                    .lineLimit(1)
+                    .onTapGesture { beginEdit() }
+            }
 
             Spacer()
+
+            if isHovered && !isEditing {
+                Button {
+                    onDelete(subtask)
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundColor(MadoColors.textTertiary)
+                }
+                .buttonStyle(.plain)
+                .transition(.opacity)
+                .accessibilityLabel("하위 작업 삭제")
+            }
         }
         .padding(.vertical, MadoTheme.Spacing.xxxs)
         .padding(.horizontal, MadoTheme.Spacing.xxs)
@@ -118,5 +155,25 @@ private struct SubtaskRowView: View {
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(subtask.title), \(subtask.isCompleted ? "완료됨" : "미완료")")
         .accessibilityHint(subtask.isCompleted ? "탭하여 완료 해제" : "탭하여 완료")
+    }
+
+    private func beginEdit() {
+        editingTitle = subtask.title
+        isEditing = true
+        isTitleFocused = true
+    }
+
+    private func commitEdit() {
+        let trimmed = editingTitle.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !trimmed.isEmpty && trimmed != subtask.title {
+            onRename(subtask, trimmed)
+        }
+        isEditing = false
+        isTitleFocused = false
+    }
+
+    private func cancelEdit() {
+        isEditing = false
+        isTitleFocused = false
     }
 }

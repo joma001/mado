@@ -248,6 +248,13 @@ struct TodoDetailView: View {
             },
             onAdd: { title in
                 viewModel.addSubtask(to: task, title: title)
+            },
+            onDelete: { subtask in
+                viewModel.deleteTask(subtask)
+            },
+            onRename: { subtask, newTitle in
+                subtask.title = newTitle
+                viewModel.updateTask(subtask)
             }
         )
     }

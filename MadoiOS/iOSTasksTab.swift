@@ -175,6 +175,9 @@ struct iOSTasksTab: View {
                                     }
                                 }
                             }
+                            .onMove { source, destination in
+                                viewModel.reorderTasks(displayTasks, from: source, to: destination)
+                            }
                         } header: {
                             HStack {
                                 Text(selectedFilter == .all ? "Tasks" : selectedFilter.rawValue)

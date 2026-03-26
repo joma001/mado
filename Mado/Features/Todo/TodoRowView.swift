@@ -4,6 +4,7 @@ struct TodoRowView: View {
     let task: MadoTask
     let labels: [TaskLabel]
     var isSelected: Bool = false
+    var subtaskProgress: (completed: Int, total: Int)? = nil
     var onToggle: () -> Void
     var onSelect: () -> Void
     var onDelete: () -> Void
@@ -71,7 +72,7 @@ struct TodoRowView: View {
                     .strikethrough(task.isCompleted, color: MadoColors.textTertiary)
                     .lineLimit(1)
 
-                if !taskLabels.isEmpty || dueDateText != nil || task.priority != .none {
+                if !taskLabels.isEmpty || dueDateText != nil || task.priority != .none || subtaskProgress != nil {
                     HStack(spacing: MadoTheme.Spacing.xs) {
                         PriorityBadge(priority: task.priority)
 
@@ -87,6 +88,21 @@ struct TodoRowView: View {
                                     .font(MadoTheme.Font.tiny)
                             }
                             .foregroundColor(isDueOverdue ? MadoColors.error : MadoColors.textTertiary)
+                        }
+
+                        if let progress = subtaskProgress, progress.total > 0 {
+                            HStack(spacing: MadoTheme.Spacing.xxxs) {
+                                Image(systemName: "checklist")
+                                    .font(.system(size: 9))
+                                Text("\(progress.completed)/\(progress.total)")
+                                    .font(MadoTheme.Font.tiny)
+                            }
+                            .foregroundColor(
+                                progress.completed == progress.total
+                                    ? MadoColors.success
+                                    : MadoColors.textTertiary
+                            )
+                            .accessibilityLabel("하위 작업 \(progress.completed)/\(progress.total) 완료")
                         }
                     }
                 }

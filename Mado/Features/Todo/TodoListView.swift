@@ -97,22 +97,32 @@ struct TodoListView: View {
                         onAction: viewModel.searchText.isEmpty ? { showingForm = true } : nil
                     )
                 } else {
-                    ScrollView {
-                        LazyVStack(spacing: 0) {
-                            ForEach(viewModel.filteredTasks, id: \.id) { task in
-                                TodoRowView(
-                                    task: task,
-                                    labels: viewModel.labels,
-                                    isSelected: viewModel.selectedTask?.id == task.id,
-                                    onToggle: { viewModel.toggleTask(task) },
-                                    onSelect: { viewModel.selectedTask = task },
-                                    onDelete: { viewModel.deleteTask(task) },
-                                    onSnooze: { date in viewModel.snoozeTask(task, to: date) }
-                                )
-                            }
+                    List {
+                        ForEach(viewModel.filteredTasks, id: \.id) { task in
+                            let subs = viewModel.subtasks(for: task)
+                            let subProgress: (completed: Int, total: Int)? = subs.isEmpty
+                                ? nil
+                                : (subs.filter(\.isCompleted).count, subs.count)
+                            TodoRowView(
+                                task: task,
+                                labels: viewModel.labels,
+                                isSelected: viewModel.selectedTask?.id == task.id,
+                                subtaskProgress: subProgress,
+                                onToggle: { viewModel.toggleTask(task) },
+                                onSelect: { viewModel.selectedTask = task },
+                                onDelete: { viewModel.deleteTask(task) },
+                                onSnooze: { date in viewModel.snoozeTask(task, to: date) }
+                            )
+                            .listRowInsets(EdgeInsets())
+                            .listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
                         }
-                        .padding(.vertical, MadoTheme.Spacing.xs)
+                        .onMove { source, destination in
+                            viewModel.reorderTasks(viewModel.filteredTasks, from: source, to: destination)
+                        }
                     }
+                    .listStyle(.plain)
+                    .padding(.vertical, MadoTheme.Spacing.xs)
                 }
 
                 Spacer(minLength: 0)

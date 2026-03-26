@@ -10,6 +10,8 @@ struct TodoFormView: View {
     @State private var hasDueDate = false
     @State private var dueDate = Date()
     @State private var selectedLabelIds: [String] = []
+    @State private var recurrenceFrequency: RecurrenceFrequency? = nil
+    @State private var recurrenceInterval: Int = 1
     @FocusState private var isTitleFocused: Bool
 
     var body: some View {
@@ -76,6 +78,22 @@ struct TodoFormView: View {
                             }
                         }
 
+                        formRow(icon: "arrow.clockwise", label: "반복") {
+                            Picker("", selection: $recurrenceFrequency) {
+                                Text("없음").tag(RecurrenceFrequency?.none)
+                                Text("매일").tag(RecurrenceFrequency?.some(.daily))
+                                Text("매주").tag(RecurrenceFrequency?.some(.weekly))
+                                Text("매월").tag(RecurrenceFrequency?.some(.monthly))
+                            }
+                            .labelsHidden()
+                            .frame(maxWidth: 120)
+
+                            if recurrenceFrequency != nil {
+                                Stepper("매 \(recurrenceInterval)번째", value: $recurrenceInterval, in: 1...30)
+                                    .font(MadoTheme.Font.caption)
+                            }
+                        }
+
                         formRow(icon: "tag", label: "Labels") {
                             labelsSelector
                         }
@@ -106,7 +124,7 @@ struct TodoFormView: View {
             }
             .padding(MadoTheme.Spacing.lg)
         }
-        .frame(width: 500, height: 520)
+        .frame(width: 500, height: 580)
         .background(MadoColors.surface)
         .onAppear {
             isTitleFocused = true
@@ -189,6 +207,9 @@ struct TodoFormView: View {
             position: 0
         )
 
+        if let freq = recurrenceFrequency {
+            task.recurrenceRule = RecurrenceRule(frequency: freq, interval: recurrenceInterval)
+        }
         DataController.shared.createTask(task)
         viewModel.loadTasks()
         isPresented = false

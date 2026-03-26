@@ -563,27 +563,37 @@ struct TaskPanelView: View {
 
     private var taskListContent: some View {
         ScrollViewReader { proxy in
-            ScrollView {
-                LazyVStack(spacing: 0) {
-                    if !overdueTasks.isEmpty {
-                        overdueHeader
-                    }
-                    ForEach(Array(allVisibleTasks.enumerated()), id: \.element.id) { idx, task in
-                        TaskRow(
-                            task: task,
-                            viewModel: viewModel,
-                            calendarVM: calendarVM,
-                            subtasks: viewModel.subtasks(for: task),
-                            isFocused: focusedTaskId == task.id,
-                            onTap: {
-                                focusedTaskId = task.id
-                                selectedTaskForDetail = task
-                            }
-                        )
-                        .id(task.id)
+            List {
+                if !overdueTasks.isEmpty {
+                    overdueHeader
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                }
+                ForEach(Array(allVisibleTasks.enumerated()), id: \.element.id) { idx, task in
+                    TaskRow(
+                        task: task,
+                        viewModel: viewModel,
+                        calendarVM: calendarVM,
+                        subtasks: viewModel.subtasks(for: task),
+                        isFocused: focusedTaskId == task.id,
+                        onTap: {
+                            focusedTaskId = task.id
+                            selectedTaskForDetail = task
+                        }
+                    )
+                    .id(task.id)
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                }
+                .onMove { source, destination in
+                    if sortMode == .manual {
+                        viewModel.reorderTasks(allVisibleTasks, from: source, to: destination)
                     }
                 }
             }
+            .listStyle(.plain)
             .onChange(of: focusedTaskId) {
                 if let id = focusedTaskId {
                     withAnimation(MadoTheme.Animation.quick) {

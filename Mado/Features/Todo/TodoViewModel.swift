@@ -157,6 +157,19 @@ final class TodoViewModel {
         sync.schedulePush()
     }
 
+    func reorderTasks(_ taskList: [MadoTask], from source: IndexSet, to destination: Int) {
+        var reordered = taskList
+        reordered.move(fromOffsets: source, toOffset: destination)
+        for (index, task) in reordered.enumerated() {
+            task.position = index
+            task.needsSync = true
+            task.localUpdatedAt = Date()
+        }
+        data.save()
+        loadTasks()
+        sync.schedulePush()
+    }
+
     func snoozeTask(_ task: MadoTask, to date: Date) {
         let snapshot = TaskSnapshot(from: task)
         task.dueDate = date
