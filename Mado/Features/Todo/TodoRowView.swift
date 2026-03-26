@@ -30,6 +30,25 @@ struct TodoRowView: View {
         return date < Date() && !task.isCompleted
     }
 
+    private var priorityAccessibilityText: String {
+        switch task.priority {
+        case .high: return "높은 우선순위"
+        case .medium: return "중간 우선순위"
+        case .low: return "낮은 우선순위"
+        case .none: return ""
+        }
+    }
+
+    private var accessibilityDueDateText: String {
+        guard let date = task.dueDate else { return "" }
+        let calendar = Calendar.current
+        if calendar.isDateInToday(date) { return "오늘 마감" }
+        if calendar.isDateInTomorrow(date) { return "내일 마감" }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M월 d일 마감"
+        return formatter.string(from: date)
+    }
+
     var body: some View {
         HStack(spacing: MadoTheme.Spacing.sm) {
             Button(action: onToggle) {
@@ -40,6 +59,8 @@ struct TodoRowView: View {
                     )
             }
             .buttonStyle(.plain)
+            .accessibilityLabel(task.isCompleted ? "완료 해제" : "완료로 표시")
+            .accessibilityAddTraits(.isButton)
 
             VStack(alignment: .leading, spacing: MadoTheme.Spacing.xxxs) {
                 Text(task.title)
@@ -50,7 +71,7 @@ struct TodoRowView: View {
                     .strikethrough(task.isCompleted, color: MadoColors.textTertiary)
                     .lineLimit(1)
 
-                if !taskLabels.isEmpty || dueDateText != nil || task.priority == .high {
+                if !taskLabels.isEmpty || dueDateText != nil || task.priority != .none {
                     HStack(spacing: MadoTheme.Spacing.xs) {
                         PriorityBadge(priority: task.priority)
 
@@ -81,6 +102,8 @@ struct TodoRowView: View {
                 }
                 .buttonStyle(.plain)
                 .transition(.opacity)
+                .accessibilityLabel("할 일 삭제")
+                .accessibilityAddTraits(.isButton)
             }
         }
         .padding(.horizontal, MadoTheme.Spacing.xl)
@@ -96,6 +119,9 @@ struct TodoRowView: View {
         .onHover { hovering in
             withAnimation(MadoTheme.Animation.quick) { isHovered = hovering }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(task.title)\(priorityAccessibilityText.isEmpty ? "" : ", \(priorityAccessibilityText)")\(accessibilityDueDateText.isEmpty ? "" : ", \(accessibilityDueDateText)")")
+        .accessibilityHint(task.isCompleted ? "완료됨" : "탭하여 상세 보기")
         .draggable(TransferableTask(from: task))
         .contextMenu {
             Button("Toggle Complete", action: onToggle)
