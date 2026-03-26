@@ -5,6 +5,7 @@ struct iOSQuickAddSheet: View {
     @State private var title = ""
     @State private var mode: QuickAddMode = .task
     @FocusState private var isFocused: Bool
+    @State private var addHapticTrigger = false
 
     private let data = DataController.shared
     private let sync = SyncEngine.shared
@@ -67,6 +68,7 @@ struct iOSQuickAddSheet: View {
                 }
             }
             .onAppear { isFocused = true }
+            .sensoryFeedback(.impact(flexibility: .rigid, intensity: 0.6), trigger: addHapticTrigger)
         }
     }
 
@@ -181,6 +183,7 @@ struct iOSQuickAddSheet: View {
             sync.schedulePush()
         }
 
+        addHapticTrigger.toggle()
         dismiss()
     }
 

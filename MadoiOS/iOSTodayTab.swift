@@ -2,6 +2,7 @@ import SwiftUI
 
 struct iOSTodayTab: View {
     @State private var viewModel = iOSTodayViewModel()
+    @State private var refreshHapticTrigger = false
 
     private var todayFormatted: String {
         DateFormatters.fullWeekdayDate.string(from: Date())
@@ -24,9 +25,11 @@ struct iOSTodayTab: View {
             }
             .navigationTitle("Today")
             .refreshable {
+                refreshHapticTrigger.toggle()
                 await SyncEngine.shared.syncAll()
                 viewModel.refreshData()
             }
+            .sensoryFeedback(.impact(weight: .medium), trigger: refreshHapticTrigger)
             .onAppear { viewModel.load() }
         }
     }
@@ -63,6 +66,13 @@ struct iOSTodayTab: View {
                 sectionHeader("Earlier")
                 ForEach(viewModel.pastEvents, id: \.id) { event in
                     iOSPastEventRow(event: event, viewModel: viewModel)
+                        .contextMenu {
+                            Button {
+                                viewModel.archiveEvent(event)
+                            } label: {
+                                Label("Archive", systemImage: "archivebox")
+                            }
+                        }
                 }
             }
 
@@ -113,7 +123,7 @@ private struct iOSOngoingEventCard: View {
             HStack {
                 Text(event.title)
                     .font(MadoTheme.Font.bodyMedium)
-                    .foregroundColor(.white)
+                    .foregroundColor(MadoColors.onAccent)
                     .lineLimit(1)
 
                 Spacer(minLength: 4)
@@ -121,7 +131,7 @@ private struct iOSOngoingEventCard: View {
                 if !event.attendees.isEmpty {
                     Image(systemName: "envelope.fill")
                         .font(.system(size: 12))
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(MadoColors.onAccent.opacity(0.8))
                 }
 
                 if event.hasConference {
@@ -132,23 +142,23 @@ private struct iOSOngoingEventCard: View {
                     } label: {
                         Image(systemName: "video.fill")
                             .font(.system(size: 12))
-                            .foregroundColor(.white.opacity(0.8))
+                            .foregroundColor(MadoColors.onAccent.opacity(0.8))
                     }
                 }
 
                 Text(viewModel.timeRemainingText(for: event))
                     .font(.system(size: 11, weight: .medium, design: .rounded))
-                    .foregroundColor(.white)
+                    .foregroundColor(MadoColors.onAccent)
                     .padding(.horizontal, 8)
                     .padding(.vertical, 3)
-                    .background(Color.white.opacity(0.2))
+                    .background(MadoColors.onAccent.opacity(0.2))
                     .clipShape(RoundedRectangle(cornerRadius: 4))
             }
 
             if let location = event.location, !location.isEmpty {
                 Text(location)
                     .font(MadoTheme.Font.tiny)
-                    .foregroundColor(.white.opacity(0.75))
+                    .foregroundColor(MadoColors.onAccent.opacity(0.75))
                     .lineLimit(1)
             }
         }
@@ -286,6 +296,7 @@ private struct iOSTaskRow: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 8)
+        .sensoryFeedback(.success, trigger: task.isCompleted) { _, newValue in newValue }
     }
 }
 
@@ -331,6 +342,7 @@ private struct iOSOverdueTaskRow: View {
         .padding(.horizontal, 20)
         .padding(.vertical, 8)
         .background(MadoColors.error.opacity(0.04))
+        .sensoryFeedback(.success, trigger: task.isCompleted) { _, newValue in newValue }
     }
 }
 
@@ -407,6 +419,11 @@ final class iOSTodayViewModel {
         if task.isCompleted { task.markIncomplete() } else { task.markCompleted() }
         data.save()
         SyncEngine.shared.schedulePush()
+        refreshData()
+    }
+
+    func archiveEvent(_ event: CalendarEvent) {
+        data.archiveEvent(event)
         refreshData()
     }
 

@@ -17,6 +17,8 @@ struct iOSTasksTab: View {
     @State private var selectedTaskIds: Set<String> = []
     @State private var taskToSchedule: MadoTask?
     @State private var scheduleDate = Date()
+    @State private var deleteHapticTrigger = false
+    @State private var refreshHapticTrigger = false
 
     private var displayTasks: [MadoTask] {
         let cal = Calendar.current
@@ -113,6 +115,7 @@ struct iOSTasksTab: View {
                                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                     Button(role: .destructive) {
                                         viewModel.deleteTask(task)
+                                        deleteHapticTrigger.toggle()
                                     } label: {
                                         Label("Delete", systemImage: "trash")
                                     }
@@ -207,9 +210,12 @@ struct iOSTasksTab: View {
             .searchable(text: $viewModel.searchText, prompt: "Search tasks...")
             .onChange(of: viewModel.searchText) { _, _ in viewModel.loadTasks() }
             .refreshable {
+                refreshHapticTrigger.toggle()
                 await SyncEngine.shared.syncAll()
                 viewModel.loadTasks()
             }
+            .sensoryFeedback(.impact(weight: .medium), trigger: refreshHapticTrigger)
+            .sensoryFeedback(.warning, trigger: deleteHapticTrigger)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Menu {
@@ -310,7 +316,7 @@ struct iOSTasksTab: View {
                                     .foregroundColor(filterColor(filter).opacity(0.8))
                             }
                         }
-                        .foregroundColor(isActive ? .white : filterColor(filter))
+                        .foregroundColor(isActive ? MadoColors.onAccent : filterColor(filter))
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
                         .background(
@@ -532,6 +538,7 @@ private struct iOSTaskListRow: View {
             iOSTaskPriorityBadge(priority: task.priority)
         }
         .padding(.vertical, 2)
+        .sensoryFeedback(.success, trigger: task.isCompleted) { _, newValue in newValue }
     }
 
     private func dueDateText(_ date: Date) -> String {

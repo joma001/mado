@@ -3,6 +3,7 @@ import SwiftUI
 struct iOSCalendarTab: View {
     @Bindable var viewModel = CalendarViewModel()
     @State private var selectedEvent: CalendarEvent?
+    @State private var eventTapHapticTrigger = false
 
     var body: some View {
         NavigationStack {
@@ -25,9 +26,9 @@ struct iOSCalendarTab: View {
                     case .monthly:
                         iOSMonthlyView(viewModel: viewModel, selectedEvent: $selectedEvent)
                     case .weekly:
-                        iOSWeeklyView(viewModel: viewModel, selectedEvent: $selectedEvent)
+                        iOSWeeklyView(viewModel: viewModel, selectedEvent: $selectedEvent, hapticTrigger: $eventTapHapticTrigger)
                     case .daily:
-                        iOSDailyView(viewModel: viewModel, selectedEvent: $selectedEvent)
+                        iOSDailyView(viewModel: viewModel, selectedEvent: $selectedEvent, hapticTrigger: $eventTapHapticTrigger)
                     }
                 }
             }
@@ -59,6 +60,7 @@ struct iOSCalendarTab: View {
             .onAppear { viewModel.loadEvents() }
             .onChange(of: viewModel.selectedDate) { _, _ in viewModel.loadEvents() }
             .onChange(of: viewModel.viewMode) { _, _ in viewModel.loadEvents() }
+            .sensoryFeedback(.selection, trigger: eventTapHapticTrigger)
         }
     }
 
@@ -121,7 +123,7 @@ private struct iOSMonthDayCell: View {
         VStack(spacing: 2) {
             Text("\(Calendar.current.component(.day, from: date))")
                 .font(.system(size: 14, weight: isToday ? .bold : .regular))
-                .foregroundColor(isToday ? .white : MadoColors.textPrimary)
+                .foregroundColor(isToday ? MadoColors.onAccent : MadoColors.textPrimary)
                 .frame(width: 28, height: 28)
                 .background(isToday ? MadoColors.accent : Color.clear)
                 .clipShape(Circle())
@@ -157,6 +159,7 @@ private struct iOSMonthDayCell: View {
 private struct iOSWeeklyView: View {
     let viewModel: CalendarViewModel
     @Binding var selectedEvent: CalendarEvent?
+    @Binding var hapticTrigger: Bool
 
     /// Rolling 7 days starting from selectedDate (today by default)
     private var weekDates: [Date] {
@@ -195,7 +198,10 @@ private struct iOSWeeklyView: View {
                     } else {
                         ForEach(dayEvents, id: \.id) { event in
                             iOSEventListRow(event: event, color: viewModel.calendarColorMap[event.calendarId] ?? MadoColors.calendarDefault)
-                                .onTapGesture { selectedEvent = event }
+                                .onTapGesture {
+                                    selectedEvent = event
+                                    hapticTrigger.toggle()
+                                }
                         }
                     }
 
@@ -217,6 +223,7 @@ private struct iOSWeeklyView: View {
 private struct iOSDailyView: View {
     let viewModel: CalendarViewModel
     @Binding var selectedEvent: CalendarEvent?
+    @Binding var hapticTrigger: Bool
 
     private var dayEvents: [CalendarEvent] {
         viewModel.events
@@ -240,7 +247,10 @@ private struct iOSDailyView: View {
             } else {
                 ForEach(dayEvents, id: \.id) { event in
                     iOSEventListRow(event: event, color: viewModel.calendarColorMap[event.calendarId] ?? MadoColors.calendarDefault)
-                        .onTapGesture { selectedEvent = event }
+                        .onTapGesture {
+                            selectedEvent = event
+                            hapticTrigger.toggle()
+                        }
                 }
             }
         }
