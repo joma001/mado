@@ -55,7 +55,7 @@ final class FirestoreSyncService {
             try await pullSettings(userId: userId)
 
             try await pushLabels(userId: userId)
-            try await pushTaskMeta(userId: userId)
+            try await pushTaskMeta(userId: userId, forceFullSync: true)
             try await pushCalendarPrefs(userId: userId)
             try await pushNotes(userId: userId)
             try await pushSettings(userId: userId)
@@ -179,8 +179,16 @@ final class FirestoreSyncService {
         data.save()
     }
 
-    private func pushTaskMeta(userId: String) async throws {
-        let tasks = try data.fetchTasks()
+    private func pushTaskMeta(userId: String, forceFullSync: Bool = false) async throws {
+        let tasks: [MadoTask]
+        if forceFullSync {
+            tasks = try data.fetchTasks()
+        } else {
+            tasks = try data.fetchTasksNeedingFirestoreSync()
+        }
+
+        guard !tasks.isEmpty else { return }
+
         var writes: [FirestoreBatchWrite] = []
 
         for task in tasks {
@@ -215,6 +223,12 @@ final class FirestoreSyncService {
         for chunk in writes.chunked(size: 500) {
             try await client.batchWrite(writes: chunk)
         }
+
+        // Clear the flag only after all writes succeed
+        for task in tasks {
+            task.needsFirestoreSync = false
+        }
+        data.save()
     }
 
     // MARK: - Calendar Preferences

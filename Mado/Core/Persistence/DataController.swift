@@ -87,6 +87,7 @@ final class DataController {
     func deleteTask(_ task: MadoTask) {
         task.isDeleted = true
         task.needsSync = true
+        task.needsFirestoreSync = true
         task.localUpdatedAt = Date()
         save()
     }
@@ -203,6 +204,15 @@ final class DataController {
         let descriptor = FetchDescriptor<MadoTask>(
             predicate: #Predicate { task in
                 task.needsSync == true
+            }
+        )
+        return try mainContext.fetch(descriptor)
+    }
+
+    func fetchTasksNeedingFirestoreSync() throws -> [MadoTask] {
+        let descriptor = FetchDescriptor<MadoTask>(
+            predicate: #Predicate { task in
+                task.needsFirestoreSync == true
             }
         )
         return try mainContext.fetch(descriptor)
