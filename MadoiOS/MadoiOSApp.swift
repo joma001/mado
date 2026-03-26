@@ -12,6 +12,7 @@ struct MadoiOSApp: App {
     var body: some Scene {
         WindowGroup {
             iOSRootView()
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
                 .preferredColorScheme(settings.appearanceMode.colorScheme)
                 .modelContainer(dataController.modelContainer)
                 .onOpenURL { url in

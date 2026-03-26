@@ -146,6 +146,7 @@ struct MadoApp: App {
     var body: some Scene {
         WindowGroup("mado") {
             RootView()
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
                 .preferredColorScheme(settings.appearanceMode.colorScheme)
                 .modelContainer(dataController.modelContainer)
                 .onOpenURL { url in
@@ -174,6 +175,7 @@ struct MadoApp: App {
 
         MenuBarExtra("mado", systemImage: "checkmark.circle.fill") {
             MenuBarPopoverView()
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
                 .preferredColorScheme(settings.appearanceMode.colorScheme)
                 .modelContainer(dataController.modelContainer)
         }
@@ -181,6 +183,7 @@ struct MadoApp: App {
 
         Settings {
             SettingsView()
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
                 .preferredColorScheme(settings.appearanceMode.colorScheme)
                 .modelContainer(dataController.modelContainer)
         }
