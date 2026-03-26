@@ -96,6 +96,23 @@ targets:
         com.apple.security.application-groups:
           - group.io.mado.mobile
 
+  MadoTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: MadoTests
+    dependencies:
+      - target: Mado
+    settings:
+      base:
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        SWIFT_VERSION: "5.9"
+        PRODUCT_BUNDLE_IDENTIFIER: io.mado.tests
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Manual
+        TEST_HOST: ""
+        BUNDLE_LOADER: ""
+
   MadoWidgetExtension:
     type: app-extension
     platform: iOS
