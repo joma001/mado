@@ -10,6 +10,8 @@ interface CalendarState {
   viewMode: CalendarViewMode
   isLoading: boolean
   error: string | null
+  selectedEvent: CalendarEvent | null
+  isDetailOpen: boolean
 
   setSelectedDate: (date: Date) => void
   setViewMode: (mode: CalendarViewMode) => void
@@ -20,6 +22,10 @@ interface CalendarState {
   fetchEvents: () => Promise<void>
   fetchCalendarPrefs: () => Promise<void>
   getVisibleRange: () => { start: Date; end: Date }
+  setSelectedEvent: (event: CalendarEvent | null) => void
+  createEvent: (calendarId: string, payload: Partial<CalendarEvent>) => Promise<void>
+  updateEvent: (calendarId: string, eventId: string, payload: Partial<CalendarEvent>, etag?: string) => Promise<void>
+  deleteEvent: (calendarId: string, eventId: string) => Promise<void>
 }
 
 export const useCalendarStore = create<CalendarState>((set, get) => ({
@@ -30,6 +36,8 @@ export const useCalendarStore = create<CalendarState>((set, get) => ({
   viewMode: 'weekly',
   isLoading: false,
   error: null,
+  selectedEvent: null,
+  isDetailOpen: false,
 
   setSelectedDate: (date) => set({ selectedDate: date }),
   setViewMode: (mode) => { set({ viewMode: mode }); get().fetchEvents() },
@@ -119,5 +127,71 @@ export const useCalendarStore = create<CalendarState>((set, get) => ({
       })
       set({ calendarPrefs: prefs })
     } catch { /* ignore */ }
+  },
+
+  setSelectedEvent: (event) => set({ selectedEvent: event, isDetailOpen: event !== null }),
+
+  createEvent: async (calendarId, payload) => {
+    const tempId = `temp-${Date.now()}`
+    const optimistic: CalendarEvent = {
+      id: tempId,
+      calendarId,
+      title: payload.title ?? '',
+      startDate: payload.startDate ?? new Date().toISOString(),
+      endDate: payload.endDate ?? new Date().toISOString(),
+      isAllDay: payload.isAllDay ?? false,
+      location: payload.location,
+      notes: payload.notes,
+      attendees: payload.attendees ?? [],
+      isDeclined: false,
+      ...payload,
+    }
+    set((s) => ({ events: [...s.events, optimistic] }))
+    try {
+      const res = await fetch('/api/google/calendar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'create', calendarId, ...payload }),
+      })
+      if (!res.ok) throw new Error('Failed to create event')
+      const created: CalendarEvent = await res.json()
+      set((s) => ({ events: s.events.map((e) => (e.id === tempId ? created : e)) }))
+    } catch (e) {
+      set((s) => ({ events: s.events.filter((e) => e.id !== tempId), error: String(e) }))
+    }
+  },
+
+  updateEvent: async (calendarId, eventId, payload, etag) => {
+    const prev = get().events.find((e) => e.id === eventId)
+    if (prev) {
+      set((s) => ({ events: s.events.map((e) => (e.id === eventId ? { ...e, ...payload } : e)) }))
+    }
+    try {
+      const res = await fetch('/api/google/calendar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'update', calendarId, eventId, etag, ...payload }),
+      })
+      if (!res.ok) throw new Error('Failed to update event')
+      const updated: CalendarEvent = await res.json()
+      set((s) => ({ events: s.events.map((e) => (e.id === eventId ? updated : e)) }))
+    } catch (e) {
+      if (prev) set((s) => ({ events: s.events.map((ev) => (ev.id === eventId ? prev : ev)), error: String(e) }))
+    }
+  },
+
+  deleteEvent: async (calendarId, eventId) => {
+    const prev = get().events.find((e) => e.id === eventId)
+    set((s) => ({ events: s.events.filter((e) => e.id !== eventId), isDetailOpen: false, selectedEvent: null }))
+    try {
+      const res = await fetch('/api/google/calendar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'delete', calendarId, eventId }),
+      })
+      if (!res.ok) throw new Error('Failed to delete event')
+    } catch (e) {
+      if (prev) set((s) => ({ events: [...s.events, prev], error: String(e) }))
+    }
   },
 }))
