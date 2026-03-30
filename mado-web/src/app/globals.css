@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #F5F5F7;
+  --color-accent: #5B7FFF;
+  --color-accent-light: #E8EDFF;
+  --color-text-primary: #1D1D1F;
+  --color-text-secondary: #6E6E73;
+  --color-text-tertiary: #AEAEB2;
+  --color-text-placeholder: #C7C7CC;
+  --color-divider: #E5E5EA;
+  --color-border: #D1D1D6;
+  --color-hover-bg: #F2F2F7;
+  --color-on-accent: #FFFFFF;
+  --color-calendar-default: #5B7FFF;
+  --color-priority-high: #FF3B30;
+  --color-priority-medium: #FF9500;
+  --color-priority-low: #34C759;
+  --color-error: #EB5757;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Dark theme overrides */
+.dark {
+  --color-surface: #1C1C1E;
+  --color-surface-secondary: #2C2C2E;
+  --color-text-primary: #F5F5F7;
+  --color-text-secondary: #AEAEB2;
+  --color-text-tertiary: #636366;
+  --color-text-placeholder: #48484A;
+  --color-divider: #38383A;
+  --color-border: #48484A;
+  --color-hover-bg: #2C2C2E;
+  --color-accent-light: #1E2A4A;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
