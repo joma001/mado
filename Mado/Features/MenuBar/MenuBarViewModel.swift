@@ -17,6 +17,44 @@ final class MenuBarViewModel {
     var quickAddText = ""
     var nextMeetingURL: URL?
 
+    // MARK: - Mini Calendar State
+    var selectedMonth: Date = Date()
+    var eventsForMonth: [CalendarEvent] = []
+    var miniCalendarSelectedDate: Date? = nil
+    var isMiniCalendarExpanded: Bool = false
+    var lastInteractionDate: Date? = nil
+
+    var miniCalendarGrid: [[Date]] {
+        let cal = Calendar.current
+        guard let monthInterval = cal.dateInterval(of: .month, for: selectedMonth),
+              let firstWeek = cal.dateInterval(of: .weekOfMonth, for: monthInterval.start) else { return [] }
+
+        var rows: [[Date]] = []
+        var current = firstWeek.start
+        while rows.count < 6 {
+            var week: [Date] = []
+            for _ in 0..<7 {
+                week.append(current)
+                current = cal.date(byAdding: .day, value: 1, to: current)!
+            }
+            rows.append(week)
+            if current > monthInterval.end && rows.count >= 4 { break }
+        }
+        return rows
+    }
+
+    var miniCalendarHeaderTitle: String {
+        let fmt = DateFormatter()
+        fmt.dateFormat = "MMMM yyyy"
+        return fmt.string(from: selectedMonth)
+    }
+
+    func isInSelectedMonth(_ date: Date) -> Bool {
+        let cal = Calendar.current
+        return cal.component(.month, from: date) == cal.component(.month, from: selectedMonth)
+            && cal.component(.year, from: date) == cal.component(.year, from: selectedMonth)
+    }
+
     private let data = DataController.shared
     private var refreshTimer: Timer?
 
@@ -84,6 +122,70 @@ final class MenuBarViewModel {
     func archiveEvent(_ event: CalendarEvent) {
         data.archiveEvent(event)
         refreshData()
+    }
+
+    // MARK: - Mini Calendar Actions
+
+    func navigateMiniCalendarForward() {
+        selectedMonth = Calendar.current.date(byAdding: .month, value: 1, to: selectedMonth) ?? selectedMonth
+        loadMonthEvents()
+        lastInteractionDate = Date()
+    }
+
+    func navigateMiniCalendarBack() {
+        selectedMonth = Calendar.current.date(byAdding: .month, value: -1, to: selectedMonth) ?? selectedMonth
+        loadMonthEvents()
+        lastInteractionDate = Date()
+    }
+
+    func goToToday() {
+        selectedMonth = Date()
+        miniCalendarSelectedDate = nil
+        loadMonthEvents()
+        refreshData()
+    }
+
+    func selectMiniCalendarDate(_ date: Date) {
+        miniCalendarSelectedDate = date
+        lastInteractionDate = Date()
+        refreshData()
+    }
+
+    func loadMonthEvents() {
+        let grid = miniCalendarGrid
+        guard let first = grid.first?.first, let last = grid.last?.last else { return }
+        let endDate = Calendar.current.date(byAdding: .day, value: 1, to: last) ?? last
+        do {
+            eventsForMonth = try data.fetchEvents(from: first, to: endDate, calendarIds: menuBarCalendarIds())
+        } catch {
+            eventsForMonth = []
+        }
+    }
+
+    func miniCalendarEventsForDate(_ date: Date) -> [CalendarEvent] {
+        let cal = Calendar.current
+        return eventsForMonth.filter { cal.isDate($0.startDate, inSameDayAs: date) || (cal.isDate($0.endDate, inSameDayAs: date) && !$0.isAllDay) }
+    }
+
+    func miniCalendarCalendarColors(_ date: Date) -> [Color] {
+        let events = miniCalendarEventsForDate(date)
+        var seen = Set<String>()
+        var colors: [Color] = []
+        for event in events {
+            let key = event.calendarId
+            if seen.contains(key) { continue }
+            seen.insert(key)
+            colors.append(eventColor(for: event))
+            if colors.count >= 3 { break }
+        }
+        return colors
+    }
+
+    func checkAutoReset() {
+        let timeout = Double(AppSettings.shared.autoResetMinutes * 60)
+        if Date().timeIntervalSince(lastInteractionDate ?? .distantPast) > timeout {
+            goToToday()
+        }
     }
 
     // MARK: - Computed Helpers
@@ -178,14 +280,19 @@ final class MenuBarViewModel {
         return ids.isEmpty ? nil : ids
     }
 
+    private var targetDate: Date {
+        miniCalendarSelectedDate ?? Date()
+    }
+
     private func loadPastEvents() {
         do {
+            let target = targetDate
             let now = Date()
-            let startOfDay = Calendar.current.startOfDay(for: now)
+            let startOfDay = Calendar.current.startOfDay(for: target)
             let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
 
-            let todayEvents = try data.fetchEvents(from: startOfDay, to: endOfDay, calendarIds: menuBarCalendarIds())
-            pastEvents = todayEvents.filter { event in
+            let dayEvents = try data.fetchEvents(from: startOfDay, to: endOfDay, calendarIds: menuBarCalendarIds())
+            pastEvents = dayEvents.filter { event in
                 !event.isAllDay && event.endDate <= now
             }.sorted { $0.startDate < $1.startDate }
         } catch {
@@ -195,12 +302,13 @@ final class MenuBarViewModel {
 
     private func loadOngoingEvents() {
         do {
+            let target = targetDate
             let now = Date()
-            let startOfDay = Calendar.current.startOfDay(for: now)
+            let startOfDay = Calendar.current.startOfDay(for: target)
             let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
 
-            let todayEvents = try data.fetchEvents(from: startOfDay, to: endOfDay, calendarIds: menuBarCalendarIds())
-            ongoingEvents = todayEvents.filter { event in
+            let dayEvents = try data.fetchEvents(from: startOfDay, to: endOfDay, calendarIds: menuBarCalendarIds())
+            ongoingEvents = dayEvents.filter { event in
                 !event.isAllDay &&
                 event.startDate <= now &&
                 event.endDate > now
@@ -212,8 +320,9 @@ final class MenuBarViewModel {
 
     private func loadUpcomingItems() {
         do {
+            let target = targetDate
             let now = Date()
-            let startOfDay = Calendar.current.startOfDay(for: now)
+            let startOfDay = Calendar.current.startOfDay(for: target)
             let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
 
             let todayEvents = try data.fetchEvents(from: startOfDay, to: endOfDay, calendarIds: menuBarCalendarIds())

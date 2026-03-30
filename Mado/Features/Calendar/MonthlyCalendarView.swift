@@ -44,12 +44,15 @@ private struct MonthDayCellView: View {
     let date: Date
     @Bindable var viewModel: CalendarViewModel
     @State private var isHovered = false
+    @State private var isShowingTooltip = false
+    @State private var hoverTimer: Timer?
 
     private let cal = Calendar.current
 
     var body: some View {
         let isToday = cal.isDateInToday(date)
         let inMonth = viewModel.isInCurrentMonth(date)
+        let isWeekend = cal.isDateInWeekend(date)
         let dayEvents = viewModel.eventsForDate(date)
         let displayCount = min(dayEvents.count, 2)
 
@@ -68,6 +71,8 @@ private struct MonthDayCellView: View {
 
             VStack(alignment: .leading, spacing: 1) {
                 ForEach(0..<displayCount, id: \.self) { i in
+                    let isPast = dayEvents[i].endDate < Date()
+                    let eventColor = viewModel.colorForEvent(dayEvents[i])
                     Text(dayEvents[i].title)
                         .font(.system(size: 9))
                         .foregroundColor(MadoColors.onAccent)
@@ -77,8 +82,9 @@ private struct MonthDayCellView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(
                             RoundedRectangle(cornerRadius: 2)
-                                .fill(MadoColors.calendarDefault.opacity(0.8))
+                                .fill(eventColor.opacity(isPast ? 0.4 : 0.8))
                         )
+                        .opacity(isPast ? 0.6 : 1.0)
                 }
                 if dayEvents.count > 2 {
                     Text("+\(dayEvents.count - 2) more")
@@ -95,14 +101,59 @@ private struct MonthDayCellView: View {
         .background(
             isHovered
                 ? MadoColors.hoverBackground
-                : (inMonth ? MadoColors.surface : MadoColors.surfaceSecondary.opacity(0.5))
+                : isWeekend && inMonth
+                    ? MadoColors.surfaceSecondary.opacity(0.4)
+                    : (inMonth ? MadoColors.surface : MadoColors.surfaceSecondary.opacity(0.5))
         )
         .overlay(
             Rectangle()
                 .stroke(MadoColors.divider, lineWidth: 0.5)
         )
         .contentShape(Rectangle())
-        .onHover { isHovered = $0 }
+        .onHover { hovering in
+            isHovered = hovering
+            hoverTimer?.invalidate()
+            if hovering && !dayEvents.isEmpty {
+                hoverTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { _ in
+                    Task { @MainActor in isShowingTooltip = true }
+                }
+            } else {
+                isShowingTooltip = false
+            }
+        }
+        .popover(isPresented: $isShowingTooltip, arrowEdge: .bottom) {
+            VStack(alignment: .leading, spacing: 4) {
+                ForEach(Array(dayEvents.prefix(5)), id: \.id) { event in
+                    HStack(spacing: 6) {
+                        Circle()
+                            .fill(viewModel.colorForEvent(event))
+                            .frame(width: 6, height: 6)
+                        VStack(alignment: .leading, spacing: 1) {
+                            Text(event.title)
+                                .font(.system(size: 11, weight: .medium))
+                                .lineLimit(1)
+                            if !event.isAllDay {
+                                Text(event.startDate.formatted(.dateTime.hour().minute()))
+                                    .font(.system(size: 10))
+                                    .foregroundColor(MadoColors.textTertiary)
+                            } else {
+                                Text("All day")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(MadoColors.textTertiary)
+                            }
+                        }
+                    }
+                }
+                if dayEvents.count > 5 {
+                    Text("+\(dayEvents.count - 5) more")
+                        .font(.system(size: 10))
+                        .foregroundColor(MadoColors.textTertiary)
+                }
+            }
+            .padding(10)
+            .frame(minWidth: 160)
+        }
+        .onTapGesture(count: 2) { viewModel.beginEventCreation(hour: 9, date: date) }
         .onTapGesture { viewModel.selectDate(date) }
         .dropDestination(for: TransferableTask.self) { items, _ in
             guard let task = items.first else { return false }

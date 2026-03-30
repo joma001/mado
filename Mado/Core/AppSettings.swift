@@ -75,6 +75,7 @@ final class AppSettings {
     // MARK: - Menu Bar
 
     var menuBarDisplayMode: String { didSet { defaults.set(menuBarDisplayMode, forKey: "menuBarDisplayMode") } }
+    var autoResetMinutes: Int { didSet { defaults.set(autoResetMinutes, forKey: "autoResetMinutes") } }
 
     // MARK: - Helpers
 
@@ -111,6 +112,7 @@ final class AppSettings {
         showDeclinedEvents = defaults.bool(forKey: "showDeclinedEvents")
         syncIntervalMinutes = defaults.object(forKey: "syncIntervalMinutes") as? Double ?? 5.0
         menuBarDisplayMode = defaults.string(forKey: "menuBarDisplayMode") ?? "nextEvent"
+        autoResetMinutes = defaults.object(forKey: "autoResetMinutes") as? Int ?? 10
         gmailSyncEnabled = defaults.object(forKey: "gmailSyncEnabled") as? Bool ?? true
         notificationsEnabled = defaults.object(forKey: "notificationsEnabled") as? Bool ?? true
         morningBriefEnabled = defaults.object(forKey: "morningBriefEnabled") as? Bool ?? true

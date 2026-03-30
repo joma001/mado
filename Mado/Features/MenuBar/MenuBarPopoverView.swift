@@ -15,6 +15,10 @@ struct MenuBarPopoverView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
+            // Mini calendar toggle + collapsible grid
+            miniCalendarToggle
+            MiniCalendarView(viewModel: viewModel)
+
             if hasAnyContent {
                 contentScrollView
             } else {
@@ -26,7 +30,61 @@ struct MenuBarPopoverView: View {
         .frame(width: MadoTheme.Layout.menuBarPopoverWidth)
         .frame(minHeight: 200, maxHeight: MadoTheme.Layout.menuBarPopoverHeight)
         .background(MadoColors.surface)
-        .onAppear { viewModel.load() }
+        .onAppear {
+            viewModel.checkAutoReset()
+            viewModel.load()
+            viewModel.loadMonthEvents()
+        }
+    }
+
+    private var miniCalendarToggle: some View {
+        HStack {
+            Button {
+                withAnimation(MadoTheme.Animation.quick) {
+                    viewModel.isMiniCalendarExpanded.toggle()
+                }
+            } label: {
+                HStack(spacing: MadoTheme.Spacing.xxs) {
+                    Image(systemName: "calendar")
+                        .font(.system(size: 11, weight: .medium))
+                    if let selected = viewModel.miniCalendarSelectedDate {
+                        Text(miniCalendarDateLabel(selected))
+                            .font(.system(size: 11, weight: .medium))
+                    }
+                }
+                .foregroundColor(viewModel.isMiniCalendarExpanded ? MadoColors.accent : MadoColors.textTertiary)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(viewModel.isMiniCalendarExpanded ? MadoColors.accentLight.opacity(0.3) : MadoColors.surfaceSecondary)
+                )
+            }
+            .buttonStyle(.plain)
+
+            Spacer()
+
+            if viewModel.miniCalendarSelectedDate != nil {
+                Button {
+                    viewModel.miniCalendarSelectedDate = nil
+                    viewModel.refreshData()
+                } label: {
+                    Text("Today")
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundColor(MadoColors.accent)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.horizontal, MadoTheme.Spacing.lg)
+        .padding(.top, MadoTheme.Spacing.sm)
+        .padding(.bottom, MadoTheme.Spacing.xxs)
+    }
+
+    private func miniCalendarDateLabel(_ date: Date) -> String {
+        let fmt = DateFormatter()
+        fmt.dateFormat = "MMM d"
+        return fmt.string(from: date)
     }
 
     // MARK: - Content
@@ -56,6 +114,7 @@ struct MenuBarPopoverView: View {
                         sectionHeader("Ongoing")
                         ForEach(viewModel.ongoingEvents, id: \.id) { event in
                             OngoingEventRow(event: event, viewModel: viewModel)
+                                .contextMenu { eventCopyMenu(event) }
                         }
                     }
 
@@ -65,6 +124,7 @@ struct MenuBarPopoverView: View {
                             switch item {
                             case .event(let event):
                                 UpcomingEventRow(event: event, viewModel: viewModel)
+                                    .contextMenu { eventCopyMenu(event) }
                             case .task(let task):
                                 UpcomingTaskRow(task: task) {
                                     viewModel.toggleTask(task)
@@ -142,6 +202,16 @@ struct MenuBarPopoverView: View {
             }
 
             Button {
+                DetachedCalendarWindow.shared.show()
+            } label: {
+                Image(systemName: "pin.fill")
+                    .font(.system(size: 11))
+                    .foregroundColor(MadoColors.textTertiary)
+            }
+            .buttonStyle(.plain)
+            .help("Detach to floating window")
+
+            Button {
                 NSApp.activate(ignoringOtherApps: true)
                 for w in NSApp.windows where w.title == "mado"
                     && !String(describing: type(of: w)).contains("MenuBar")
@@ -162,6 +232,34 @@ struct MenuBarPopoverView: View {
         .background(MadoColors.surface)
         .overlay(alignment: .top) {
             Divider().foregroundColor(MadoColors.divider)
+        }
+    }
+
+    // MARK: - Event Copy
+
+    @ViewBuilder
+    private func eventCopyMenu(_ event: CalendarEvent) -> some View {
+        Button {
+            var text = event.title
+            let fmt = DateFormatter()
+            fmt.dateFormat = "MMM d, h:mm a"
+            if event.isAllDay {
+                let dayFmt = DateFormatter()
+                dayFmt.dateFormat = "MMM d, yyyy"
+                text += "\n\(dayFmt.string(from: event.startDate)) (All day)"
+            } else {
+                text += "\n\(fmt.string(from: event.startDate)) – \(fmt.string(from: event.endDate))"
+            }
+            if let location = event.location, !location.isEmpty {
+                text += "\n\(location)"
+            }
+            if let notes = event.notes, !notes.isEmpty {
+                text += "\n\(notes)"
+            }
+            NSPasteboard.general.clearContents()
+            NSPasteboard.general.setString(text, forType: .string)
+        } label: {
+            Label("Copy Event Details", systemImage: "doc.on.doc")
         }
     }
 

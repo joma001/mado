@@ -354,8 +354,11 @@ struct PlannerView: View {
             case "j":
                 calendarVM.navigateForward()
                 return nil
-            case "k":
+            case "k", "h":
                 calendarVM.navigateBack()
+                return nil
+            case "l":
+                calendarVM.navigateForward()
                 return nil
             case "[":
                 withAnimation(MadoTheme.Animation.standard) { showTaskPanel.toggle() }

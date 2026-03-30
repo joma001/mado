@@ -6,6 +6,9 @@ struct CalendarToolbar: View {
     @State private var hoveredNavButton: String?
     @State private var isSyncHovered = false
     @State private var isTodayHovered = false
+    @State private var showGoToDate = false
+    @State private var goToDate = Date()
+    @State private var isGoToDateHovered = false
 
     var body: some View {
         HStack(spacing: 14) {
@@ -45,6 +48,34 @@ struct CalendarToolbar: View {
                     .background(
                         Capsule().fill(MadoColors.surfaceSecondary)
                     )
+            }
+
+            // Go to Date
+            Button {
+                goToDate = viewModel.selectedDate
+                showGoToDate = true
+            } label: {
+                Image(systemName: "calendar")
+                    .font(.system(size: 11, weight: .medium))
+                    .foregroundColor(isGoToDateHovered ? MadoColors.textPrimary : MadoColors.textTertiary)
+                    .frame(width: 26, height: 26)
+                    .background(
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(isGoToDateHovered ? MadoColors.surfaceSecondary : Color.clear)
+                    )
+            }
+            .buttonStyle(.plain)
+            .onHover { isGoToDateHovered = $0 }
+            .help("Go to Date (⇧⌘T)")
+            .popover(isPresented: $showGoToDate) {
+                DatePicker("Go to Date", selection: $goToDate, displayedComponents: .date)
+                    .datePickerStyle(.graphical)
+                    .padding()
+                    .onChange(of: goToDate) { _, newDate in
+                        viewModel.selectDate(newDate)
+                        viewModel.loadEvents()
+                        showGoToDate = false
+                    }
             }
 
             // Today button
