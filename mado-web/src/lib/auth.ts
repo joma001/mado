@@ -45,7 +45,7 @@ export const authOptions: NextAuthOptions = {
       return await refreshAccessToken(token)
     },
     async session({ session, token }) {
-      session.accessToken = token.accessToken as string
+      // accessToken stays server-side only — not exposed to client
       session.error = token.error as string | undefined
       if (token.email) {
         session.user = { ...session.user, email: token.email as string }
