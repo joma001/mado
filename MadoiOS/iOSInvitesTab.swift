@@ -78,14 +78,14 @@ struct iOSInvitesTab: View {
         
         viewModel.isLoading = true
         do {
-            let selectedIds = try DataController.shared.fetchSelectedCalendarIds()
-            
+            let ownedIds = try DataController.shared.fetchOwnedSelectedCalendarIds()
+
             let calendars = try DataController.shared.fetchCalendars()
             var colorMap: [String: Color] = [:]
             for c in calendars { colorMap[c.googleCalendarId] = c.displayColor }
             viewModel.calendarColorMap = colorMap
             
-            let allEvents = try DataController.shared.fetchEvents(from: start, to: end, calendarIds: selectedIds)
+            let allEvents = try DataController.shared.fetchEvents(from: start, to: end, calendarIds: ownedIds)
             viewModel.events = allEvents.filter { $0.sourceTaskId == nil }
             viewModel.isLoading = false
         } catch {

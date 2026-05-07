@@ -20,8 +20,8 @@ struct PlannerView: View {
     private var pendingInviteCount: Int {
         let now = Date()
         let oneYearAhead = Calendar.current.date(byAdding: .year, value: 1, to: now)!
-        let selectedIds = (try? DataController.shared.fetchSelectedCalendarIds()) ?? []
-        let events = (try? DataController.shared.fetchEvents(from: now, to: oneYearAhead, calendarIds: selectedIds)) ?? []
+        let ownedIds = (try? DataController.shared.fetchOwnedSelectedCalendarIds()) ?? []
+        let events = (try? DataController.shared.fetchEvents(from: now, to: oneYearAhead, calendarIds: ownedIds)) ?? []
         return events.filter { event in
             event.attendees.contains { $0.isSelf && $0.responseStatus == "needsAction" }
         }.count

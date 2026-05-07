@@ -193,6 +193,11 @@ final class DataController {
         return calendars.filter(\.isSelected).map(\.googleCalendarId)
     }
 
+    func fetchOwnedSelectedCalendarIds() throws -> [String] {
+        let calendars = try fetchCalendars()
+        return calendars.filter { $0.isSelected && ($0.accessRole == "owner" || $0.accessRole == "writer") }.map(\.googleCalendarId)
+    }
+
     func fetchMenuBarCalendarIds() throws -> [String] {
         let calendars = try fetchCalendars()
         return calendars.filter(\.showInMenuBar).map(\.googleCalendarId)

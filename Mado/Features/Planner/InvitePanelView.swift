@@ -13,8 +13,8 @@ struct InvitePanelView: View {
         let now = Date()
         let thirtyDaysAgo = Calendar.current.date(byAdding: .day, value: -30, to: now)!
         let oneYearAhead = Calendar.current.date(byAdding: .year, value: 1, to: now)!
-        let selectedIds = (try? data.fetchSelectedCalendarIds()) ?? []
-        let events = (try? data.fetchEvents(from: thirtyDaysAgo, to: oneYearAhead, calendarIds: selectedIds)) ?? []
+        let ownedIds = (try? data.fetchOwnedSelectedCalendarIds()) ?? []
+        let events = (try? data.fetchEvents(from: thirtyDaysAgo, to: oneYearAhead, calendarIds: ownedIds)) ?? []
         return events.filter { !$0.attendees.isEmpty }
     }
 
@@ -30,8 +30,8 @@ struct InvitePanelView: View {
     private var recentlyActioned: [CalendarEvent] {
         let now = Date()
         let sevenDaysAgo = Calendar.current.date(byAdding: .day, value: -7, to: now)!
-        let selectedIds = (try? data.fetchSelectedCalendarIds()) ?? []
-        let events = (try? data.fetchEvents(from: sevenDaysAgo, to: now, calendarIds: selectedIds)) ?? []
+        let ownedIds = (try? data.fetchOwnedSelectedCalendarIds()) ?? []
+        let events = (try? data.fetchEvents(from: sevenDaysAgo, to: now, calendarIds: ownedIds)) ?? []
         return events
             .filter { $0.startDate < now }
             .sorted { $0.startDate > $1.startDate }
